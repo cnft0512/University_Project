@@ -18,8 +18,8 @@ public interface LectureService {
    // 강의 총 갯수 + 검색 기능
    public int searchList(Criteria cri) throws Exception;
 
-   // 학과 목록 불러오기
-   public List<DepartmentVO> getDepartment() throws Exception;
+   // 나의 강의 목록 불러오기
+   public List<StudentLectureVO> getStudent_lectureList(int lecture_code) throws Exception;
 
    // 강의 선택 후 장바구니 담기
    public int addLecture(BasketVO bVo) throws Exception;

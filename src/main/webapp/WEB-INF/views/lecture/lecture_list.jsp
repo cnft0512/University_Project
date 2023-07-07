@@ -128,7 +128,11 @@
                </c:choose>
                   </div>
                   <div class="lecture_list-table-body__semester">${lec_list.semester}</div>
-                  <div class="lecture_list-table-body__student_full">${lec_list.student_full}</div>
+                  <div class="lecture_list-table-body__student_full">
+                  	<c:forEach var="slList" items="${slList}" varStatus="vs">
+                  		${slList[vs.index].id} / ${lec_list.student_full}											
+					</c:forEach>
+                  </div>
                   <div class="lecture_list-table-body__credit">${lec_list.credit}</div>
                   <div class="lecture_list-table-body__check">
                      <input type="button" class="check_in" name="check_in" value="선 택" id="${vs.index}">
