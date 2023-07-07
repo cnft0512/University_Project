@@ -2,11 +2,8 @@ package com.university.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.university.util.Criteria;
 import com.university.model.BasketVO;
-import com.university.model.DepartmentVO;
 import com.university.model.LectureVO;
 import com.university.model.StudentLectureVO;
 
@@ -19,7 +16,7 @@ public interface LectureService {
    public int searchList(Criteria cri) throws Exception;
 
    // 나의 강의 목록 불러오기
-   public List<StudentLectureVO> getStudent_lectureList(int lecture_code) throws Exception;
+   public int getStudentCount(int lecture_code) throws Exception;
 
    // 강의 선택 후 장바구니 담기
    public int addLecture(BasketVO bVo) throws Exception;

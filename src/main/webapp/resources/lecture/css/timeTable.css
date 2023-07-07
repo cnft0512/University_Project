@@ -1,109 +1,147 @@
 @charset "UTF-8";
+
 .time_table-table {
-   width: 100%;
-   margin: 0 auto;
+	width: 100%;
+	margin: 0 auto;
 }
 
 .time_table-table-head {
-   background-color: #dedede;
-   border-top: 1px solid #000;
-   border-bottom: 1px solid #000;
-   padding: 11px 0;
-   width: 100%;
+	background-color: #dedede;
+	border-top: 1px solid #000;
+	padding: 11px 0;
+	width: 99.7%;
 }
 
 .time_table-table-body {
-   border-top: 1px solid #000;
-   border-bottom: 1px solid #000;
-   padding: 11px 0;
-   width: 100%;
-}
-
-.row {
-   width: 100%;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	padding: 11px 0;
+	width: 99.7%;
 }
 
 /* time table head */
 .time_table-table-head__time {
-   width: 15%;
-   text-align: center;
-   font-size: 25px;
-   color: #000;
-   display: table-cell;
-   margin: 0 auto;
+	width: 253px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 /* time table body */
 .time_table-table-body__time {
-   width: 16%;
-   font-size: 20px;
-   display: table-cell;
-   text-align: center;
-   padding-top: 10px;
-   margin: 0 auto;
+	width: 253px;
+	height: 85px;
+	font-size: 16px;
+	display: table-cell;
+	text-align: center;
+	border-left: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-bottom: 1px solid #c6c6c6;
 }
-/*
-.time_table-table-body__lecture {
-   width: 85%;
-   height: 150px;
-   float: right;
-   display: table-cell;
-   text-align: center;
-   margin: 0 auto;
-   border: 5px solid blue;
-}
-*/
+
 .time_table-table-body__mon {
-   width: 15%;
-   height: 150px;
-   font-size: 20px;
-   display: table-cell;
-   /*text-align: center;*/
-   justify-content: center;
-   margin: 0 auto;
-   border: 1px solid grey;
+	width: 253px;
+	height: 85px;
+	font-size: 16px;
+	display: table-cell;
+	text-align: center;
+	margin: 0 auto;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .time_table-table-body__tue {
-   width: 15%;
-   height: 150px;
-   font-size: 20px;
-   display: table-cell;
-   /*text-align: center;*/
-   justify-content: center;
-   margin: 0 auto;
-   border: 1px solid grey;
+	width: 253px;
+	height: 85px;
+	font-size: 16px;
+	display: table-cell;
+	text-align: center;
+	margin: 0 auto;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .time_table-table-body__wed {
-   width: 15%;
-   height: 150px;
-   font-size: 20px;
-   display: table-cell;
-   /*text-align: center;*/
-   justify-content: center;
-   margin: 0 auto;
-   border: 1px solid grey;
+	width: 253px;
+	height: 85px;
+	font-size: 16px;
+	display: table-cell;
+	text-align: center;
+	margin: 0 auto;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .time_table-table-body__thr {
-   width: 15%;
-   height: 150px;
-   font-size: 20px;
-   display: table-cell;
-   /*text-align: center;*/
-   justify-content: center;
-   margin: 0 auto;
-   border: 1px solid grey;
+	width: 253px;
+	height: 85px;
+	font-size: 16px;
+	display: table-cell;
+	text-align: center;
+	margin: 0 auto;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .time_table-table-body__fri {
-   width: 15%;
-   height: 150px;
-   font-size: 20px;
-   display: table-cell;
-   /*text-align: center;*/
-   justify-content: center;
-   margin: 0 auto;
-   border: 1px solid grey;
+	width: 253px;
+	height: 85px;
+	font-size: 16px;
+	display: table-cell;
+	text-align: center;
+	margin: 0 auto;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
+/*
+#tableble {
+   background-color: pink; font-size : 14px;
+   z-index: 998;
+   -webkit-transform: translate3d(2000px, 0, 0);
+   -moz-transform: translate3d(2000px, 0, 0);
+   transform: translate3d(2000px, 0, 0);
+   -webkit-transition: all 0.2s;
+   -moz-transition: all 0.2s;
+   -ms-transition: all 0.2s;
+   -o-transition: all 0.2s;
+   transition: all 0.2s;
+   font-size: 14px;
+}
+
+html.open #tableble {
+   overflow-y: auto;
+   -webkit-transform: translate3d(800px, 0, 0);
+   -moz-transform: translate3d(800px, 0, 0);
+   transform: translate3d(800px, 0, 0);
+   -webkit-transition: all 0.2s;
+   -moz-transition: all 0.2s;
+   -ms-transition: all 0.2s;
+   -o-transition: all 0.2s;
+   transition: all 0.2s;
+}
+
+#table-toggle {
+   display: block;
+   position: fixed;
+   left: 10px;
+   bottom: 10px;
+   width: 50px;
+   height: 50px;
+   line-height: 55px;
+   text-align: center;
+   color: #555;
+   background-color: #f1f1f1;
+   border-radius: 10px;
+   opacity: 0.9;
+   box-shadow: 0 0 10px #aaa;
+   z-index: 999;
+}
+*/

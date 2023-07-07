@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.university.mapper.LectureMapper;
 import com.university.util.Criteria;
 import com.university.model.BasketVO;
-import com.university.model.DepartmentVO;
 import com.university.model.LectureVO;
 import com.university.model.StudentLectureVO;
 
@@ -29,8 +28,8 @@ public class LectureServiceImpl implements LectureService {
    }
    
    @Override
-   public List<StudentLectureVO> getStudent_lectureList(int lecture_code) throws Exception {
-      return lMapper.getStudent_lectureList(lecture_code);
+   public int getStudentCount(int lecture_code) throws Exception {
+      return lMapper.getStudentCount(lecture_code);
    }
 
    @Override

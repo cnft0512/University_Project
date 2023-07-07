@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.university.util.Criteria;
 import com.university.model.BasketVO;
-import com.university.model.DepartmentVO;
 import com.university.model.LectureVO;
 import com.university.model.StudentLectureVO;
 
@@ -17,7 +16,7 @@ public interface LectureMapper {
    public int searchList(Criteria cri);
    
    // 나의 강의 목록 불러오기
-   public List<StudentLectureVO> getStudent_lectureList(int lecture_code);
+   public int getStudentCount(int lecture_code);
    
    // 강의 선택 후 장바구니 담기
    public int addLecture(BasketVO bVo);

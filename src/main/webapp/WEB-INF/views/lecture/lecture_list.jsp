@@ -49,13 +49,17 @@
             <div class="lecture_list-table-head__grade">수강학년</div>
             <div class="lecture_list-table-head__classroom">강의실</div>
             <div class="lecture_list-table-head__lecture_time">강의시간</div>
-            <div class="lecture_list-table-head__semester">수강학기</div>
+            <div class="lecture_list-table-head__semester">
+            <select id="semester">	<!-- 수강학기 -->
+	            <option value="1학기">1학기</option>
+	            <option value="2학기">2학기</option>
+            </select>
+            </div>
             <div class="lecture_list-table-head__student_full">최대수강인원</div>
             <div class="lecture_list-table-head__credit">수강학점</div>
             <div class="lecture_list-table-head__check">선 택</div>
          </div>
-         <div class="lecture_list-table-body"
-            style="overflow-y: scroll; height: 300px;">
+         <div class="lecture_list-table-body">
             <c:forEach var="lec_list" items="${list}" varStatus="vs">
                <div class="lecture_list_body_row">
                   <div class="lecture_list-table-body__lecture_code">${lec_list.lecture_code}</div>
@@ -129,9 +133,14 @@
                   </div>
                   <div class="lecture_list-table-body__semester">${lec_list.semester}</div>
                   <div class="lecture_list-table-body__student_full">
-                  	<c:forEach var="slList" items="${slList}" varStatus="vs">
-                  		${slList[vs.index].id} / ${lec_list.student_full}											
-					</c:forEach>
+                  	<c:choose>
+	                  	<c:when test="${lec_list.lecture_code < 2700}">	                  		
+	                  		${lec_list.student_full} / 20
+	                  	</c:when>
+	                  	<c:otherwise>
+	                  		${lec_list.student_full} / 10
+	                  	</c:otherwise>
+                  	</c:choose>
                   </div>
                   <div class="lecture_list-table-body__credit">${lec_list.credit}</div>
                   <div class="lecture_list-table-body__check">
@@ -142,7 +151,6 @@
                      <input type="checkbox" class="check_in" id="check_in" name="check_in" 
                      value="${lec_list}" id="${vs.index}" style="zoom: 1.8;">
                   </div>
-                  !!!!! student_count 구현하기 !!!!!
                   -->
                   <input type="hidden" id="lecture_list-table-body__lecture_code" value="${lec_list.lecture_code}">
                   <input type="hidden" id="lecture_list-table-body__lecture_name" value="${lec_list.lecture_name}">
@@ -177,8 +185,7 @@
             <div class="lecture_list-table-head__credit">수강학점</div>
             <div class="lecture_list-table-head__check">삭 제</div>
          </div>
-         <div class="lecture_list-table-body"
-            style="overflow-y: scroll; height: auto;">
+         <div class="lec_list-table-body">
             <c:forEach var="basket" items="${bList}" varStatus="vs">
                <div class="lecture_list_body_row">
                   <div class="lec_select-table-body__lecture_code">${basket.lecture_code}</div>
@@ -251,7 +258,13 @@
                </c:choose>
                   </div>
                   <div class="lec_select-table-body__semester">${basket.semester}</div>
-                  <div class="lec_select-table-body__student_full">${basket.student_full}</div>
+                  <div class="lec_select-table-body__student_full">
+                  <c:forEach var="list" items="${list}">
+                 	<c:if test="${list.lecture_code eq basket.lecture_code}">
+                 		${list.student_full}
+                 	</c:if>
+                 	</c:forEach>
+                  </div>
                   <div class="lec_select-table-body__credit">${basket.credit}</div>
                   <div class="lecture_list-table-body__check">
                      <input type="button" class="check_del" id="${vs.index}" value="삭 제" >
@@ -264,7 +277,6 @@
                   <input type="hidden" id="lec_select-table-body__lecture_time" value="${basket.lecture_time}">
                   <input type="hidden" id="lec_select-table-body__lecture_year" value="${basket.lecture_year}">
                   <input type="hidden" id="lec_select-table-body__semester" value="${basket.semester}">
-                  <input type="hidden" id="lec_select-table-body__student_full" value="${basket.student_full}">
                   <input type="hidden" id="lec_select-table-body__credit" value="${basket.credit}">
                </div>
             </c:forEach>
@@ -317,10 +329,16 @@
       var semester = document.querySelectorAll("#lecture_list-table-body__semester");
       var stu_full = document.querySelectorAll("#lecture_list-table-body__student_full");
       var credit = document.querySelectorAll("#lecture_list-table-body__credit");
-      
+      var test = document.querySelectorAll(".lecture_list-table-body");
+
       /* 체크하면 바로 장바구니로 insert 하기!! */
-      for (let i=0; i<select.length; i++) {
+      for (let i=0; i < select.length; i++) {
          select[i].addEventListener("click",function() {
+        	if(stu_full[select[i].id].value >= 20){
+        		alert("안됨");
+        		test.style.display = "none";        		
+        	}
+        	 
             lForm.append("<input type='hidden' name='id' value='"+ ${mVo.id} +"'>");
             lForm.append("<input type='hidden' name='lecture_code' value='"+ lec_code[select[i].id].value +"'>");
             lForm.append("<input type='hidden' name='lecture_name' value='"+ lec_name[select[i].id].value +"'>");
@@ -334,10 +352,17 @@
             lForm.append("<input type='hidden' name='credit' value='"+ credit[select[i].id].value +"'>");
             lForm.attr("action", "/lecture/lecture_list");
             lForm.submit();   
+         	// 장바구니에 강의 담으면 수강인원 (1++), 삭제하면 (1--)
+            /*
+            if (select[i].selected) {
+            	stu_full[select[i].id].value++;
+            	lForm.append("<input type='hidden' name='student_full' value='"+ stu_full[select[i].id].value +"'>");
+            }
+            */
          })
       }
       
-      
+      /* 새로고침...? */
       function load() {
          window.onkeydown = function() {
             var kcode = event.keyCode;
@@ -349,18 +374,16 @@
       
       /* 장바구니 지우기!! */
       var check_del = document.querySelectorAll(".check_del");
-      var total = document.querySelectorAll("#lec_select-table-body__lecture_code");
+      var code_b = document.querySelectorAll("#lec_select-table-body__lecture_code");
       for(let i=0; i< check_del.length; i++){
          check_del[i].addEventListener("click", function() {
             bForm.append("<input type='hidden' name='id' value='"+ ${mVo.id} +"'>");
-             bForm.append("<input type='hidden' name='lecture_code' value='"+ total[check_del[i].id].value +"'>");
-             bForm.attr("action", "/lecture/delete.do");
-          bForm.attr("method", "post");
-             bForm.submit();
+            bForm.append("<input type='hidden' name='lecture_code' value='"+ code_b[check_del[i].id].value +"'>");
+            bForm.attr("action", "/lecture/delete.do");
+          	bForm.attr("method", "post");
+            bForm.submit();
          })
       }
-      
-      
    </script>
 </body>
 </html>

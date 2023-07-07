@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.university.mapper.StudentMapper;
 import com.university.model.BasketVO;
 import com.university.model.DepartmentVO;
+import com.university.model.StudentLectureVO;
 import com.university.model.StudentVO;
 import com.university.model.Student_ImgVO;
 @Service
@@ -15,6 +16,7 @@ public class StudentServiceImpl implements StudentService{
    
    @Autowired
    private StudentMapper sMapper;
+   
    @Override
    public Student_ImgVO getStudent_Img(int id) throws Exception {
       return sMapper.getStudent_Img(id);
@@ -59,5 +61,10 @@ public class StudentServiceImpl implements StudentService{
    public List<BasketVO> getBasketList(int id) throws Exception {
       return sMapper.getBasketList(id);
    }
+
+	@Override
+	public List<StudentLectureVO> getStudentLectureList(int id) {
+	   return sMapper.getStudentLectureList(id);
+	}
 
 }

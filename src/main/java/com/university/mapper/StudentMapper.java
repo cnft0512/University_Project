@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.university.model.BasketVO;
 import com.university.model.DepartmentVO;
+import com.university.model.StudentLectureVO;
 import com.university.model.StudentVO;
 import com.university.model.Student_ImgVO;
 
@@ -35,5 +36,8 @@ public interface StudentMapper {
    
    //수강 신청한 강의 목록 가져오기
    public List<BasketVO> getBasketList(int id);
+   
+   //수강 신청한 내 강의 정보 가져오기
+   public List<StudentLectureVO> getStudentLectureList(int id);
    
 }

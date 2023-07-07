@@ -36,14 +36,14 @@
                   <div class="my_lecture-table-head__depart_code">학번</div>
                   <div class="my_lecture-table-head__professor_name">이름</div>
                   <div class="my_lecture-table-head__depart_name">소속학과</div>   
-                  <div class="my_lecture-table-head__midterm_exam">졸업학점</div>
+                  <div class="my_lecture-table-head__credit_full">졸업학점</div>
                </div>
                
                <div class="my_lecture-table-body">
                   <div class="my_lecture-table-body__depart_code">${sVo.id}</div>
                   <div class="my_lecture-table-body__professor_name">${sVo.name}</div>
                   <div class="my_lecture-table-body__depart_name">${sVo.depart_name}</div>
-                  <div class="my_lecture-table-body__midterm_exam"></div>
+                  <div class="my_lecture-table-body__credit_full">${sVo.credit_full}</div>
                   <br>               
                </div>        
       </div>   
@@ -59,6 +59,7 @@
                   <div class="my_lecture-table-head__classroom">강의실</div>
                   <div class="my_lecture-table-head__midterm_exam">중간 성적</div>
                   <div class="my_lecture-table-head__final_exam">기말 성적</div>
+                  <div class="my_lecture-table-head__score_avg">학기 평균</div>
                   
       </div>
    </div>
@@ -77,18 +78,13 @@
          <div class="my_lecture-table-body__classroom">${blist.classroom}</div>      
          <div class="my_lecture-table-body__midterm_exam">${sllist[vs.index].midterm_exam}</div>
          <div class="my_lecture-table-body__final_exam">${sllist[vs.index].final_exam}</div>
+         <div class="my_lecture-table-body__score_avg"></div>                  
          </div>  
-            <br>
          </c:forEach>   
       </div>      
    </form>
 <script>
-		var click = document.querySelectorAll("#click");
-    	for (let i = 0; i < click.length; i++) {
-			click[i].addEventListener("click",function(){
-				alert(i);
-			})
-		}
+   
       /*
       <input type="text" name = "midterm_exam" id="midterm" maxlength='2' style="width: 50px; height:25px;">
       $('#midterm').on("propertychange change keyup paste input", function() {

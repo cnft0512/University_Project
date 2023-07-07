@@ -25,11 +25,33 @@
 }
 
 .lecture_list-table-body {
+   overflow-y: scroll;
+   height: 300px;
    border-top: 1px solid #000;
    border-bottom: 1px solid #000;
    padding: 11px 0;
    width: 100%;
+   
 }
+
+.lecture_list-table-body::-webkit-scrollbar {
+    display: none;
+}
+
+.lec_list-table-body {
+   overflow-y: scroll;
+   height:auto;
+   max-height: 200px;
+   border-top: 1px solid #000;
+   border-bottom: 1px solid #000;
+   padding: 11px 0;
+   width: 100%;   
+}
+
+.lec_list-table-body::-webkit-scrollbar {
+    display: none;
+}
+
 
 /* Head */
 .lecture_list-table-head__lecture_code {
@@ -38,22 +60,28 @@
    font-size: 16px;
    color: #000;
    display: table-cell;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__lecture_name {
-   width: 350px;
+   width: 450px;
    text-align: center;
    font-size: 16px;
    color: #000;
    display: table-cell;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__professor_name {
-   width: 150px;
+   width: 130px;
    text-align: center;
    font-size: 16px;
    color: #000;
    display: table-cell;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__grade {
@@ -62,6 +90,8 @@
    font-size: 16px;
    color: #000;
    display: table-cell;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__classroom {
@@ -70,15 +100,19 @@
    font-size: 16px;
    color: #000;
    display: table-cell;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    
 }
 
 .lecture_list-table-head__lecture_time {
-   width: 200px;
+   width: 220px;
    text-align: center;
    font-size: 16px;
    color: #000;
    display: table-cell;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__lecture_year {
@@ -87,6 +121,8 @@
    font-size: 16px;
    color: #000;
    display: table-cell;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__semester {
@@ -95,6 +131,8 @@
    font-size: 16px;
    color: #000;
    display: table-cell;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__student_full {
@@ -103,6 +141,8 @@
    font-size: 16px;
    color: #000;
    display: table-cell;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__credit {
@@ -111,6 +151,8 @@
    font-size: 16px;
    color: #000;
    display: table-cell;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__check{
@@ -119,6 +161,8 @@
    font-size: 16px;
    color: #000;
    display: table-cell;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 /* Lecture List Body */
@@ -127,22 +171,28 @@
    font-size: 16px;   
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
 .lecture_list-table-body__lecture_name {
-   width: 350px;
+   width: 450px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
 .lecture_list-table-body__professor_name {
-   width: 150px;
+   width: 130px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -151,6 +201,8 @@
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -159,14 +211,18 @@
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
 .lecture_list-table-body__lecture_time {
-   width: 200px;
+   width: 220px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -175,6 +231,8 @@
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -183,6 +241,8 @@
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -191,6 +251,8 @@
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -199,6 +261,8 @@
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -207,6 +271,8 @@
    text-align: center;
    font-size: 16px;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    color: #000;
    display: table-cell;
 }
@@ -217,22 +283,28 @@
    font-size: 16px;   
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;   
    text-align: center;
 }
 
 .lec_select-table-body__lecture_name {
-   width: 350px;
+   width: 450px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
 .lec_select-table-body__professor_name {
-   width: 150px;
+   width: 130px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -241,6 +313,8 @@
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -249,14 +323,18 @@
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
 .lec_select-table-body__lecture_time {
-   width: 200px;
+   width: 220px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -265,6 +343,8 @@
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -273,6 +353,8 @@
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -281,6 +363,8 @@
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -289,6 +373,8 @@
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -297,6 +383,8 @@
    text-align: center;
    font-size: 16px;
    border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    color: #000;
    display: table-cell;
 }
@@ -313,62 +401,5 @@
     font-size: 16px;
     border-bottom: 1px solid #c6c6c6;
     display : table-cell;
-}*/
-
-/* 페이지 버튼 인터페이스 */
-.pageMaker_wrap {
-   text-align: center;
-   margin-top: 30px;
-   margin-bottom: 40px;
 }
-
-.pageMaker {
-   list-style: none;
-   display: inline-block;
-}
-
-.pageMaker_btn {
-   float: left;
-   width: 80px;
-   height: 40px;
-   line-height: 40px;
-   margin-left: 20px;
-}
-
-.active {
-   border: 2px solid black;
-   font-weight: 400;
-}
-
-.next, .prev {
-   border: 1px solid #ccc;
-   padding: 0 10px;
-}
-
-.pageMaker_btn a:link {
-   color: black;
-}
-
-.pageMaker_btn a:visited {
-   color: black;
-}
-
-.pageMaker_btn a:active {
-   color: black;
-}
-
-.pageMaker_btn a:hover {
-   color: black;
-}
-
-.next a, .prev a {
-   color: #ccc;
-}
-
-/* 검색결과 없음 */
-.table_empty {
-   height: 50px;
-   text-align: center;
-   margin: 200px 0 215px 0px;
-   font-size: 25px;
-}
+*/

@@ -31,58 +31,98 @@
    font-size: 16px;
    color: #000;
    display: table-cell;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 .my_lecture-table-head__depart_name {
-   width: 250px;
+   width: 550px;
    text-align: center;
    font-size: 16px;
    color: #000;
    display: table-cell;
+   
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 .my_lecture-table-head__professor_name {
-   width: 200px;
+   width: 100px;
    text-align: center;
    font-size: 16px;
    color: #000;
    display: table-cell;
+   
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
 .my_lecture-table-head__lecture_time {
-   width: 70px;
-   text-align: center;
-   font-size: 16px;
-   color: #000;
-   display: table-cell;
-}
-
-.my_lecture-table-head__classroom {
    width: 280px;
    text-align: center;
    font-size: 16px;
    color: #000;
    display: table-cell;
    
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
-.my_lecture-table-head__midterm_score {
+.my_lecture-table-head__classroom {
+   width: 250px;
+   text-align: center;
+   font-size: 16px;
+   color: #000;
+   display: table-cell;
+   
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
+   
+}
+
+.my_lecture-table-head__midterm_exam {
+   width: 80px;
+   text-align: center;
+   font-size: 16px;
+   color: #000;
+   display: table-cell;
+   
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
+}
+
+.my_lecture-table-head__final_exam {
+   width: 80px;
+   text-align: center;
+   font-size: 16px;
+   color: #000;
+   display: table-cell;
+   
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
+}
+
+.my_lecture-table-head__credit_full{
    width: 200px;
    text-align: center;
    font-size: 16px;
    color: #000;
    display: table-cell;
+   
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
 
-.my_lecture-table-head__final_score {
-   width: 280px;
+.my_lecture-table-head__score_avg{
+      width: 83px;
    text-align: center;
    font-size: 16px;
    color: #000;
    display: table-cell;
+   
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
 }
-
-
 
 
 
@@ -91,57 +131,91 @@
    text-align: center;
    font-size: 16px;
    border-bottom: 1px solid #c6c6c6;
+    border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    color: #000;
    display: table-cell;
 }
 
 
 .my_lecture-table-body__depart_name {
-   width: 250px;
+   width: 550px;
    padding: 0 40px;
    font-size: 16px;
    border-bottom: 1px solid #c6c6c6;
+    border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    display: table-cell;
    text-align: center;
 }
 
 .my_lecture-table-body__professor_name {
-   width: 200px;
+   width: 100px;
    font-size: 16px;   
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+    border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
 .my_lecture-table-body__lecture_time {
-   width: 300px;
+   width: 280px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+    border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
 .my_lecture-table-body__classroom {
-   width: 280px;
+   width: 250px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+    border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
-.my_lecture-table-body__midterm_score {
-   width: 200px;
+.my_lecture-table-body__midterm_exam {
+  width: 80px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+    border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
-.my_lecture-table-body__final_score {
-   width: 280px;
+.my_lecture-table-body__final_exam {
+  width: 80px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
+    border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
+   text-align: center;
+}
+
+.my_lecture-table-body__credit_full{
+width: 12.5%;
+   font-size: 16px;
+   display: table-cell;
+   border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
+   text-align: center;
+}
+
+.my_lecture-table-body__score_avg{
+   width: 83px;
+   font-size: 16px;
+   display: table-cell;
+   border-bottom: 1px solid #c6c6c6;
+   border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
    text-align: center;
 }
 
@@ -158,65 +232,3 @@
     border-bottom: 1px solid #c6c6c6;
     display : table-cell;
 }*/
-
-/* 페이지 버튼 인터페이스 */
-.pageMaker_wrap {
-   text-align: center;
-   margin-top: 30px;
-   margin-bottom: 40px;
-}
-
-.pageMaker {
-   list-style: none;
-   display: inline-block;
-}
-
-.pageMaker_btn {
-   float: left;
-   width: 80px;
-   height: 40px;
-   line-height: 40px;
-   margin-left: 20px;
-}
-
-.active {
-   border: 2px solid black;
-   font-weight: 400;
-}
-
-.next, .prev {
-   border: 1px solid #ccc;
-   padding: 0 10px;
-}
-
-.pageMaker_btn a:link {
-   color: black;
-}
-
-.pageMaker_btn a:visited {
-   color: black;
-}
-
-.pageMaker_btn a:active {
-   color: black;
-}
-
-.pageMaker_btn a:hover {
-   color: black;
-}
-
-.next a, .prev a {
-   color: #ccc;
-}
-
-#click:hover{
-	background-color : pink;
-}
-
-/* 검색결과 없음 */
-.table_empty {
-   height: 50px;
-   text-align: center;
-   margin: 200px 0 215px 0px;
-   font-size: 25px;
-}
