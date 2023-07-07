@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+.container {
+  width: 630px;
+  position: relative;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0px 3px 9.5px 0.5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 3px 9.5px 0.5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 3px 9.5px 0.5px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0px 3px 9.5px 0.5px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0px 3px 9.5px 0.5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+}
+
+input {
+	border : 1px solid #ced3da;
+	border-radius: 3px;
+	height:38px;
+	width: 300px;
+}
+
+.final_name_ck{
+	color:red;
+   display: none;
+}
+.final_birth_ck{
+	color:red;
+   display: none;
+}
+.final_address_1_ck{
+	color:red;
+   display: none;
+}
+.final_address_2_ck{
+	color:red;
+   display: none;
+}
+.final_depart_code_ck{
+	color:red;
+   display: none;
+}
+.final_email_ck{
+	color:red;
+   display: none;
+}
+.final_phone_ck{
+	color:red;
+   display: none;
+}
+
+input:error {
+  border-color: red;
+}
+
+.error {
+  border: 1px solid blue;
+}
+
+input.error{
+	border : 1px solid pink;
+}
+
+#datepicker{
+	border : 1px solid #ced3da;
+	border-radius: 3px;
+}
+.btn{
+	border : 1px solid #ced3da;
+	border-radius: 3px;
+}

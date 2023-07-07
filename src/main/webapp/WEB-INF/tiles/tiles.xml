@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+ 
+<tiles-definitions>  
+   <!-- base-definition -->
+   <definition name="base-definition"
+       template="/WEB-INF/views/includes/layout.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="header" value="/WEB-INF/views/includes/header.jsp" />  
+       <put-attribute name="aside" value="/WEB-INF/views/includes/aside.jsp" />  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="/WEB-INF/views/includes/footer.jsp" />  
+   </definition>  
+ 
+  
+  
+   <!-- Main Page -->
+   <definition name="main" extends="base-definition">  
+       <put-attribute name="title" value="Welcome" />  
+       <put-attribute name="body" value="/WEB-INF/views/student/main.jsp" />  
+   </definition>  
+ 
+   <!-- notice Page -->
+   <definition name="notice" extends="base-definition">  
+       <put-attribute name="title" value="notice" />  
+       <put-attribute name="body" value="/WEB-INF/views/notice.jsp" />  
+   </definition>  
+       
+   <!-- join Page -->
+   <definition name="join" extends="base-definition">  
+       <put-attribute name="title" value="join" />  
+       <put-attribute name="body" value="/WEB-INF/views/admin/join.jsp" />  
+   </definition>
+   
+   <!-- student_list Page -->
+   <definition name="student_list" extends="base-definition">  
+       <put-attribute name="title" value="student_list" />  
+       <put-attribute name="body" value="/WEB-INF/views/admin/student_list.jsp" />  
+   </definition>
+   
+   <!--admin lecture_list Page -->
+   <definition name="admin_lecture_list" extends="base-definition">  
+       <put-attribute name="title" value="lecture_list" />  
+       <put-attribute name="body" value="/WEB-INF/views/admin/lecture_list.jsp" />  
+   </definition>  
+   
+   <!-- lecture_detail Page -->
+   <definition name="lecture_detail" extends="base-definition">  
+       <put-attribute name="title" value="lecture_detail" />  
+       <put-attribute name="body" value="/WEB-INF/views/admin/lecture_detail.jsp" />  
+   </definition>  
+ 
+   <!--student lecture_list Page -->
+   <definition name="lecture_list" extends="base-definition">  
+       <put-attribute name="title" value="lecture_list" />  
+       <put-attribute name="body" value="/WEB-INF/views/lecture/lecture_list.jsp" />  
+   </definition> 
+   
+   <!-- score Page -->
+   <definition name="score" extends="base-definition">  
+       <put-attribute name="title" value="score" />  
+       <put-attribute name="body" value="/WEB-INF/views/admin/score.jsp" />  
+   </definition>
+ 
+   <!-- score_detail Page -->
+   <definition name="score_detail" extends="base-definition">  
+       <put-attribute name="title" value="score_detail" />  
+       <put-attribute name="body" value="/WEB-INF/views/admin/score_detail.jsp" />  
+   </definition>  
+   
+    <!-- student_info Page -->
+   <definition name="info" extends="base-definition">  
+       <put-attribute name="title" value="info" />  
+       <put-attribute name="body" value="/WEB-INF/views/student/info.jsp" />  
+   </definition>  
+   
+    <!-- student_info_modify Page -->
+   <definition name="info_modify" extends="base-definition">  
+       <put-attribute name="title" value="info_modify" />  
+       <put-attribute name="body" value="/WEB-INF/views/student/info_modify.jsp" />  
+   </definition>  
+   
+    <!-- loginConfirm Page -->
+   <definition name="loginConfirm" extends="base-definition">  
+       <put-attribute name="title" value="loginConfirm" />  
+       <put-attribute name="body" value="/WEB-INF/views/student/login_confirm.jsp" />  
+   </definition>  
+  
+  	<!-- pwChange Page -->
+   <definition name="pwChange" extends="base-definition">  
+       <put-attribute name="title" value="pwChange" />  
+       <put-attribute name="body" value="/WEB-INF/views/student/pw_change.jsp" />  
+   </definition>  
+   
+    	<!-- my_lecture Page -->
+   <definition name="my_lecture" extends="base-definition">  
+       <put-attribute name="title" value="my_lecture" />  
+       <put-attribute name="body" value="/WEB-INF/views/student/my_lecture.jsp" />  
+   </definition>  
+  
+  <!-- timeTable Page -->
+  <definition name="timeTable" extends="base-definition">  
+       <put-attribute name="title" value="timeTable" />  
+       <put-attribute name="body" value="/WEB-INF/views/lecture/timeTable.jsp" />  
+   </definition>  
+</tiles-definitions>

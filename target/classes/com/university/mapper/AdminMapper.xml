@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.university.mapper.AdminMapper">
+
+	<!-- 개설 교과 목록 -->
+	<select id="getList" resultType="com.university.model.LectureVO">
+      <![CDATA[
+          select * from lecture
+      ]]>
+		<if test="keyword != null">
+			<foreach collection="typeArr" item="type">
+				<choose>
+					<when test="type == 'N'.toString()">
+						where lecture_name like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'T'.toString()">
+						where lecture_time like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'P'.toString()">
+						where professor_name like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'C'.toString()">
+						where classroom like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'G'.toString()">
+						where grade like '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</foreach>
+		</if>
+	</select>
+
+	<select id="getDepartList"
+		resultType="com.university.model.DepartmentVO">
+		select * from department
+	</select>
+
+	<select id="getStudentList" resultType="com.university.model.StudentVO">
+		select * from student
+	</select>
+
+	<insert id="insert_student">
+		insert into student(name,
+		depart_code,depart_name,birth,post,address_1,address_2,email,phone,create_date)
+		values(#{name},#{depart_code},#{depart_name},#{birth},#{post},#{address_1},#{address_2},#{email},#{phone},sysdate)
+	</insert>
+
+	<update id="update_studentId">
+		update student set id=concat(#{id},lpad(id_seq.nextval,3,0)),
+		password=#{password} where name=#{name} and depart_code = #{depart_code} <!-- and address_2=#{address_2} -->
+		<!-- #{id} = create_date의 year + depart_code -->
+		<!-- update student set id=#{id}, password=#{password} where name=#{name} -->
+	</update>
+
+	<select id="getLectureInfo"
+		resultType="com.university.model.LectureVO">
+		select * from lecture where lecture_code = #{lecture_code}
+	</select>
+
+	<select id="getStudent_lectureList"
+		resultType="com.university.model.StudentLectureVO">
+		select * from student_lecture where
+		lecture_code=#{lecture_code}
+	</select>
+
+	<update id="update_mid_score">
+		update student_lecture set
+		midterm_exam=#{midterm_exam} where id=#{id} and
+		lecture_code=#{lecture_code}
+	</update>
+
+	<update id="update_final_score">
+		update student_lecture set final_exam=#{final_exam}
+		where id=#{id} and lecture_code=#{lecture_code}
+	</update>
+
+</mapper>

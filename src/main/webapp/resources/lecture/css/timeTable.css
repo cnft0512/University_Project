@@ -1,0 +1,109 @@
+@charset "UTF-8";
+.time_table-table {
+   width: 100%;
+   margin: 0 auto;
+}
+
+.time_table-table-head {
+   background-color: #dedede;
+   border-top: 1px solid #000;
+   border-bottom: 1px solid #000;
+   padding: 11px 0;
+   width: 100%;
+}
+
+.time_table-table-body {
+   border-top: 1px solid #000;
+   border-bottom: 1px solid #000;
+   padding: 11px 0;
+   width: 100%;
+}
+
+.row {
+   width: 100%;
+}
+
+/* time table head */
+.time_table-table-head__time {
+   width: 15%;
+   text-align: center;
+   font-size: 25px;
+   color: #000;
+   display: table-cell;
+   margin: 0 auto;
+}
+
+/* time table body */
+.time_table-table-body__time {
+   width: 16%;
+   font-size: 20px;
+   display: table-cell;
+   text-align: center;
+   padding-top: 10px;
+   margin: 0 auto;
+}
+/*
+.time_table-table-body__lecture {
+   width: 85%;
+   height: 150px;
+   float: right;
+   display: table-cell;
+   text-align: center;
+   margin: 0 auto;
+   border: 5px solid blue;
+}
+*/
+.time_table-table-body__mon {
+   width: 15%;
+   height: 150px;
+   font-size: 20px;
+   display: table-cell;
+   /*text-align: center;*/
+   justify-content: center;
+   margin: 0 auto;
+   border: 1px solid grey;
+}
+
+.time_table-table-body__tue {
+   width: 15%;
+   height: 150px;
+   font-size: 20px;
+   display: table-cell;
+   /*text-align: center;*/
+   justify-content: center;
+   margin: 0 auto;
+   border: 1px solid grey;
+}
+
+.time_table-table-body__wed {
+   width: 15%;
+   height: 150px;
+   font-size: 20px;
+   display: table-cell;
+   /*text-align: center;*/
+   justify-content: center;
+   margin: 0 auto;
+   border: 1px solid grey;
+}
+
+.time_table-table-body__thr {
+   width: 15%;
+   height: 150px;
+   font-size: 20px;
+   display: table-cell;
+   /*text-align: center;*/
+   justify-content: center;
+   margin: 0 auto;
+   border: 1px solid grey;
+}
+
+.time_table-table-body__fri {
+   width: 15%;
+   height: 150px;
+   font-size: 20px;
+   display: table-cell;
+   /*text-align: center;*/
+   justify-content: center;
+   margin: 0 auto;
+   border: 1px solid grey;
+}
