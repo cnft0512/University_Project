@@ -27,7 +27,12 @@
                </choose>
          </foreach>
       </if>
-   </select> 
+   </select>
+   
+   <!-- 나의 강의 정보 가지고 오기 -->
+   <select id="getStudent_lectureList" resultType="com.university.model.StudentLectureVO">
+		select * from student_lecture where lecture_code=#{lecture_code}
+	</select> 
       
    <!-- 강의 선택 후 장바구니 담기 -->
    <insert id="addLecture">
@@ -54,11 +59,5 @@
    <delete id="deleteMyList">
        delete from student_lecture where id = #{id} and lecture_code = #{lecture_code}
    </delete>
-   
-   <!-- 나의 강의 목록 불러오기
-   <select id="getMyList" resultType="com.university.model.StudentLectureVO">
-       select lecture_code, lecture_name, professor_name, grade, classroom, lecture_time from student_lecture where id = #{id}
-   </select>
-   -->
    
 </mapper>

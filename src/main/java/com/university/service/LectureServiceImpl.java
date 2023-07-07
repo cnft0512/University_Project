@@ -29,8 +29,8 @@ public class LectureServiceImpl implements LectureService {
    }
    
    @Override
-   public List<DepartmentVO> getDepartment() throws Exception {
-      return lMapper.getDepartment();
+   public List<StudentLectureVO> getStudent_lectureList(int lecture_code) throws Exception {
+      return lMapper.getStudent_lectureList(lecture_code);
    }
 
    @Override
