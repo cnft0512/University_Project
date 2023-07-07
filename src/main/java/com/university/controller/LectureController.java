@@ -14,15 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.university.util.Criteria;
 import com.university.model.BasketVO;
-import com.university.model.StudentLectureVO;
 import com.university.model.StudentVO;
 import com.university.service.LectureService;
 
 @Controller
 @RequestMapping("/lecture/*")
 public class LectureController {
-	
-	// test
 
    private static final Logger log = LoggerFactory.getLogger(LectureController.class);
 
@@ -37,7 +34,6 @@ public class LectureController {
       StudentVO sVo = (StudentVO) session.getAttribute("mVo");
       model.addAttribute("list", lService.getList(cri));
       model.addAttribute("bList", lService.getLecture(sVo.getId()));
-      // log.info(cri.getKeyword());
       return "lecture_list";
    }
 
@@ -47,10 +43,10 @@ public class LectureController {
       log.info("BasketVO : " + bVo);
       HttpSession session = request.getSession();
       StudentVO sVo = (StudentVO) session.getAttribute("mVo");
-      lService.addLecture(bVo);
-      lService.addMyList(bVo);
+      lService.addLecture(bVo);			// 장바구니 넣기
+      lService.addMyList(bVo);			// 나의 강의 넣기
       model.addAttribute("list", lService.getList(cri));
-      model.addAttribute("bList", lService.getLecture(sVo.getId()));
+      model.addAttribute("bList", lService.getLecture(sVo.getId()));	
       return "redirect:/lecture/lecture_list";
    }
 
@@ -58,8 +54,8 @@ public class LectureController {
    @PostMapping("/delete.do")
    public String deleteBasketPOST(BasketVO bVo) throws Exception {
       log.info("강의 삭제");
-      lService.deleteLecture(bVo);
-      lService.deleteMyList(bVo);
+      lService.deleteLecture(bVo);		// 장바구니 삭제
+      lService.deleteMyList(bVo);		// 나의 강의 삭제
       return "redirect:/lecture/lecture_list";
    }
 
