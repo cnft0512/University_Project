@@ -21,6 +21,8 @@ import com.university.service.LectureService;
 @Controller
 @RequestMapping("/lecture/*")
 public class LectureController {
+	
+	// test
 
    private static final Logger log = LoggerFactory.getLogger(LectureController.class);
 
