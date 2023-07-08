@@ -31,6 +31,11 @@ public class LectureServiceImpl implements LectureService {
    public int getStudentCount(int lecture_code) throws Exception {
       return lMapper.getStudentCount(lecture_code);
    }
+   
+   @Override
+   public int getCreditCount(int id) throws Exception {
+	   return lMapper.getCreditCount(id);
+   }
 
    @Override
    public int addLecture(BasketVO bVo) throws Exception {

@@ -32,10 +32,11 @@ public class LectureController {
 	@GetMapping("/lecture_list")
 	public String listGET(Criteria cri, Model model, HttpSession session) throws Exception {
 		log.info("강의 목록 페이지 진입");
-		StudentVO sVo = (StudentVO) session.getAttribute("mVo");
+		StudentVO sVo = (StudentVO) session.getAttribute("mVo"); // 세션 물고 들어오기
 		List<LectureVO> list = lService.getList(cri);
-		for(int i=0; i<list.size();i++) {
-			LectureVO lVo = list.get(i);
+		for (int i = 0; i < list.size(); i++) {
+			LectureVO lVo = list.get(i); // i번째 리스트를 들고 와서
+			// lecture_code -> gettStudentCount -> setStudent_full
 			lVo.setStudent_full(lService.getStudentCount(lVo.getLecture_code()));
 		}
 		model.addAttribute("list", list);
@@ -48,10 +49,15 @@ public class LectureController {
 	public String listPOST(BasketVO bVo, Model model, Criteria cri, HttpSession session) throws Exception {
 		log.info("BasketVO : " + bVo);
 		StudentVO sVo = (StudentVO) session.getAttribute("mVo");
+		List<BasketVO> bList = lService.getLecture(sVo.getId());
+		for (int i=0; i < bList.size(); i++) {
+			BasketVO bVo2 = bList.get(i);
+			bVo2.setCredit_count(lService.getCreditCount(sVo.getId()));
+		}
 		lService.addLecture(bVo); // 장바구니 넣기
 		lService.addMyList(bVo); // 나의 강의 넣기
 		model.addAttribute("list", lService.getList(cri));
-		model.addAttribute("bList", lService.getLecture(sVo.getId()));
+		model.addAttribute("bList", bList);
 		return "redirect:/lecture/lecture_list";
 	}
 

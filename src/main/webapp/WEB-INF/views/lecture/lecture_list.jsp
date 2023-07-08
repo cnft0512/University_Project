@@ -260,10 +260,17 @@
                   <div class="lec_select-table-body__semester">${basket.semester}</div>
                   <div class="lec_select-table-body__student_full">
                   <c:forEach var="list" items="${list}">
-                 	<c:if test="${list.lecture_code eq basket.lecture_code}">
-                 		${list.student_full}
-                 	</c:if>
-                 	</c:forEach>
+	                  <c:if test="${list.lecture_code eq basket.lecture_code}">
+	                  <c:choose>
+	                      <c:when test="${list.lecture_code < 2700}">
+	                          ${list.student_full} / 20
+	                      </c:when>
+	                      <c:otherwise>
+	                          ${list.student_full} / 10
+	                      </c:otherwise>
+	                  </c:choose>
+	                  </c:if>
+                  </c:forEach>
                   </div>
                   <div class="lec_select-table-body__credit">${basket.credit}</div>
                   <div class="lecture_list-table-body__check">
@@ -278,11 +285,21 @@
                   <input type="hidden" id="lec_select-table-body__lecture_year" value="${basket.lecture_year}">
                   <input type="hidden" id="lec_select-table-body__semester" value="${basket.semester}">
                   <input type="hidden" id="lec_select-table-body__credit" value="${basket.credit}">
-               </div>
+                  <input type="hidden" id="lec_select-table-body__credit_count" value="${basket.credit_count}">
+                </div>
             </c:forEach>
          </div>
       </div>
    </form>
+   
+    <form id="calculate">
+		<div class="calculate">
+		<h4>수강 학점 합계</h4>
+		<c:forEach var="basket" items="${bList}" varStatus="vs">
+			<div>${basket.credit} * ${basket.credit_count} = ${basket.credit * basket.credit_count}</div>
+		</c:forEach>
+		</div>
+	</form>
 
    <form id="hidden_form">
       <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
@@ -313,12 +330,9 @@
          }
          hForm.find("input[name='type']").val(selectType);
          hForm.find("input[name='keyword']").val(findWord);
-         hForm.submit(); // 페이지 바뀌면서 검색
       });
 
-      
       var select = document.querySelectorAll(".check_in");
-      //var select = document.getElementsByName('check').selected = true;
       var lec_code = document.querySelectorAll("#lecture_list-table-body__lecture_code");
       var lec_name = document.querySelectorAll("#lecture_list-table-body__lecture_name");
       var pro_name = document.querySelectorAll("#lecture_list-table-body__professor_name");
@@ -335,10 +349,9 @@
       for (let i=0; i < select.length; i++) {
          select[i].addEventListener("click",function() {
         	if(stu_full[select[i].id].value >= 20){
-        		alert("안됨");
-        		test.style.display = "none";        		
+        		alert("최대 수강 인원을 넘었습니다.");
+        		test.style.display = "none";  // 오류가 남...
         	}
-        	 
             lForm.append("<input type='hidden' name='id' value='"+ ${mVo.id} +"'>");
             lForm.append("<input type='hidden' name='lecture_code' value='"+ lec_code[select[i].id].value +"'>");
             lForm.append("<input type='hidden' name='lecture_name' value='"+ lec_name[select[i].id].value +"'>");
@@ -351,14 +364,7 @@
             lForm.append("<input type='hidden' name='student_full' value='"+ stu_full[select[i].id].value +"'>");
             lForm.append("<input type='hidden' name='credit' value='"+ credit[select[i].id].value +"'>");
             lForm.attr("action", "/lecture/lecture_list");
-            lForm.submit();   
-         	// 장바구니에 강의 담으면 수강인원 (1++), 삭제하면 (1--)
-            /*
-            if (select[i].selected) {
-            	stu_full[select[i].id].value++;
-            	lForm.append("<input type='hidden' name='student_full' value='"+ stu_full[select[i].id].value +"'>");
-            }
-            */
+            lForm.submit();
          })
       }
       

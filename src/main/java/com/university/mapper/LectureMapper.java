@@ -15,8 +15,11 @@ public interface LectureMapper {
    // 강의 총 갯수 + 검색 기능
    public int searchList(Criteria cri);
    
-   // 나의 강의 목록 불러오기
+   // 나의 강의에서 아이디 갯수 세기
    public int getStudentCount(int lecture_code);
+   
+   // 장바구니에서 수강 학점 갯수 세기
+   public int getCreditCount(int id);
    
    // 강의 선택 후 장바구니 담기
    public int addLecture(BasketVO bVo);

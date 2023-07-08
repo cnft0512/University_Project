@@ -16,7 +16,6 @@ public class StudentServiceImpl implements StudentService{
    
    @Autowired
    private StudentMapper sMapper;
-   
    @Override
    public Student_ImgVO getStudent_Img(int id) throws Exception {
       return sMapper.getStudent_Img(id);
@@ -62,9 +61,14 @@ public class StudentServiceImpl implements StudentService{
       return sMapper.getBasketList(id);
    }
 
-	@Override
-	public List<StudentLectureVO> getStudentLectureList(int id) {
-	   return sMapper.getStudentLectureList(id);
-	}
+@Override
+public List<StudentLectureVO> getStudentLectureList(int id) throws Exception{
+   return sMapper.getStudentLectureList(id);
+}
+
+@Override
+public int getStudentLectureCount(int id) throws Exception {
+   return sMapper.getStudentLectureCount(id);
+}
 
 }

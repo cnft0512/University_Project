@@ -8,9 +8,9 @@ public class StudentLectureVO {
    private int id;
    private int lecture_code;
    private int score;   
-   private String midterm_exam;
-   private String final_exam;
+   private double midterm_exam;
+   private double final_exam;
    private int attendance;
-   private int total;
+   private double total;
    
 }

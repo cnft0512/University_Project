@@ -16,7 +16,7 @@ public class BasketVO {
    private String semester;
    private int student_full;
    private int credit;               // 수강 학점
-   /*
+   
    private int credit_count;         // 수강 학점 개수
    private int credit_total;         // 수강 학점 합계
    
@@ -24,5 +24,5 @@ public class BasketVO {
    public void totalCredit() {
       this.credit_total = this.credit * this.credit_count ;
    }
-   */
+   
 }

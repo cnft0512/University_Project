@@ -28,26 +28,7 @@
 <body>
 
    <h2>나의 강의 페이지</h2>
-   <div class="container" style="width: 100%;">
-      <div>
-         
-            
-               <div class="my_lecture-table-head">
-                  <div class="my_lecture-table-head__depart_code">학번</div>
-                  <div class="my_lecture-table-head__professor_name">이름</div>
-                  <div class="my_lecture-table-head__depart_name">소속학과</div>   
-                  <div class="my_lecture-table-head__credit_full">졸업학점</div>
-               </div>
-               
-               <div class="my_lecture-table-body">
-                  <div class="my_lecture-table-body__depart_code">${sVo.id}</div>
-                  <div class="my_lecture-table-body__professor_name">${sVo.name}</div>
-                  <div class="my_lecture-table-body__depart_name">${sVo.depart_name}</div>
-                  <div class="my_lecture-table-body__credit_full">${sVo.credit_full}</div>
-                  <br>               
-               </div>        
-      </div>   
-   </div>
+
    <br>
    
    <div class="maintable" >
@@ -74,15 +55,86 @@
          <div class="my_lecture-table-body__depart_code">${blist.lecture_code}</div>
          <div class="my_lecture-table-body__depart_name">${blist.lecture_name}</div>
          <div class="my_lecture-table-body__professor_name">${blist.professor_name}</div>
-         <div class="my_lecture-table-body__lecture_time">${blist.lecture_time}</div>
+         <div class="my_lecture-table-body__lecture_time"><c:choose>
+                        <c:when test="${blist.lecture_time eq 'A'}">
+                           <월> 08:00 ~ 11:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'B'}">
+                           <화> 08:00 ~ 11:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'C'}">
+                           <수> 08:00 ~ 11:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'D'}">
+                           <목> 08:00 ~ 11:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'E'}">
+                           <금> 08:00 ~ 11:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'F'}">
+                           <월> 11:00 ~ 14:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'G'}">
+                           <화> 11:00 ~ 14:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'H'}">
+                           <수> 11:00 ~ 14:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'I'}">
+                           <목> 11:00 ~ 14:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'J'}">
+                           <금> 11:00 ~ 14:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'K'}">
+                           <월> 14:00 ~ 17:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'L'}">
+                           <화> 14:00 ~ 17:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'M'}">
+                           <수> 14:00 ~ 17:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'N'}">
+                           <목> 14:00 ~ 17:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'O'}">
+                           <금> 14:00 ~ 17:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'P'}">
+                           <월> 17:00 ~ 20:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'Q'}">
+                           <화> 17:00 ~ 20:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'R'}">
+                           <수> 17:00 ~ 20:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'S'}">
+                           <목> 17:00 ~ 20:00
+                        </c:when>
+                        <c:when test="${blist.lecture_time eq 'T'}">
+                           <금> 17:00 ~ 20:00
+                        </c:when>                        
+               </c:choose></div>
          <div class="my_lecture-table-body__classroom">${blist.classroom}</div>      
          <div class="my_lecture-table-body__midterm_exam">${sllist[vs.index].midterm_exam}</div>
          <div class="my_lecture-table-body__final_exam">${sllist[vs.index].final_exam}</div>
-         <div class="my_lecture-table-body__score_avg"></div>                  
+         <div class="my_lecture-table-body__score_avg">${(sllist[vs.index].midterm_exam + sllist[vs.index].final_exam)/2}</div>                  
          </div>  
          </c:forEach>   
       </div>      
    </form>
+      <div class="corner">
+         <div class="my_lecture-table-head__credit_full">중간 평균</div>                 
+       <div class="my_lecture-table-body__credit_full"></div> 
+       <div class="my_lecture-table-head__credit_full">기말 평균</div>                 
+       <div class="my_lecture-table-body__credit_full"></div> 
+        <div class="my_lecture-table-head__total_score_avg">총 평균학점</div>
+       <div class="my_lecture-table-body__total_score_avg">${sVo.score_avg}</div> 
+       <div class="my_lecture-table-head__credit_full">졸업학점</div>                 
+       <div class="my_lecture-table-body__credit_full">${sVo.credit_full}</div>       
+    </div>
 <script>
    
       /*

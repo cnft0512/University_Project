@@ -17,6 +17,9 @@ public interface LectureService {
 
    // 나의 강의 목록 불러오기
    public int getStudentCount(int lecture_code) throws Exception;
+   
+   // 장바구니에서 수강 학점 갯수 세기
+   public int getCreditCount(int id) throws Exception;
 
    // 강의 선택 후 장바구니 담기
    public int addLecture(BasketVO bVo) throws Exception;
