@@ -1,5 +1,6 @@
 package com.university.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.university.util.Criteria;
 import com.university.model.BasketVO;
@@ -46,28 +48,40 @@ public class LectureController {
 
 	// insert into Basket
 	@PostMapping("/lecture_list")
+	@ResponseBody
 	public String listPOST(BasketVO bVo, Model model, Criteria cri, HttpSession session) throws Exception {
 		log.info("BasketVO : " + bVo);
 		StudentVO sVo = (StudentVO) session.getAttribute("mVo");
 		List<BasketVO> bList = lService.getLecture(sVo.getId());
-		for (int i=0; i < bList.size(); i++) {
-			BasketVO bVo2 = bList.get(i);
-			bVo2.setCredit_count(lService.getCreditCount(sVo.getId()));
+		List<String> timeList = new ArrayList<String>();
+		for (int i = 0; i < bList.size(); i++) {
+			timeList.add(bList.get(i).getLecture_time());
 		}
-		lService.addLecture(bVo); // 장바구니 넣기
-		lService.addMyList(bVo); // 나의 강의 넣기
-		model.addAttribute("list", lService.getList(cri));
-		model.addAttribute("bList", bList);
-		return "redirect:/lecture/lecture_list";
+		// 강의 시간 겹치지 않게 하기
+		if (!timeList.contains(bVo.getLecture_time())) {
+			// 학점 : 24학점까지만 신청 가능
+			if (bList.size() * 3 < 24) {
+				lService.addLecture(bVo); // 장바구니 넣기
+				lService.addMyList(bVo); // 나의 강의 넣기
+				model.addAttribute("list", lService.getList(cri));
+				model.addAttribute("bList", bList);
+				return "inputSuccess";
+			} else {
+				return "fail";
+			}
+		} else {
+			return "fail_time";
+		}
 	}
 
 	// delete from Basket
 	@PostMapping("/delete.do")
+	@ResponseBody
 	public String deleteBasketPOST(BasketVO bVo) throws Exception {
 		log.info("강의 삭제");
 		lService.deleteLecture(bVo); // 장바구니 삭제
 		lService.deleteMyList(bVo); // 나의 강의 삭제
-		return "redirect:/lecture/lecture_list";
+		return "deleteSuccess";
 	}
 
 	// Time Table

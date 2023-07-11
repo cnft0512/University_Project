@@ -18,9 +18,6 @@ public interface LectureMapper {
    // 나의 강의에서 아이디 갯수 세기
    public int getStudentCount(int lecture_code);
    
-   // 장바구니에서 수강 학점 갯수 세기
-   public int getCreditCount(int id);
-   
    // 강의 선택 후 장바구니 담기
    public int addLecture(BasketVO bVo);
    
