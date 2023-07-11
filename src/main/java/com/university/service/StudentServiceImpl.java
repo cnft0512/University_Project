@@ -2,8 +2,10 @@ package com.university.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.university.mapper.StudentMapper;
 import com.university.model.BasketVO;
@@ -11,11 +13,13 @@ import com.university.model.DepartmentVO;
 import com.university.model.StudentLectureVO;
 import com.university.model.StudentVO;
 import com.university.model.Student_ImgVO;
+
 @Service
-public class StudentServiceImpl implements StudentService{
-   
+public class StudentServiceImpl implements StudentService {
+
    @Autowired
    private StudentMapper sMapper;
+
    @Override
    public Student_ImgVO getStudent_Img(int id) throws Exception {
       return sMapper.getStudent_Img(id);
@@ -61,14 +65,14 @@ public class StudentServiceImpl implements StudentService{
       return sMapper.getBasketList(id);
    }
 
-@Override
-public List<StudentLectureVO> getStudentLectureList(int id) throws Exception{
-   return sMapper.getStudentLectureList(id);
-}
+   @Override
+   public List<StudentLectureVO> getStudentLectureList(int id) throws Exception {
+      return sMapper.getStudentLectureList(id);
+   }
 
-@Override
-public int getStudentLectureCount(int id) throws Exception {
-   return sMapper.getStudentLectureCount(id);
-}
+   @Override
+   public int getStudentLectureCount(int id) throws Exception {
+      return sMapper.getStudentLectureCount(id);
+   }
 
 }

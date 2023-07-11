@@ -2,6 +2,9 @@ package com.university.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.university.model.BasketVO;
 import com.university.model.DepartmentVO;
 import com.university.model.StudentLectureVO;

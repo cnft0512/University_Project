@@ -104,7 +104,8 @@
                <option value="1.0">D-</option>
                <option value="0.0">F</option><!-- 0.0 -->         
             </select>
-             &nbsp;/&nbsp; <c:choose>
+             &nbsp;/&nbsp;         
+             <c:choose>
              <c:when test="${slist.midterm_exam eq '4.5'}">A+</c:when>
              <c:when test="${slist.midterm_exam eq '4.3'}">A</c:when>
              <c:when test="${slist.midterm_exam eq '4.0'}">A-</c:when>
@@ -120,6 +121,7 @@
              <c:when test="${slist.midterm_exam eq '0.0'}">F</c:when>   
              <c:when test="${slist.midterm_exam eq null}"></c:when>       
              </c:choose>
+             
          </div>
          <div class="lecture_detail-table-body__final_score">
             <select id="final_exam">      
@@ -138,7 +140,8 @@
                <option value="1.0">D-</option>
                <option value="0.0">F</option><!-- 0.0 -->         
             </select>
-             &nbsp;/&nbsp; <c:choose>
+             &nbsp;/&nbsp;         
+             <c:choose>
              <c:when test="${slist.final_exam eq '4.5'}">A+</c:when>
              <c:when test="${slist.final_exam eq '4.3'}">A</c:when>
              <c:when test="${slist.final_exam eq '4.0'}">A-</c:when>
@@ -153,6 +156,7 @@
              <c:when test="${slist.final_exam eq '1.0'}">D-</c:when>
              <c:when test="${slist.final_exam eq '0.0'}">F</c:when>          
              </c:choose>
+            
          <!--  <input type="text" name = "final_exam"> / ${slist.final_exam}--></div>
          <div class="lecture_detail-table-body__score_avg">${(slist.midterm_exam + slist.final_exam)/2}</div>
          <br>
@@ -165,22 +169,17 @@
       var msb = document.querySelectorAll("#midterm_exam");
       var fsb = document.querySelectorAll("#final_exam");
       var tid = document.querySelectorAll(".lecture_detail-table-body__id2");
-      //var totalvalue = document.querySelectorAll(".lecture_detail-table-body__score_avg");
-      
-      for(let i = 0; i<msb.length;i++){
-         msb[i].addEventListener("change", function() {
-            alert(totalvalue[i].innerText);
+      var avg = document.querySelectorAll(".lecture_detail-table-body__score_avg")
+      for(let i = 0; i<msb.length;i++){         
+         msb[i].addEventListener("change", function() {            
             const lecture_code = ${lecture_info.lecture_code};
-            //const id = $(".lecture_detail-table-body__id2").text();
             let id = tid[i].innerText;
             const midterm_exam = msb[i].options[msb[i].selectedIndex].value;
             const final_exam = fsb[i].options[fsb[i].selectedIndex].value;
-            //const total = totalvalue[i].innerText;
             const data = {
                id : id,
                midterm_exam : midterm_exam,
                final_exam : final_exam,
-               //total : total,
                lecture_code : lecture_code
             };
             if (!confirm("성적을 "+midterm_exam+"으로 확정하시겠습니까?")) {
@@ -194,16 +193,13 @@
                   data : data,
                   success : function(result) {
                      console.log("result: " + result);                   
-                     location.reload();
+                     location.reload();                     
                   },
                   error : function(request, status, error) {
                      alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                   }
-               });
+               });                 
              }
-            
-
-                   
          });
          
          fsb[i].addEventListener("change", function() {            
@@ -211,12 +207,10 @@
             let id = tid[i].innerText;            
             const midterm_exam = msb[i].options[msb[i].selectedIndex].value;
             const final_exam = fsb[i].options[fsb[i].selectedIndex].value;
-            //const total = totalvalue[i].innerText;
             const data = {
                id : id,
                midterm_exam : midterm_exam,
                final_exam : final_exam,
-               //total : total,
                lecture_code : lecture_code
             };
 

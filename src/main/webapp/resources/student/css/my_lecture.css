@@ -69,19 +69,18 @@
 }
 
 .my_lecture-table-head__classroom {
-   width: 250px;
+   width: 190px;
    text-align: center;
    font-size: 16px;
    color: #000;
-   display: table-cell;
-   
+   display: table-cell;   
    border-right: 1px solid #c6c6c6;
    border-left: 1px solid #c6c6c6;
    
 }
 
 .my_lecture-table-head__midterm_exam {
-   width: 80px;
+   width: 100px;
    text-align: center;
    font-size: 16px;
    color: #000;
@@ -92,7 +91,7 @@
 }
 
 .my_lecture-table-head__final_exam {
-   width: 80px;
+   width: 100px;
    text-align: center;
    font-size: 16px;
    color: #000;
@@ -103,18 +102,25 @@
 }
 
 .my_lecture-table-head__credit_full{
-   width: 200px;
+   width: 100px;
    text-align: center;
    font-size: 16px;
    color: #000;
-   display: table-cell;
-   
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+   display: table-cell;   
+   border : 1px solid black;
+}
+
+.my_lecture-table-head__total_score_avg{
+   width: 100px;
+   text-align: center;
+   font-size: 16px;
+   color: #000;
+   display: table-cell;   
+   border : 1px solid black;
 }
 
 .my_lecture-table-head__score_avg{
-      width: 83px;
+      width: 103px;
    text-align: center;
    font-size: 16px;
    color: #000;
@@ -170,7 +176,7 @@
 }
 
 .my_lecture-table-body__classroom {
-   width: 250px;
+   width: 190px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
@@ -180,7 +186,7 @@
 }
 
 .my_lecture-table-body__midterm_exam {
-  width: 80px;
+  width: 100px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
@@ -190,7 +196,17 @@
 }
 
 .my_lecture-table-body__final_exam {
-  width: 80px;
+  width: 100px;
+   font-size: 16px;
+   display: table-cell;
+   border-bottom: 1px solid #c6c6c6;
+    border-right: 1px solid #c6c6c6;
+   border-left: 1px solid #c6c6c6;
+   text-align: center;
+}
+
+.my_lecture-table-body__score_avg {
+  width: 103px;
    font-size: 16px;
    display: table-cell;
    border-bottom: 1px solid #c6c6c6;
@@ -200,23 +216,28 @@
 }
 
 .my_lecture-table-body__credit_full{
-width: 12.5%;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+   width: 100px;
    text-align: center;
+   font-size: 16px;
+   color: #000;
+   display: table-cell;
+   border : 1px solid black;
 }
 
-.my_lecture-table-body__score_avg{
-   width: 83px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+.my_lecture-table-body__total_score_avg{
+   width: 100px;
    text-align: center;
+   font-size: 16px;
+   color: #000;
+   display: table-cell;
+   
+   border : 1px solid black;
+}
+.corner{
+   display:table;
+   float:right;
+   border-collapse : collapse;   
+   margin-top: 1px;
 }
 
 /*

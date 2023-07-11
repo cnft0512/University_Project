@@ -6,7 +6,7 @@
    <!-- 개설 교과 목록 -->
    <select id="getList" resultType="com.university.model.LectureVO">
       <![CDATA[
-          select * from lecture
+          select * from lecture order by lecture_code asc
       ]]>
       <if test="keyword != null">
          <foreach collection="typeArr" item="type">
@@ -37,7 +37,7 @@
    </select>
 
    <select id="getStudentList" resultType="com.university.model.StudentVO">
-      select * from student
+      select * from student order by id asc
    </select>
 
    <insert id="insert_student">
@@ -60,15 +60,15 @@
 
    <select id="getStudent_lectureList"
       resultType="com.university.model.StudentLectureVO">
-      select * from student_lecture where   lecture_code=#{lecture_code}
+      select * from student_lecture where lecture_code = #{lecture_code} order by id asc
    </select>
 
    <update id="update_mid_score">
-      update student_lecture set midterm_exam=#{midterm_exam} where id=#{id} and lecture_code=#{lecture_code}
+      update student_lecture set midterm_exam = #{midterm_exam} where id = #{id} and lecture_code = #{lecture_code}
    </update>
 
    <update id="update_final_score">
-      update student_lecture set final_exam=#{final_exam} where id=#{id} and lecture_code=#{lecture_code}
+      update student_lecture set final_exam = #{final_exam} where id = #{id} and lecture_code = #{lecture_code}
    </update>
 
 </mapper>

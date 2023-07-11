@@ -67,6 +67,7 @@ public class AdminController {
       String rawPw = "";               // 인코딩 전 비밀번호
       String encodePw = "";            // 인코딩 후 비밀번호   
       rawPw = sVo.getPassword();         // 인코딩 전 비밀번호를 가져와서
+      System.out.println(rawPw);
       encodePw = pwEncoder.encode(rawPw);   // 비밀번호 인코딩 후
       sVo.setPassword(encodePw);         // 인코딩 된 비밀번호를 vo에 넣는다.
       aService.update_studentId(sVo);      // 아이디 생성
@@ -108,5 +109,6 @@ public class AdminController {
          return "lecture_detail";
       }
       return "lecture_detail";
+   
    }
 }
