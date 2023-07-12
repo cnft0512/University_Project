@@ -62,7 +62,7 @@
                   </c:otherwise>
                </c:choose>
                </div>
-               <div class ="infoZone" style="float: right;margin-right: 30px; margin-top: 20px;">
+               <div class ="infoZone" style="float: right; margin-right: 30px; margin-top: 20px; color: #643200;">
                   ${mVo.id}<br>
                   ${mVo.name}<br>
                   <c:forEach var="depart_list" items="${departlist}">
@@ -156,7 +156,6 @@
                      <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li><a href="/student/my_lecture">나의 강의</a></li>
                         <li><a href="/lecture/timeTable">개인 시간표</a></li>
-                        <li><a href="#">강의 이력</a></li>
                      </ul></li>
                   <li><a href="/notice">공지사항 게시판</a></li>
                </ul>

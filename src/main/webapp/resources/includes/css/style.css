@@ -4390,7 +4390,7 @@ padding
 }
 
 .nav-tabs {
-	border-bottom: 1px solid #dee2e6;
+	border-bottom: 1px solid #643200;
 }
 
 .nav-tabs .nav-item {
@@ -4404,7 +4404,7 @@ padding
 }
 
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
-	border-color: #e9ecef #e9ecef #dee2e6;
+	border-color: #de3163;
 }
 
 .nav-tabs .nav-link.disabled {
@@ -4536,7 +4536,7 @@ padding
 	flex-basis: 100%;
 	-webkit-box-flex: 1;
 	-ms-flex-positive: 1;
-	flex-grow: 1;
+	flex-grow: 3;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
@@ -10397,7 +10397,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 #sidebar {
 	min-width: 300px;
 	max-width: 300px;
-	background: #1d1919;
+	background: #aaf0d1;
 	height: auto;
 	color: #fff;
 	-webkit-transition: all 0.3s;
@@ -10440,17 +10440,17 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 #sidebar ul li a {
 	padding: 10px 0;
 	display: block;
-	color: rgba(255, 255, 255, 0.8);
+	color: rgba(100, 50, 0, 0.8);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 #sidebar ul li a:hover {
-	color: #f8b739;
+	color: #de3163;
 }
 
 #sidebar ul li.active>a {
 	background: transparent;
-	color: #f8b739;
+	color: #de3163;
 }
 
 @media ( max-width : 991.98px) {
@@ -10498,13 +10498,13 @@ a[data-toggle="collapse"] {
 }
 
 .btn.btn-primary {
-	background: #f8b739;
-	border-color: #f8b739;
+	background: #aaf0d1;
+	border-color: #aaf0d1;
 }
 
 .btn.btn-primary:hover, .btn.btn-primary:focus {
-	background: #f8b739 !important;
-	border-color: #f8b739 !important;
+	background: #a2e4b8 !important;
+	border-color: #a2e4b8 !important;
 }
 
 .footer p {

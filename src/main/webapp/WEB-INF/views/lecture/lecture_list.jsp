@@ -17,21 +17,15 @@
 		<form id="search_form" name="search_form">
 			<div class="search_area">
 				<select name="type">
-					<option value=" "
-						<c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>-------</option>
-					<option value="N"
-						<c:out value="${pageMaker.cri.type eq 'N'?'selected':'' }"/>>강의명</option>
-					<option value="T"
-						<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>강의시간</option>
-					<option value="P"
-						<c:out value="${pageMaker.cri.type eq 'P'?'selected':'' }"/>>교수명</option>
-					<option value="C"
-						<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>강의실</option>
-					<option value="G"
-						<c:out value="${pageMaker.cri.type eq 'G'?'selected':'' }"/>>수강학년</option>
-				</select> <input type="text" name="keyword"
-					value='<c:out value="${pageMaker.cri.keyword}" />'>
-				<button class="search_btn">검 색</button>
+					<option value=" " <c:out value="${pageMaker.cri.type==null?'selected':'' }"/>>-------</option>
+					<option value="N" <c:out value="${pageMaker.cri.type eq 'N'?'selected':'' }"/>>강의명</option>
+					<option value="P" <c:out value="${pageMaker.cri.type eq 'P'?'selected':'' }"/>>교수명</option>
+					<option value="G" <c:out value="${pageMaker.cri.type eq 'G'?'selected':'' }"/>>수강학년</option>
+					<option value="C" <c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>강의실</option>
+					<option value="T" <c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>강의시간</option>
+				</select>
+				<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}" />'>
+				<button class='btn search_btn'>검 색</button>
 			</div>
 		</form>
 	</div>
@@ -57,8 +51,7 @@
 			<div class="lecture_list-table-body">
 				<c:forEach var="lec_list" items="${list}" varStatus="vs">
 					<div class="lecture_list_body_row">
-						<c:if
-							test="${lec_list.depart_code eq mVo.depart_code || lec_list.depart_code eq 10}">
+						<c:if test="${lec_list.depart_code eq mVo.depart_code || lec_list.depart_code eq 10}">
 							<c:choose>
 								<c:when
 									test="${lec_list.semester ne '2학기' && serverTime.getMonth() eq 'JULY'}">
@@ -228,22 +221,20 @@
 
       /* 검색 버튼 동작 */
       $(btn).on("click", function(e) {
-         e.preventDefault();
-         /* 검색 키워드 유효성 검사 */
-         let selectType = $(".search_area select").val();
-         let findWord = $(".search_area input[name='keyword']").val();
-         if (selectType == ' ') {
-            alert("검색 종류를 선택하세요.");
-            return false;
-         }
-         if (!findWord) {
-            alert("키워드를 입력하세요.");
-            return false;
-         }
-         hForm.find("input[name='type']").val(selectType);
-         hForm.find("input[name='keyword']").val(findWord);
-      });
-
+            e.preventDefault();
+            /* 검색 키워드 유효성 검사 */
+            if (!sForm.find("input[name='keyword']").val()) {
+               alert("키워드를 입력하십시오.");
+               return false;
+            }
+            if (!sForm.find("select[name='type']").val()) {
+               alert("검색 타입을 설정하십시오.");
+               return false;
+            }
+            sForm.find("input[name='pageNum']").val(1);
+            sForm.submit();
+         });
+      
       var select = document.querySelectorAll(".check_in");
       var lec_code = document
             .querySelectorAll("#lecture_list-table-body__lecture_code");

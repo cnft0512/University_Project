@@ -3,6 +3,7 @@ package com.university.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -23,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.university.model.BasketVO;
+import com.university.model.StudentLectureVO;
 import com.university.model.StudentVO;
 import com.university.model.Student_ImgVO;
 import com.university.service.AdminService;
@@ -35,14 +38,13 @@ public class StudentController {
    private static final Logger log = LoggerFactory.getLogger(StudentController.class);
 
    @Autowired
-   private StudentService sService;   
+   private StudentService sService;
 
    @Autowired
    private BCryptPasswordEncoder pwEncoder;
-   
+
    @Autowired
    private LoginService lService;
-   
 
    @GetMapping("/main")
    public String mainGET(HttpServletRequest request) throws NumberFormatException, Exception {
@@ -55,7 +57,8 @@ public class StudentController {
    }
 
    @PostMapping("/student_img")
-   public String imgPOST(@RequestParam("student_img") MultipartFile file, HttpServletRequest request) throws Exception {
+   public String imgPOST(@RequestParam("student_img") MultipartFile file, HttpServletRequest request)
+         throws Exception {
       HttpSession session = request.getSession();
       int value = Integer.parseInt(request.getParameter("img_value"));
       StudentVO sVo = (StudentVO) session.getAttribute("mVo");
@@ -74,7 +77,7 @@ public class StudentController {
       } catch (IOException e) {
          e.printStackTrace();
       }
-      
+
       Student_ImgVO siVo = new Student_ImgVO();
       siVo.setId(sVo.getId());
       siVo.setImg_name(fileName);
@@ -86,10 +89,10 @@ public class StudentController {
          return "redirect:/student/main";
       } else {
          String existing_img_name = sService.delete_existing_img(siVo);
-         System.out.println("hi : "+existing_img_name);
+         System.out.println("hi : " + existing_img_name);
          sService.update_student_img(siVo);
          File deleteFile = new File(uploadRoute + "\\" + existing_img_name); // 적용 후
-         if(deleteFile.exists()) {    //삭제하고자 하는 파일이 해당 서버에 존재하면 삭제시킨다
+         if (deleteFile.exists()) { // 삭제하고자 하는 파일이 해당 서버에 존재하면 삭제시킨다
             deleteFile.delete();
             System.out.println("기존 사진 삭제 완료");
          }
@@ -97,58 +100,58 @@ public class StudentController {
       }
 
    }
-   
+
    // 처음 로그인시 비밀번호 변경 요청
    @PostMapping("/pwChange_First")
    @ResponseBody
-       public String pwChangeFirst(StudentVO sVo, HttpSession session) throws Exception {          
-          log.info("첫 로그인시 비밀번호 변경 요청 발생");          
-         String originPw = "";
-         String encodePw = "";
-         
-         originPw = sVo.getPassword();      // 비밀번호 데이터 얻음
-         System.out.println("받은 비번 : "+originPw);
-         encodePw = pwEncoder.encode(originPw);      // 비밀번호 인코딩
-         if(true == pwEncoder.matches(originPw, encodePw)) {
-            System.out.println("성공");
-         }
-         sVo.setPassword(encodePw);      // 인코딩된 비밀번호 svo 객체에 다시 저장         
-         //비밀번호 변경 성공시 로그인 세션 객체 다시 담음
-         sService.pwChange(sVo);
-         StudentVO sVo2 = lService.memberLogin(sVo);         
-         session.setAttribute("mVo", sVo2);         
-          return "changeSuccess";
-       }   
-   
-   //인적 사항 페이지
+   public String pwChangeFirst(StudentVO sVo, HttpSession session) throws Exception {
+      log.info("첫 로그인시 비밀번호 변경 요청 발생");
+      String originPw = "";
+      String encodePw = "";
+
+      originPw = sVo.getPassword(); // 비밀번호 데이터 얻음
+      System.out.println("받은 비번 : " + originPw);
+      encodePw = pwEncoder.encode(originPw); // 비밀번호 인코딩
+      if (true == pwEncoder.matches(originPw, encodePw)) {
+         System.out.println("성공");
+      }
+      sVo.setPassword(encodePw); // 인코딩된 비밀번호 svo 객체에 다시 저장
+      // 비밀번호 변경 성공시 로그인 세션 객체 다시 담음
+      sService.pwChange(sVo);
+      StudentVO sVo2 = lService.memberLogin(sVo);
+      session.setAttribute("mVo", sVo2);
+      return "changeSuccess";
+   }
+
+   // 인적 사항 페이지
    @GetMapping("/info")
    public String student_infoGET() throws Exception {
       log.info("인적 사항 조회 페이지 진입");
       return "info";
    }
-   
-   //인적 사항 수정 페이지
+
+   // 인적 사항 수정 페이지
    @GetMapping("/info_modify")
    public String student_info_modifyGET() throws Exception {
       log.info("인적 사항 수정 페이지 진입");
       return "info_modify";
    }
-   
+
    @PostMapping("/info_modify")
-   public String student_info_modifyPOST(StudentVO sVo, HttpSession session) throws Exception{
-      log.info("인적 사항 수정");      
+   public String student_info_modifyPOST(StudentVO sVo, HttpSession session) throws Exception {
+      log.info("인적 사항 수정");
       sService.modifyInfo(sVo);
-      StudentVO sVo2 = lService.memberLogin(sVo);         
-      session.setAttribute("mVo", sVo2);         
+      StudentVO sVo2 = lService.memberLogin(sVo);
+      session.setAttribute("mVo", sVo2);
       return "info";
    }
-   
+
    @GetMapping("/loginConfirm")
    public String loginConfirmGET() {
       log.info("재로그인창 진입");
       return "loginConfirm";
    }
-   
+
    @PostMapping("/loginConfirm")
    public String loginConfirmPOST(HttpSession session, StudentVO sVo, RedirectAttributes rttr) throws Exception {
       log.info("재로그인");
@@ -170,15 +173,15 @@ public class StudentController {
          rttr.addFlashAttribute("result", 0);
          return "redirect:/student/loginConfirm";
       }
-      
+
    }
-   
+
    @GetMapping("/pwChange")
    public String pwChangeGET() {
       log.info("비밀번호 변경 페이지 진입");
       return "pwChange";
    }
-   
+
    @PostMapping("/pwCheck")
    @ResponseBody
    public String checkPw(String password, HttpSession session) throws Exception {
@@ -200,38 +203,49 @@ public class StudentController {
       return result;
 
    }
+
    // 비밀번호 변경 요청
    @PostMapping("/pwChange")
-    @ResponseBody
-    public String pwChange(StudentVO sVo, HttpSession session) throws Exception {
-       
-       log.info("비밀번호 변경 요청 발생");
-       
-       String originPw = "";
+   @ResponseBody
+   public String pwChange(StudentVO sVo, HttpSession session) throws Exception {
+
+      log.info("비밀번호 변경 요청 발생");
+
+      String originPw = "";
       String encodePw = "";
-      
-      originPw = sVo.getPassword();      // 비밀번호 데이터 얻음
-      System.out.println("받은 비번 : "+originPw);
-      encodePw = pwEncoder.encode(originPw);      // 비밀번호 인코딩
-      if(true == pwEncoder.matches(originPw, encodePw)) {
+
+      originPw = sVo.getPassword(); // 비밀번호 데이터 얻음
+      System.out.println("받은 비번 : " + originPw);
+      encodePw = pwEncoder.encode(originPw); // 비밀번호 인코딩
+      if (true == pwEncoder.matches(originPw, encodePw)) {
          System.out.println("성공");
       }
-      sVo.setPassword(encodePw);      // 인코딩된 비밀번호 svo 객체에 다시 저장         
-      //비밀번호 변경 성공시 로그인 세션 객체 다시 담음
+      sVo.setPassword(encodePw); // 인코딩된 비밀번호 svo 객체에 다시 저장
+      // 비밀번호 변경 성공시 로그인 세션 객체 다시 담음
       sService.pwChange(sVo);
-      StudentVO sVo2 = lService.memberLogin(sVo);         
-      session.setAttribute("mVo", sVo2);         
-       return "changeSuccess";
-    }
-   
+      StudentVO sVo2 = lService.memberLogin(sVo);
+      session.setAttribute("mVo", sVo2);
+      return "changeSuccess";
+   }
+
    @GetMapping("/my_lecture")
-      public String my_lectureGET(Model model, HttpSession session) throws Exception {
-         log.info("나의 강의 페이지 진입");
-         StudentVO sVo = (StudentVO) session.getAttribute("mVo");
-         model.addAttribute("sVo",lService.memberLogin(sVo));
-         model.addAttribute("blist",sService.getBasketList(sVo.getId()));
-         model.addAttribute("sllist",sService.getStudentLectureList(sVo.getId()));
-         model.addAttribute("count",sService.getStudentLectureCount(sVo.getId()));
+   public String my_lectureGET(Model model, HttpSession session,HttpServletRequest request) throws Exception {
+      log.info("나의 강의 페이지 진입");
+      StudentVO sVo = (StudentVO) session.getAttribute("mVo");
+      if(request.getParameter("lecture_yearNsemester")!= null) {
+         System.out.println(request.getParameter("lecture_year"));
+         StudentLectureVO slVo = new StudentLectureVO();
+         String[] lecture_yearNsemester = request.getParameter("lecture_yearNsemester").split(",");            
+         slVo.setLecture_year(Integer.parseInt(lecture_yearNsemester[0]));
+         slVo.setSemester(lecture_yearNsemester[1]);
+         model.addAttribute("semester",slVo.getSemester());
+         model.addAttribute("year", slVo.getLecture_year());
+         model.addAttribute("sVo", lService.memberLogin(sVo));
+         model.addAttribute("sllist", sService.getStudentLectureList(sVo.getId(), slVo.getLecture_year(), slVo.getSemester()));
+         model.addAttribute("count", sService.getStudentLectureCount(sVo.getId()));
+         return "my_lecture";
+      }else {
          return "my_lecture";
       }
+   }
 }

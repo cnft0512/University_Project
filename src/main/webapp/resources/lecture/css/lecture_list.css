@@ -16,7 +16,7 @@
 }
 
 .lecture_list-table-head {
-   background-color: #dedede;
+   background-color: #aaf0d1;
    border-top: 1px solid #000;
    border-bottom: 1px solid #000;
    padding: 11px 0;
@@ -31,7 +31,10 @@
    border-bottom: 1px solid #000;
    padding: 11px 0;
    width: 100%;
-   
+}
+
+.lecture_list_body_row:hover {
+	background-color: #a2e4b8;
 }
 
 .lecture_list-table-body::-webkit-scrollbar {

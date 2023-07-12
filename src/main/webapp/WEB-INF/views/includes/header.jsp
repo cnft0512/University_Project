@@ -25,14 +25,13 @@
             </button>
 		-->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="nav navbar-nav ml-auto">
+              <ul class="nav navbar-nav ml-auto"">
               	 <li>
-                    <a class="nav-link" href="#">${mVo.name}님</a>
+                    <a class="nav-link" href="/student/info">${mVo.name}님</a>
                 </li>
                 <li>
                     <a class="nav-link" href="#">대학 홈페이지</a>
                 </li>
-               
                 <li>
                     <a class="nav-link" href="#">식단표</a>
                 </li>

@@ -7,34 +7,35 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../resources/student/css/pw_change.css">
+<link rel="stylesheet" href="../resources/includes/css/button.css">
 </head>
 <body>
 
 	<div class="change_pw_wrap">
-		<div class="change_pw_name">
-			비밀번호 변경
+		<div class="change_pw_name"> 
+			<h2>비밀번호 변경</h2>
+			<br>
 			<div class="current_pw_input_box">
 				현재 비밀번호 : <input class="current_pw_input" name="current_pw" type="password">
 			</div>
-			<span class="current_pwck_input_re_1" style="display: none;">현재 비밀번호가 일치합니다.</span> <span
-				class="current_pwck_input_re_2" style="display: none;">현재 비밀번호가 일치하지 않습니다.</span>
-
+			<span class="current_pwck_input_re_1">현재 비밀번호가 일치합니다.</span>
+			<span class="current_pwck_input_re_2">현재 비밀번호가 일치하지 않습니다.</span>
+			<br>
 			<div class="new_pw_input_box">
 				새로운 비밀번호 : <input class="new_pw_input" name="password" type="password">
 			</div>
-			<!-- 
-				<span class="new_pw_input_re_1">새로운 비밀번호가 일치합니다.</span> <span
-					class="new_pw_input_re_2">새로운 비밀번호가 일치하지 않습니다.</span>
-					 -->
+			<br>
 			<div class="new_pwck_input_box">
 				새로운 비밀번호 확인: <input class="new_pwck_input" type="password">
 			</div>
-			<span class="new_pwck_input_re_1" style="display: none;">새로운 비밀번호 확인이 일치합니다.</span> <span
-				class="new_pwck_input_re_2" style="display: none;">새로운 비밀번호가 확인이 일치하지 않습니다.</span> <span
-				class="new_pwck_input_re_3" style="display: none;">새로운 비밀번호 확인이 일치합니다.</span>
-			<input type="hidden" id = "id" name = "id" value="${mVo.id}">	
+			<span class="new_pwck_input_re_1">새로운 비밀번호 확인이 일치합니다.</span>
+			<span class="new_pwck_input_re_2">새로운 비밀번호가 확인이 일치하지 않습니다.</span>
+			<span class="new_pwck_input_re_3">비밀번호는 필수 정보입니다.</span>
+				<input type="hidden" id="id" name="id" value="${mVo.id}">
+			<br>
 			<div class="pw_change_btn_wrap">
-				<input type="button" class="pw_change_btn" value="비밀번호 변경">
+				<input type="button" class="btn pw_change_btn" value="비밀번호 변경">
 			</div>
 		</div>
 	</div>
@@ -81,7 +82,6 @@
 			//비밀번호 공백 확인
 			if ($(".new_pw_input").val() === "") {
 				$('.new_pwck_input_re_3').css("display", "inline-block");
-				$('.new_pwck_input_re_3').html('비밀번호는 필수 정보입니다.');
 				$('.new_pwck_input_re_1').css("display", "none");
 				$('.new_pwck_input_re_2').css("display", "none");
 				pwchk2 = false;

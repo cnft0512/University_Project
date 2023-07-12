@@ -17,6 +17,5 @@ public class LectureVO {
 	private String semester;
 	private int student_full;
 	private int credit;
-	private String remarks;
 	
 }

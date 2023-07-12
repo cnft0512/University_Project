@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+.change_pw_wrap {
+	width: 50%;
+	float: left;
+}
+
+.change_pw_name {
+	width: 100%;
+	display: table-cell;
+	font-size: 15px;
+}
+
+.change_pw_name h3 {
+	font-size: 18px;
+	font-color: #6c757d;
+}
+
+input:focus {
+	outline: none;
+}
+
+.current_pw_input {
+	width: 150px;
+	height: 20px;
+	font-size: 15px;
+	border-style: none;
+	border-bottom: 1px solid #6c757d;
+	border-collapse: collapse;
+	padding-bottom: 3px;	
+	background: transparent;
+}
+
+/*현재 비번 일치*/
+.current_pwck_input_re_1 {
+	color: blue;
+	display: none;
+}
+
+/*현재 비번 불일치*/
+.current_pwck_input_re_2 {
+	color: red;
+	display: none;
+}
+
+.pw_input {
+	width: 150px;
+	height: 20px;
+	font-size: 15px;
+	border-style: none;
+	border-bottom: 1px solid #6c757d;
+	border-collapse: collapse;
+	padding-bottom: 3px;
+	background: transparent;
+}
+
+.new_pw_input {
+	width: 150px;
+	height: 20px;
+	font-size: 15px;
+	border-style: none;
+	border-bottom: 1px solid #6c757d;
+	border-collapse: collapse;
+	padding-bottom: 3px;
+	background: transparent;
+}
+
+.new_pwck_input {
+	width: 150px;
+	height: 20px;
+	font-size: 15px;
+	border-style: none;
+	border-bottom: 1px solid #6c757d;
+	border-collapse: collapse;
+	padding-bottom: 3px;
+	background: transparent;
+}
+
+/* 새로운 비번 일치 */
+.new_pwck_input_re_1 {
+	color: blue;
+	display: none;
+}
+
+/* 새로운 비번 불일치 */
+.new_pwck_input_re_2 {
+	color: red;
+	display: none;
+}
+
+/* 비밀번호는 필수 정보입니다. */
+.new_pwck_input_re_3 {
+	color: #de3163;
+	display: none;
+}
+
+.pw_change_btn {
+	background: #aaf0d1;
+}
+
+.pw_change_btn:hover {
+	background: #a2e4b8;
+}
+
+.re_login_btn {
+	background: #aaf0d1;
+}
+
+.re_login_btn:hover {
+	background: #a2e4b8;
+}

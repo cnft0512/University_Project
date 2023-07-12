@@ -6,11 +6,16 @@ import lombok.Data;
 public class StudentLectureVO {
 
    private int id;
-   private int lecture_code;
-   private int score;   
+   private int lecture_code; 
+   private String lecture_name;
+   private String professor_name;
+   private int grade;
+   private String classroom;
+   private String lecture_time;   
+   private int lecture_year;
+   private String semester;
    private double midterm_exam;
    private double final_exam;
-   private int attendance;
    private double total;
    
 }

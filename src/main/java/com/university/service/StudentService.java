@@ -41,7 +41,7 @@ public interface StudentService {
    public List<BasketVO> getBasketList(int id) throws Exception;
 
    // 수강 신청한 내 강의 정보 가져오기
-   public List<StudentLectureVO> getStudentLectureList(int id) throws Exception;
+   public List<StudentLectureVO> getStudentLectureList(int id, int lecture_year, String semester) throws Exception;
 
    // 수강 신청한 내 강의 개수 가져오기
    public int getStudentLectureCount(int id) throws Exception;

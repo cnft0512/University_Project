@@ -36,11 +36,11 @@
    </select>
    
    <select id="getBasketList" resultType="com.university.model.BasketVO">
-   select * from basket where id = #{id}
+   select * from basket where id = #{id} 
    </select>
    
    <select id = "getStudentLectureList" resultType="com.university.model.StudentLectureVO">
-   select * from student_lecture where id = #{id}
+   select * from student_lecture where id = #{id} and lecture_year=#{lecture_year} and semester not in #{semester}
    </select>
    
    <select id = "getStudentLectureCount" resultType="int">
