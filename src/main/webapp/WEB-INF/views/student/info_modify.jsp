@@ -6,8 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../resources/includes/css/button.css">
-<link rel="stylesheet" href="../resources/student/css/info_modify.css">
 </head>
 <body>
 
@@ -29,11 +27,11 @@
 			<div class="form-group">
 				<label for="head_birth" class="form-label required">생년월일</label><br>
 			</div>
-
+			
 			<div class="form-group">
 				<label for="head_academic_status" class="form-label required">재학여부</label><br>
 			</div>
-
+			
 
 			<div class="form-group">
 				<label for="head_address" class="form-label required">주소</label><br>
@@ -46,13 +44,12 @@
 				<label for="head_phone" class="form-label required">전화번호</label><br>
 			</div>
 		</div>
-		<div id="nomal_form" style="float: right; width: 90%;">
-			<form method="POST" id="info_modify_form"
-				action="/student/info_modify">
+		<div id = "nomal_form" style="float: right; width: 90%;">
+			<form method="POST" id="info_modify_form" action = "/student/info_modify">
 
 				<div class="form-group">
 					<label for="id" class="form-label required">${mVo.id}</label><br>
-					<input type="hidden" name="id" value="${mVo.id}">
+					<input type="hidden" name = "id" value = "${mVo.id}">
 				</div>
 
 				<div class="form-group">
@@ -73,35 +70,35 @@
 					<label for="birth" class="form-label required"><fmt:formatDate
 							pattern="yyyy/MM/dd" value="${mVo.birth}" /></label><br>
 				</div>
-
+				
 				<div class="form-group">
-					<select name="academic_status">
-						<option value="0">재학</option>
-						<option value="1">휴학</option>
-						<option value="2">군휴학</option>
-						<option value="3">재적</option>
-						<option value="4">자퇴</option>
-					</select><br>
+					<select name = "academic_status">
+						<option value = "0">재학</option>
+						<option value = "1">휴학</option>
+						<option value = "2">군휴학</option>
+						<option value = "3">재적</option>	
+						<option value = "4">자퇴</option>					
+					</select><br>					
 				</div>
 
-				<div class="form-group">
-					<input type="button" id="address_btn" onclick="execution_daum_address()">주소찾기</input>
-					<input class="post_input" name="post" style="width: 80px;" value="${mVo.post}" readonly>
-					<input class="address_1_input" name="address_1" id="address_1" value="${mVo.address_1}" readonly required>
-					<input class="address_2_input" name="address_2" id="address_2" value="${mVo.address_2}" readonly required> <br>
+				<div class="form-group">										
+							<button type="button" id="address_btn" onclick="execution_daum_address()">주소찾기</button>					
+							<input class="post_input" name="post" style="width: 80px;" value = "${mVo.post}"	readonly>
+							<input class="address_1_input" name="address_1" id="address_1" value = "${mVo.address_1}" readonly required>
+							<input class="address_2_input" name="address_2" id="address_2" value = "${mVo.address_2}" readonly required>	<br>					
+				</div>
+			
+				<div class="form-group">										
+							<input type="text" name = "email" style="height: 23px; margin-top: 10px;" value = "${mVo.email}"><br>
+						
+				</div>
+				<div class="form-group">						
+							<input type="text" name = "phone" style="height: 23px; margin-top: 10px;" value = "${mVo.phone}"><br>
 				</div>
 
-				<div class="form-group">
-					<input type="text" name="email" style="height: 23px; margin-top: 10px;" value="${mVo.email}"><br>
-
-				</div>
-				<div class="form-group">
-					<input type="text" name="phone" style="height: 23px; margin-top: 10px;" value="${mVo.phone}"><br>
-				</div>
-
-				<input type="button" id="save_info_btn" onclick="save()">저장</input>
-				<input type="button" id="cancel_btn" onclick="goBack()">취소</input>
-
+				<button type="button" id="save_info_btn" onclick="save()">저장</button>
+				<button type="button" id="cancel_btn" onclick="goBack()">취소</button>
+				
 			</form>
 		</div>
 	</div>
@@ -168,6 +165,9 @@
 				}).open();
 	}
 	</script>
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	
 </body>
 </html>

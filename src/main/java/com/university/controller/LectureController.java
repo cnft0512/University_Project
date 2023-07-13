@@ -1,5 +1,6 @@
 package com.university.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,18 +30,15 @@ public class LectureController {
 
    @Autowired
    private LectureService lService;
-
+   
    // Lecture List
    @GetMapping("/lecture_list")
    public String listGET(Criteria cri, Model model, HttpSession session) throws Exception {
       log.info("강의 목록 페이지 진입");
       StudentVO sVo = (StudentVO) session.getAttribute("mVo"); // 세션 물고 들어오기
-      List<LectureVO> list = lService.getList(cri);
-      for (int i = 0; i < list.size(); i++) {
-         LectureVO lVo = list.get(i); // i번째 리스트를 들고 와서
-         // lecture_code -> gettStudentCount -> setStudent_full
-         lVo.setStudent_full(lService.getStudentCount(lVo.getLecture_code()));
-      }
+      LocalDateTime serverTime = (LocalDateTime)session.getAttribute("serverTime");
+      List<LectureVO> list = lService.getList(serverTime.getYear(),cri.getKeyword(), cri.getType(), cri.getTypeArr());
+      
       model.addAttribute("list", list);
       model.addAttribute("bList", lService.getLecture(sVo.getId()));
       return "lecture_list";
@@ -49,10 +47,12 @@ public class LectureController {
    // insert into Basket
    @PostMapping("/lecture_list")
    @ResponseBody
-   public String listPOST(BasketVO bVo, Model model, Criteria cri, HttpSession session) throws Exception {
+   public String listPOST(BasketVO bVo, Model model, Criteria cri, HttpSession session, int student_full) throws Exception {
       log.info("BasketVO : " + bVo);
       StudentVO sVo = (StudentVO) session.getAttribute("mVo");
       List<BasketVO> bList = lService.getLecture(sVo.getId());
+      LocalDateTime serverTime = (LocalDateTime)session.getAttribute("serverTime");
+      //list에서 lecture_time만 분류
       List<String> timeList = new ArrayList<String>();
       for (int i = 0; i < bList.size(); i++) {
          timeList.add(bList.get(i).getLecture_time());
@@ -62,8 +62,8 @@ public class LectureController {
          // 학점 : 24학점까지만 신청 가능
          if (bList.size() * 3 < 24) {
             lService.addLecture(bVo); // 장바구니 넣기
-            lService.addMyList(bVo); // 나의 강의 넣기
-            model.addAttribute("list", lService.getList(cri));
+            lService.addCount(bVo.getLecture_code(),student_full,bVo.getLecture_year());
+            model.addAttribute("list", lService.getList(serverTime.getYear(),cri.getKeyword(), cri.getType(), cri.getTypeArr()));
             model.addAttribute("bList", bList);
             return "inputSuccess";
          } else {
@@ -77,9 +77,11 @@ public class LectureController {
    // delete from Basket
    @PostMapping("/delete.do")
    @ResponseBody
-   public String deleteBasketPOST(BasketVO bVo) throws Exception {
-      log.info("강의 삭제");
-      lService.deleteLecture(bVo); // 장바구니 삭제
+   public String deleteBasketPOST(BasketVO bVo, Model model, Criteria cri, HttpSession session, int student_full) throws Exception {
+      log.info("강의 삭제");      
+      System.out.println(bVo);
+      lService.addCount(bVo.getLecture_code(),student_full,bVo.getLecture_year());
+      lService.deleteLecture(bVo); // 장바구니 삭제        
       return "deleteSuccess";
    }
 

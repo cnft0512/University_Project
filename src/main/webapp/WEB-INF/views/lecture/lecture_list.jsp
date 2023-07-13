@@ -17,15 +17,21 @@
 		<form id="search_form" name="search_form">
 			<div class="search_area">
 				<select name="type">
-					<option value=" " <c:out value="${pageMaker.cri.type==null?'selected':'' }"/>>-------</option>
-					<option value="N" <c:out value="${pageMaker.cri.type eq 'N'?'selected':'' }"/>>강의명</option>
-					<option value="P" <c:out value="${pageMaker.cri.type eq 'P'?'selected':'' }"/>>교수명</option>
-					<option value="G" <c:out value="${pageMaker.cri.type eq 'G'?'selected':'' }"/>>수강학년</option>
-					<option value="C" <c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>강의실</option>
-					<option value="T" <c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>강의시간</option>
-				</select>
-				<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}" />'>
-				<button class='btn search_btn'>검 색</button>
+					<option value=" "
+						<c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>-------</option>
+					<option value="N"
+						<c:out value="${pageMaker.cri.type eq 'N'?'selected':'' }"/>>강의명</option>
+					<option value="T"
+						<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>강의시간</option>
+					<option value="P"
+						<c:out value="${pageMaker.cri.type eq 'P'?'selected':'' }"/>>교수명</option>
+					<option value="C"
+						<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>강의실</option>
+					<option value="G"
+						<c:out value="${pageMaker.cri.type eq 'G'?'selected':'' }"/>>수강학년</option>
+				</select> <input type="text" name="keyword"
+					value='<c:out value="${pageMaker.cri.keyword}" />'>
+				<button class="search_btn">검 색</button>
 			</div>
 		</form>
 	</div>
@@ -51,15 +57,17 @@
 			<div class="lecture_list-table-body">
 				<c:forEach var="lec_list" items="${list}" varStatus="vs">
 					<div class="lecture_list_body_row">
-						<c:if test="${lec_list.depart_code eq mVo.depart_code || lec_list.depart_code eq 10}">
+						<c:if
+							test="${lec_list.depart_code eq mVo.depart_code || lec_list.depart_code eq 10}">
 							<c:choose>
 								<c:when
-									test="${lec_list.semester ne '2학기' && serverTime.getMonth() eq 'JULY'}">
+									test="${lec_list.semester ne '2학기' && serverTime.getMonth() eq 'SEPTEMBER'}">
 									<%@ include file="../lecture/list.jsp"%>
 								</c:when>
 								<c:when
-									test="${lec_list.semester ne '1학기' && serverTime.getMonth() eq 'SEPTEMBER'}">
+									test="${lec_list.semester ne '1학기' && serverTime.getMonth() eq 'JULY'}">
 									<%@ include file="../lecture/list.jsp"%>
+
 								</c:when>
 							</c:choose>
 						</c:if>
@@ -164,10 +172,10 @@
 								<c:if test="${list.lecture_code eq basket.lecture_code}">
 									<c:choose>
 										<c:when test="${list.lecture_code < 2700}">
-                                         ${list.student_full} / 20
+                                    		${list.student_full} / 20
                                      </c:when>
-										<c:otherwise>
-                                         ${list.student_full} / 10
+									 <c:otherwise>
+                                    		${list.student_full} / 10
                                      </c:otherwise>
 									</c:choose>
 								</c:if>
@@ -215,26 +223,25 @@
       let sForm = $('#search_form');
       let lForm = $('#lec_list_form');
       let bForm = $('#basket_form');
-      let hForm = $('#hidden_form');
 
       var btn = document.querySelectorAll(".search_btn");
 
       /* 검색 버튼 동작 */
-      $(btn).on("click", function(e) {
-            e.preventDefault();
-            /* 검색 키워드 유효성 검사 */
-            if (!sForm.find("input[name='keyword']").val()) {
-               alert("키워드를 입력하십시오.");
-               return false;
-            }
-            if (!sForm.find("select[name='type']").val()) {
-               alert("검색 타입을 설정하십시오.");
-               return false;
-            }
-            sForm.find("input[name='pageNum']").val(1);
-            sForm.submit();
-         });
-      
+      $("#search_form button").on("click", function(e) {
+         e.preventDefault();
+         /* 검색 키워드 유효성 검사 */
+         if (!sForm.find("input[name='keyword']").val()) {
+            alert("키워드를 입력하십시오.");
+            return false;
+         }
+         if (!sForm.find("select[name='type']").val()) {
+            alert("검색 타입을 설정하십시오.");
+            return false;
+         }
+         sForm.find("input[name='pageNum']").val(1);
+         sForm.submit();
+      });
+
       var select = document.querySelectorAll(".check_in");
       var lec_code = document
             .querySelectorAll("#lecture_list-table-body__lecture_code");
@@ -257,18 +264,20 @@
       var credit = document
             .querySelectorAll("#lecture_list-table-body__credit");
       let id = ${mVo.id};
-
+     
       /* 체크하면 바로 장바구니로 insert 하기!! */
       for (let i = 0; i < select.length; i++) {
-         select[i].addEventListener("click", function() {
-			if (stu_full[i].value >= 20) {
-				alert("전공 최대 수강 인원을 넘었습니다.");
-				style.display = "none";
-			}
-			else if (lec_code[i].value > 2700 && stu_full[i].value >= 10) {
-				alert("교양 최대 수강 인원을 넘었습니다.");
-				style.display = "none";
-			}
+         select[i].addEventListener("click", function() {   
+            let number =parseInt(stu_full[i].value);
+            number++;
+         if (stu_full[i].value >= 20) {
+            alert("전공 최대 수강 인원을 넘었습니다.");
+            style.display = "none";
+         }
+         else if (lec_code[i].value > 2700 && stu_full[i].value >= 10) {
+            alert("교양 최대 수강 인원을 넘었습니다.");
+            style.display = "none";
+         }
             
             const data1 = {
                id : id,
@@ -280,7 +289,7 @@
                lecture_time : lec_time[i].value,
                lecture_year : lec_year[i].value,
                semester : semester[i].value,
-               student_full : stu_full[i].value,
+               student_full : number,
                credit : credit[i].value
             }
 
@@ -314,9 +323,13 @@
       var code_b = document.querySelectorAll("#lec_select-table-body__lecture_code");
       for (let i = 0; i < check_del.length; i++) {
          check_del[i].addEventListener("click", function() {
+            let number = parseInt(stu_full[i].value);
+            number--;
             const data2 = {
                id : id,
-               lecture_code : code_b[i].value
+               lecture_code : code_b[i].value,
+               lecture_year : lec_year[i].value,
+               student_full : number
             }
 
             $.ajax({
@@ -329,6 +342,7 @@
                   if (result === "deleteSuccess") {
                      alert('장바구니 지워짐');
                      location.href = "/lecture/lecture_list";
+                     //location.reload();
                   } else {
                      alert('장바구니 안 지워짐');
                   }

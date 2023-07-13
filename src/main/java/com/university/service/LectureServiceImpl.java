@@ -18,8 +18,8 @@ public class LectureServiceImpl implements LectureService {
    private LectureMapper lMapper;
 
    @Override
-   public List<LectureVO> getList(Criteria cri) throws Exception {
-      return lMapper.getList(cri);
+   public List<LectureVO> getList(int lecture_year, String keyword, String type, String[] typeArr) throws Exception {
+      return lMapper.getList(lecture_year, keyword,type,typeArr);
    }
 
    @Override
@@ -60,6 +60,11 @@ public class LectureServiceImpl implements LectureService {
    @Override
    public List<StudentLectureVO> getMyList(int id) throws Exception {
       return lMapper.getMyList(id);
+   }
+
+   @Override
+   public void addCount(int lecture_code, int student_full, int lecture_year) {
+      lMapper.addCount(lecture_code, student_full, lecture_year);
    }
 
 }

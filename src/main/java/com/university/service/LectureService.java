@@ -2,6 +2,8 @@ package com.university.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.university.util.Criteria;
 import com.university.model.BasketVO;
 import com.university.model.LectureVO;
@@ -10,7 +12,7 @@ import com.university.model.StudentLectureVO;
 public interface LectureService {
 
    // 개설 교과 목록 불러오기
-   public List<LectureVO> getList(Criteria cri) throws Exception;
+   public List<LectureVO> getList(int lecture_year, String keyword, String type, String[] typeArr) throws Exception;
 
    // 강의 총 갯수 + 검색 기능
    public int searchList(Criteria cri) throws Exception;
@@ -20,6 +22,9 @@ public interface LectureService {
 
    // 강의 선택 후 장바구니 담기
    public int addLecture(BasketVO bVo) throws Exception;
+   
+   // 강의 선택 후 학생 정원 값 늘리기
+   public void addCount(int lecture_code,int student_full,int lecture_year);
 
    // 장바구니에 담은 강의 목록 불러오기
    public List<BasketVO> getLecture(int id) throws Exception;

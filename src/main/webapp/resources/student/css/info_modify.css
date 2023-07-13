@@ -1,1 +1,120 @@
 @charset "UTF-8";
+
+.container {
+	width: 50%;
+}
+
+.label_form {
+	width: 10%;
+	float: left;
+}
+
+.normal_form {
+	width: 50%;
+	float: right;
+}
+
+.form-group {
+	height: 23px;
+	margin-top: 10px;
+}
+
+.post_input {
+	width: 80px;
+	font-size: 15px;
+	border-style: none;
+	border-bottom: 1px solid #6c757d;
+	border-collapse: collapse;
+	background: transparent;
+}
+
+.address_1_input {
+	width: 200px;
+	height: 25px;
+	font-size: 15px;
+	border-style: none;
+	border-bottom: 1px solid #6c757d;
+	border-collapse: collapse;
+	background: transparent;
+}
+
+.address_2_input {
+	width: 200px;
+	height: 25px;
+	font-size: 15px;
+	border-style: none;
+	border-bottom: 1px solid #6c757d;
+	border-collapse: collapse;
+	background: transparent;
+}
+
+.phone_input {
+	width: 200px;
+	height: 25px;
+	font-size: 15px;
+	border-style: none;
+	border-bottom: 1px solid #6c757d;
+	border-collapse: collapse;
+	background: transparent;
+}
+
+.final_email_ck {
+	display: none;
+}
+
+/*
+input {
+	width: 200px;
+	height: 25px;
+	font-size: 15px;
+	border-style: none;
+	border-bottom: 1px solid #6c757d;
+	border-collapse: collapse;
+}
+/*
+
+/* 메일 영역 */
+.email_input {
+	width: 200px;
+	height: 25px;
+	font-size: 15px;
+	border-style: none;
+	border-bottom: 1px solid #6c757d;
+	border-collapse: collapse;
+	background: transparent;
+}
+
+.email_check_wrap {
+	margin-top: 20px;
+}
+
+.email_check_input_box {
+	width: 32%;
+	height: 30px;
+	border: none;
+	float: left;
+}
+
+.email_check_input {
+	width: 200px;
+	height: 25px;
+	font-size: 15px;
+	border-style: none;
+	border-bottom: 1px solid #6c757d;
+	border-collapse: collapse;
+	background: transparent;
+}
+
+/* 인증번호 일치 */
+.correct {
+	color: blue;
+}
+/* 인증번호 불일치 */
+.incorrect {
+	color: red;
+}
+
+/*float 속성 해제*/
+.clearfix {
+	clear: both;
+}
