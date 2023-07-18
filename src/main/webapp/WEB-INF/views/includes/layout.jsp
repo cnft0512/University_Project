@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../resources/includes/css/style.css">
 </head>
 
-<body>
+<body style="overflow: hidden;">
 	<div class="wrapper d-flex align-items-stretch">
 		<section id="aside">
 			<tiles:insertAttribute name="aside" />

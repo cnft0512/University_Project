@@ -21,10 +21,10 @@
 				<select name="type">
 					<option value=" " <c:out value="${pageMaker.cri.type==null?'selected':'' }"/>>-------</option>
 					<option value="N" <c:out value="${pageMaker.cri.type eq 'N'?'selected':'' }"/>>강의명</option>
+					<option value="C" <c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>강의코드</option>
 					<option value="P" <c:out value="${pageMaker.cri.type eq 'P'?'selected':'' }"/>>교수명</option>
-					<option value="G" <c:out value="${pageMaker.cri.type eq 'G'?'selected':'' }"/>>수강학년</option>
-					<option value="C" <c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>강의실</option>
-					<option value="T" <c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>강의시간</option>
+					<option value="S" <c:out value="${pageMaker.cri.type eq 'S'?'selected':'' }"/>>수강학기</option>
+					<option value="T" <c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>학생이름</option>
 				</select>
 				<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}" />'>
 				<button class='btn search_btn'>검 색</button>
@@ -34,15 +34,11 @@
 
 	<form action="/admin/lecture_detail" id="lec_list_form">
 		<div class="float-wrap">
-			<h4 class="mypage__sub-title">개설 강좌 조회</h4>
-
+			<h4 class="mypage__sub-title">강의 조회</h4>
 		</div>
-
-
 		<div class="maintable">
 			<div class="lecture_list-table-head">
-
-				<div class="lecture_list-table-head__lecture_code">과목 코드</div>
+				<div class="lecture_list-table-head__lecture_code">과목코드</div>
 				<div class="lecture_list-table-head__lecture_name">강의명</div>
 				<div class="lecture_list-table-head__professor_name">교수명</div>
 				<div class="lecture_list-table-head__grade">수강학년</div>
@@ -52,16 +48,13 @@
 				<div class="lecture_list-table-head__student_full">인원</div>
 				<div class="lecture_list-table-head__credit">수강학점</div>
 				<div class="lecture_list-table-head__button">조회</div>
-
-
 			</div>
 			<div class="lecture_list-table-body"
 				style="overflow-y: scroll; height: auto; max-height: 600px;">
 				<c:forEach var="lec_list" items="${list}" varStatus="vs">
 					<div class="lecture_list_body_row">
 						<div class="lecture_list-table-body__lecture_code">${lec_list.lecture_code}
-							<input type="hidden" id="hidden_total"
-								value="${lec_list.college_code}${lec_list.depart_code}${lec_list.lecture_code}">
+							<input type="hidden" id="hidden_total" value="${lec_list.lecture_code}">
 						</div>
 						<div class="lecture_list-table-body__lecture_name">${lec_list.lecture_name}</div>
 						<div class="lecture_list-table-body__professor_name">${lec_list.professor_name}</div>
@@ -130,33 +123,31 @@
 									<금> 17:00 ~ 20:00 
 								</c:when>
 							</c:choose>
-
 						</div>
-						<div class="lecture_list-table-body__semester">
-							${lec_list.semester}</div>
-
-						<div class="lecture_list-table-body__student_full">0 /
-							${lec_list.student_full}</div>
+						<div class="lecture_list-table-body__semester">${lec_list.semester}</div>
+						<div class="lecture_list-table-body__student_full">
+							<c:choose>
+								<c:when test="${lec_list.lecture_code < 2700}">
+									${lec_list.student_full} / 20
+						        </c:when>
+								<c:otherwise>
+						        	${lec_list.student_full} / 10
+						        </c:otherwise>
+							</c:choose>
+						</div>
 						<div class="lecture_list-table-body__credit">${lec_list.credit}</div>
 						<div class="lecture_list-table-body__button">
-							<button id="view_btn" value="${vs.index}"
-								class="custom-btn btn-1" style="margin-bottom: 5px;">조회</button>
+							<button id="view_btn" value="${vs.index}" class="custom-btn btn-1" style="margin-bottom: 5px;">조회</button>
 						</div>
 					</div>
 				</c:forEach>
-
 			</div>
 		</div>
 	</form>
 
-
-
-
-
 	<script type="text/javascript">
       let sForm = $('#search_form');
       let lForm = $('#lec_list_form');
-
       
          /* 검색 버튼 동작 */
          $("#search_form button").on("click", function(e) {
@@ -174,6 +165,17 @@
             sForm.submit();
          });
 
+      var target = document.querySelectorAll(".select");
+      var view_btn = document.querySelectorAll("#view_btn");
+      var lecture_code = document.querySelectorAll(".lecture_list-table-body__lecture_code");
+      var numx;
+      for (let i = 0; i < view_btn.length; i++) {
+         view_btn[i].addEventListener("click", function() {
+            $("#lec_list_form").prepend("<input type='hidden' name='lecture_code' value='"+ lecture_code[view_btn[i].value].innerText + "'>")
+            $("#lec_list_form").submit();
+         });
+      }
+      
       /* ajax array
       var array = {${lec_list}};
       jQuery.ajaxSettings.traditional = true; // 배열 데이터 직렬화
@@ -193,17 +195,6 @@
           }
       });
        */
-
-      var target = document.querySelectorAll(".select");
-      var view_btn = document.querySelectorAll("#view_btn");
-      var lecture_code = document.querySelectorAll(".lecture_list-table-body__lecture_code");
-      var numx;
-      for (let i = 0; i < view_btn.length; i++) {
-         view_btn[i].addEventListener("click", function() {
-            $("#lec_list_form").prepend("<input type='hidden' name='lecture_code' value='"+ lecture_code[view_btn[i].value].innerText + "'>")
-            $("#lec_list_form").submit();
-         });
-      }
 
       /*
       var status = this.checkedIndex.value;

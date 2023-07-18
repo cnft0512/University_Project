@@ -1,36 +1,35 @@
 @charset "UTF-8";
 /* lecture_list */
 #xx {
-   background-color: blue;
-   width: 200px;
-   height: 200px;
+	background-color: blue;
+	width: 200px;
+	height: 200px;
 }
 
 .lecture_list-table {
-   width: 100%;
+	width: 100%;
 }
 
 .float-wrap {
-   width: 100%;
-   display: inline;
+	width: 100%;
+	display: inline;
 }
 
 .lecture_list-table-head {
-   background-color: #aaf0d1;
-   border-top: 1px solid #000;
-   border-bottom: 1px solid #000;
-   padding: 11px 0;
-   width: 100%;
-   
+	background-color: #aaf0d1;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	padding: 11px 0;
+	width: 100%;
 }
 
 .lecture_list-table-body {
-   overflow-y: scroll;
-   height: 300px;
-   border-top: 1px solid #000;
-   border-bottom: 1px solid #000;
-   padding: 11px 0;
-   width: 100%;
+	overflow-y: scroll;
+	height: 300px;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	padding: 11px 0;
+	width: 100%;
 }
 
 .lecture_list_body_row:hover {
@@ -38,358 +37,356 @@
 }
 
 .lecture_list-table-body::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .lec_list-table-body {
-   overflow-y: scroll;
-   height:auto;
-   max-height: 200px;
-   border-top: 1px solid #000;
-   border-bottom: 1px solid #000;
-   padding: 11px 0;
-   width: 100%;   
+	overflow-y: scroll;
+	height: auto;
+	max-height: 200px;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	padding: 11px 0;
+	width: 100%;
 }
 
 .lec_list-table-body::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
-
 
 /* Head */
 .lecture_list-table-head__lecture_code {
-   width: 100px;
-   text-align: center;
-   font-size: 16px;
-   color: #000;
-   display: table-cell;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+	width: 100px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__lecture_name {
-   width: 450px;
-   text-align: center;
-   font-size: 16px;
-   color: #000;
-   display: table-cell;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+	width: 450px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__professor_name {
-   width: 130px;
-   text-align: center;
-   font-size: 16px;
-   color: #000;
-   display: table-cell;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+	width: 130px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__grade {
-   width: 70px;
-   text-align: center;
-   font-size: 16px;
-   color: #000;
-   display: table-cell;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+	width: 70px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__classroom {
-   width: 160px;
-   text-align: center;
-   font-size: 16px;
-   color: #000;
-   display: table-cell;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   
+	width: 160px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__lecture_time {
-   width: 220px;
-   text-align: center;
-   font-size: 16px;
-   color: #000;
-   display: table-cell;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+	width: 220px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__lecture_year {
-   width: 100px;
-   text-align: center;
-   font-size: 16px;
-   color: #000;
-   display: table-cell;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+	width: 100px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__semester {
-   width: 100px;
-   text-align: center;
-   font-size: 16px;
-   color: #000;
-   display: table-cell;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+	width: 100px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__student_full {
-   width: 120px;
-   text-align: center;
-   font-size: 16px;
-   color: #000;
-   display: table-cell;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+	width: 120px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 .lecture_list-table-head__credit {
-   width: 70px;
-   text-align: center;
-   font-size: 16px;
-   color: #000;
-   display: table-cell;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+	width: 70px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
-.lecture_list-table-head__check{
-   width: 100px;
-   text-align: center;
-   font-size: 16px;
-   color: #000;
-   display: table-cell;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
+.lecture_list-table-head__check {
+	width: 100px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
 }
 
 /* Lecture List Body */
 .lecture_list-table-body__lecture_code {
-   width: 100px;
-   font-size: 16px;   
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 100px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lecture_list-table-body__lecture_name {
-   width: 450px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 450px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lecture_list-table-body__professor_name {
-   width: 130px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 130px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lecture_list-table-body__grade {
-   width: 70px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 70px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lecture_list-table-body__classroom {
-   width: 160px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 160px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lecture_list-table-body__lecture_time {
-   width: 220px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 220px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lecture_list-table-body__lecture_year {
-   width: 100px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 100px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lecture_list-table-body__semester {
-   width: 100px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 100px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lecture_list-table-body__student_full {
-   width: 120px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 120px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lecture_list-table-body__credit {
-   width: 70px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 70px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
-.lecture_list-table-body__check{
-   width: 100px;
-   text-align: center;
-   font-size: 16px;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   color: #000;
-   display: table-cell;
+.lecture_list-table-body__check {
+	width: 100px;
+	text-align: center;
+	font-size: 16px;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	color: #000;
+	display: table-cell;
 }
 
 /* Basket Body */
 .lec_select-table-body__lecture_code {
-   width: 100px;
-   font-size: 16px;   
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;   
-   text-align: center;
+	width: 100px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lec_select-table-body__lecture_name {
-   width: 450px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 450px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lec_select-table-body__professor_name {
-   width: 130px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 130px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lec_select-table-body__grade {
-   width: 70px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 70px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lec_select-table-body__classroom {
-   width: 160px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 160px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lec_select-table-body__lecture_time {
-   width: 220px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 220px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lec_select-table-body__lecture_year {
-   width: 100px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 100px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lec_select-table-body__semester {
-   width: 100px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 100px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lec_select-table-body__student_full {
-   width: 120px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 120px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
 .lec_select-table-body__credit {
-   width: 70px;
-   font-size: 16px;
-   display: table-cell;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   text-align: center;
+	width: 70px;
+	font-size: 16px;
+	display: table-cell;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	text-align: center;
 }
 
-.lec_select-table-body__check{
-   width: 100px;
-   text-align: center;
-   font-size: 16px;
-   border-bottom: 1px solid #c6c6c6;
-   border-right: 1px solid #c6c6c6;
-   border-left: 1px solid #c6c6c6;
-   color: #000;
-   display: table-cell;
+.lec_select-table-body__check {
+	width: 100px;
+	text-align: center;
+	font-size: 16px;
+	border-bottom: 1px solid #c6c6c6;
+	border-right: 1px solid #c6c6c6;
+	border-left: 1px solid #c6c6c6;
+	color: #000;
+	display: table-cell;
 }
 
 /*
@@ -406,3 +403,25 @@
     display : table-cell;
 }
 */
+
+/* Time Table Modal */
+#timeTableForList {
+   background: #a2e4b8;
+   width: 45%;
+   height: auto;
+   color: #de3163;
+   -webkit-transition: all 0.3s;
+   -o-transition: all 0.3s;
+   transition: all 0.3s;
+   position: absolute;
+   top: 30%;
+   right: -45%;
+}
+
+#timeTableForList.active{
+   margin-right: 67%;
+}
+
+#timeTableForListCollapse {
+	margin-left: 92%;
+}

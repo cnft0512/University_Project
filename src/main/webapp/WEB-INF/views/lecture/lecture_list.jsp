@@ -7,11 +7,172 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../resources/includes/css/style.css">
 <link rel="stylesheet" href="../resources/lecture/css/lecture_list.css">
+<link rel="stylesheet" href="../resources/lecture/css/timeTable.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 </head>
 <body>
+	<button type="button" id="timeTableForListCollapse" class="btn btn-primary">시간표 확인</button>
+     	<div id="timeTableForList">
+     		<div class="title">
+				<h4>▼ ${mVo.name}님 강의 시간표 </h4>
+			</div>
+			<div class="content">
+				<div class="time_table-table" id="tableble">
+					<div class="time_table-table-head">
+						<div class="time_table-table-head__time">시간 / 요일</div>
+						<div class="time_table-table-head__time">MON</div>
+						<div class="time_table-table-head__time">TUE</div>
+						<div class="time_table-table-head__time">WED</div>
+						<div class="time_table-table-head__time">THR</div>
+						<div class="time_table-table-head__time">FRI</div>
+					</div>
+					<div class="time_table-table-body">
+						<c:forEach var="i" begin="0" end="3">
+							<div>
+								<div id="time${i}" class="time_table-table-body__time">
+									<c:if test="${i == 0}">
+				                        08:00~11:00
+				                </c:if>
+									<c:if test="${i == 1}">
+				                        11:00~14:00
+				                </c:if>
+									<c:if test="${i == 2}">
+				                        14:00~17:00
+				                </c:if>
+									<c:if test="${i == 3}">
+				                        17:00~20:00
+				                </c:if>
+								</div>
+								<div id="mon${i}" class="time_table-table-body__mon">
+									<c:forEach var="table" items="${bList}">
+										<c:if test="${table.lecture_time eq 'A' && i == 0}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'F' && i == 1}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'K' && i == 2}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'P' && i == 3}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+									</c:forEach>
+								</div>
+								<div id="tue${i}" class="time_table-table-body__tue">
+									<c:forEach var="table" items="${bList}">
+										<c:if test="${table.lecture_time eq 'B' && i == 0}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'G' && i == 1}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'L' && i == 2}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'Q' && i == 3}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+									</c:forEach>
+								</div>
+								<div id="wed${i}" class="time_table-table-body__wed">
+									<c:forEach var="table" items="${bList}">
+										<c:if test="${table.lecture_time eq 'C' && i == 0}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'H' && i == 1}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'M' && i == 2}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'R' && i == 3}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+									</c:forEach>
+								</div>
+								<div id="thr${i}" class="time_table-table-body__thr">
+									<c:forEach var="table" items="${bList}">
+										<c:if test="${table.lecture_time eq 'D' && i == 0}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'I' && i == 1}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'N' && i == 2}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'S' && i == 3}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+									</c:forEach>
+								</div>
+								<div id="fri${i}" class="time_table-table-body__fri">
+									<c:forEach var="table" items="${bList}">
+										<c:if test="${table.lecture_time eq 'E' && i == 0}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'J' && i == 1}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'O' && i == 2}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+										<c:if test="${table.lecture_time eq 'T' && i == 3}">
+				                           ${table.lecture_name}<br>
+				                           ${table.professor_name}<br>
+				                           ${table.classroom}
+				                    </c:if>
+									</c:forEach>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+     	</div>
+
+
 	<!-- 검색 영역 -->
 	<div class="search_wrap">
 		<form id="search_form" name="search_form">
@@ -41,6 +202,7 @@
 		<div class="float-wrap">
 			<h4 class="mypage__sub-title">개설 강좌 조회</h4>
 		</div>
+		
 		<div class="maintable">
 			<div class="lecture_list-table-head">
 				<div class="lecture_list-table-head__lecture_code">강의코드</div>
@@ -57,17 +219,13 @@
 			<div class="lecture_list-table-body">
 				<c:forEach var="lec_list" items="${list}" varStatus="vs">
 					<div class="lecture_list_body_row">
-						<c:if
-							test="${lec_list.depart_code eq mVo.depart_code || lec_list.depart_code eq 10}">
+						<c:if test="${lec_list.depart_code eq mVo.depart_code || lec_list.depart_code eq 10}">
 							<c:choose>
-								<c:when
-									test="${lec_list.semester ne '2학기' && serverTime.getMonth() eq 'SEPTEMBER'}">
-									<%@ include file="../lecture/list.jsp"%>
+								<c:when test="${lec_list.semester ne '2학기' && serverTime.getMonth() eq 'JULY'}">
+									<%@ include file="../lecture/list.jsp"%> <!-- 1학기 -->
 								</c:when>
-								<c:when
-									test="${lec_list.semester ne '1학기' && serverTime.getMonth() eq 'JULY'}">
-									<%@ include file="../lecture/list.jsp"%>
-
+								<c:when test="${lec_list.semester ne '1학기' && serverTime.getMonth() eq 'SEPTEMBER'}">
+									<%@ include file="../lecture/list.jsp"%> <!-- 2학기 -->
 								</c:when>
 							</c:choose>
 						</c:if>
@@ -186,22 +344,14 @@
 							<input type="button" class="check_del" id="${vs.index}"
 								value="삭 제">
 						</div>
-						<input type="hidden" id="lec_select-table-body__lecture_code"
-							value="${basket.lecture_code}"> <input type="hidden"
-							id="lec_select-table-body__lecture_name"
-							value="${basket.lecture_name}"> <input type="hidden"
-							id="lec_select-table-body__professor_name"
-							value="${basket.professor_name}"> <input type="hidden"
-							id="lec_select-table-body__grade" value="${basket.grade}">
-						<input type="hidden" id="lec_select-table-body__classroom"
-							value="${basket.classroom}"> <input type="hidden"
-							id="lec_select-table-body__lecture_time"
-							value="${basket.lecture_time}"> <input type="hidden"
-							id="lec_select-table-body__lecture_year"
-							value="${basket.lecture_year}"> <input type="hidden"
-							id="lec_select-table-body__semester" value="${basket.semester}">
-						<input type="hidden" id="lec_select-table-body__credit"
-							value="${basket.credit}">
+						<input type="hidden" id="lec_select-table-body__lecture_code" value="${basket.lecture_code}">
+						<input type="hidden" id="lec_select-table-body__lecture_name" value="${basket.lecture_name}">
+						<input type="hidden" id="lec_select-table-body__professor_name" value="${basket.professor_name}">
+						<input type="hidden" id="lec_select-table-body__grade" value="${basket.grade}">
+						<input type="hidden" id="lec_select-table-body__classroom" value="${basket.classroom}">
+						<input type="hidden" id="lec_select-table-body__lecture_time" value="${basket.lecture_time}">
+						<input type="hidden" id="lec_select-table-body__lecture_year" value="${basket.lecture_year}">
+						<input type="hidden" id="lec_select-table-body__semester" value="${basket.semester}">
 					</div>
 				</c:forEach>
 			</div>
@@ -209,8 +359,9 @@
 	</form>
 
 	<form id="calculate">
-		<div class="calculate" style="float: right; margin-right: 100px;">
+		<div class="calculate" style="float: right; margin-right: 120px;">
 			<h4>수강 학점 합계 : ${bList.size() * 3}</h4>
+			<button class="submitMyList">수강 확정</button>
 		</div>
 	</form>
 
@@ -218,12 +369,14 @@
 		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 		<input type="hidden" name="type" value="${pageMaker.cri.type}">
 	</form>
+	
+	
 
 	<script type="text/javascript">
       let sForm = $('#search_form');
       let lForm = $('#lec_list_form');
       let bForm = $('#basket_form');
-
+      
       var btn = document.querySelectorAll(".search_btn");
 
       /* 검색 버튼 동작 */
@@ -242,33 +395,23 @@
          sForm.submit();
       });
 
-      var select = document.querySelectorAll(".check_in");
-      var lec_code = document
-            .querySelectorAll("#lecture_list-table-body__lecture_code");
-      var lec_name = document
-            .querySelectorAll("#lecture_list-table-body__lecture_name");
-      var pro_name = document
-            .querySelectorAll("#lecture_list-table-body__professor_name");
-      var grade = document
-            .querySelectorAll("#lecture_list-table-body__grade");
-      var classroom = document
-            .querySelectorAll("#lecture_list-table-body__classroom");
-      var lec_time = document
-            .querySelectorAll("#lecture_list-table-body__lecture_time");
-      var lec_year = document
-            .querySelectorAll("#lecture_list-table-body__lecture_year");
-      var semester = document
-            .querySelectorAll("#lecture_list-table-body__semester");
-      var stu_full = document
-            .querySelectorAll("#lecture_list-table-body__student_full");
-      var credit = document
-            .querySelectorAll("#lecture_list-table-body__credit");
       let id = ${mVo.id};
+      var select = document.querySelectorAll(".check_in");
+      var lec_code = document.querySelectorAll("#lecture_list-table-body__lecture_code");
+      var lec_name = document.querySelectorAll("#lecture_list-table-body__lecture_name");
+      var pro_name = document.querySelectorAll("#lecture_list-table-body__professor_name");
+      var grade = document.querySelectorAll("#lecture_list-table-body__grade");
+      var classroom = document.querySelectorAll("#lecture_list-table-body__classroom");
+      var lec_time = document.querySelectorAll("#lecture_list-table-body__lecture_time");
+      var lec_year = document.querySelectorAll("#lecture_list-table-body__lecture_year");
+      var semester = document.querySelectorAll("#lecture_list-table-body__semester");
+      var stu_full = document.querySelectorAll("#lecture_list-table-body__student_full");
+      var credit = document.querySelectorAll("#lecture_list-table-body__credit");
      
       /* 체크하면 바로 장바구니로 insert 하기!! */
       for (let i = 0; i < select.length; i++) {
          select[i].addEventListener("click", function() {   
-            let number =parseInt(stu_full[i].value);
+            let number = parseInt(stu_full[i].value);
             number++;
          if (stu_full[i].value >= 20) {
             alert("전공 최대 수강 인원을 넘었습니다.");
@@ -278,8 +421,7 @@
             alert("교양 최대 수강 인원을 넘었습니다.");
             style.display = "none";
          }
-            
-            const data1 = {
+           const data1 = {
                id : id,
                lecture_code : lec_code[i].value,
                lecture_name : lec_name[i].value,
@@ -318,16 +460,24 @@
          })
       }
 
-      /* 장바구니 지우기!! */
       var check_del = document.querySelectorAll(".check_del");
-      var code_b = document.querySelectorAll("#lec_select-table-body__lecture_code");
+      var basket_code = document.querySelectorAll("#lec_select-table-body__lecture_code");
+      var basket_l_name = document.querySelectorAll("#lec_select-table-body__lecture_name");
+      var basket_p_name = document.querySelectorAll("#lec_select-table-body__professor_name");
+      var basket_grade = document.querySelectorAll("#lec_select-table-body__grade");
+      var basket_classroom = document.querySelectorAll("#lec_select-table-body__classroom");
+      var basket_time = document.querySelectorAll("#lec_select-table-body__lecture_time");
+      var basket_year = document.querySelectorAll("#lec_select-table-body__lecture_year");
+      var basket_semester = document.querySelectorAll("#lec_select-table-body__semester");
+      
+      /* 장바구니 지우기!! */
       for (let i = 0; i < check_del.length; i++) {
          check_del[i].addEventListener("click", function() {
             let number = parseInt(stu_full[i].value);
             number--;
             const data2 = {
                id : id,
-               lecture_code : code_b[i].value,
+               lecture_code : basket_code[i].value,
                lecture_year : lec_year[i].value,
                student_full : number
             }
@@ -354,7 +504,48 @@
                }
             });
          })
+         
+         /* 나의 강의로 값 넘기기*/
+         $(".submitMyList").on("click", function () {
+       	  alert("나의 강의로~");
+	       	  const data3 = {
+	       			  id : id,
+	                  lecture_code : basket_code[i].value,
+	                  lecture_name : basket_l_name[i].value,
+	                  professor_name : basket_p_name[i].value,
+	                  grade : basket_grade[i].value,
+	                  classroom : basket_classroom[i].value,
+	                  lecture_time : basket_time[i].value,
+	                  lecture_year : basket_year[i].value,
+	                  semester : basket_semester[i].value
+	          }
+
+                  $.ajax({
+                     type : "POST",
+                     url : "/lecture/myList.do",
+                     async : true,
+                     data : data3,
+                     success : function(result) {
+                        console.log("result: " + result);
+                        if (result === "addMyList") {
+                           alert('나의 강의 들어감');
+                           location.href = "/lecture/lecture_list";
+                           //location.reload();
+                        } else {
+                           alert('나의 강의 안 들어감');
+                        }
+                     },
+                     error : function(request, status, error) {
+                        alert("code:" + request.status + "\n" + "message:"
+                              + request.responseText + "\n" + "error:"
+                              + error);
+                     }
+                  });
+         });
+         
       }
    </script>
+   
+   <script src="../resources/includes/js/main.js"></script>
 </body>
 </html>

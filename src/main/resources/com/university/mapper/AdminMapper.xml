@@ -6,42 +6,25 @@
 	<!-- 개설 교과 목록 -->
 	<select id="getList" resultType="com.university.model.LectureVO">
       <![CDATA[
-          select * from lecture
+          select * from lecture where lecture_year = #{lecture_year}
       ]]>
 		<if test="keyword != null">
 			<foreach collection="typeArr" item="type">
 				<choose>
 					<when test="type == 'N'.toString()">
-						where lecture_name like '%'||#{keyword}||'%'
-					</when>
-					<when test="type == 'P'.toString()">
-						where professor_name like '%'||#{keyword}||'%'
-					</when>
-					<when test="type == 'G'.toString()">
-						where grade like '%'||#{keyword}||'%'
+						and lecture_name like '%'||#{keyword}||'%'
 					</when>
 					<when test="type == 'C'.toString()">
-						where classroom like '%'||#{keyword}||'%'
+						and lecture_code like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'P'.toString()">
+						and professor_name like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'S'.toString()">
+						and semester like '%'||#{keyword}||'%'
 					</when>
 					<when test="type == 'T'.toString()">
-						where lecture_time
-						<choose>
-							<when test="keyword == '월'.toString()">
-								IN('A','F','K','P')
-							</when>
-							<when test="keyword == '화'.toString()">
-								IN('B','G','L','Q')
-							</when>
-							<when test="keyword == '수'.toString()">
-								IN('C','H','M','R')
-							</when>
-							<when test="keyword == '목'.toString()">
-								IN('D','I','N','S')
-							</when>
-							<when test="keyword == '금'.toString()">
-								IN('E','J','O','T')
-							</when>
-						</choose>
+						and student_name like '%'||#{keyword}||'%'
 					</when>
 				</choose>
 			</foreach>
@@ -62,38 +45,32 @@
 	</select>
 
 	<insert id="insert_student">
-		insert into student(name,
-		depart_code,depart_name,birth,post,address_1,address_2,email,phone,create_date)
+		insert into student(name,depart_code,depart_name,birth,post,address_1,address_2,email,phone,create_date)
 		values(#{name},#{depart_code},#{depart_name},#{birth},#{post},#{address_1},#{address_2},#{email},#{phone},sysdate)
 	</insert>
 
 	<update id="update_studentId">
-		update student set id=concat(#{id},lpad(id_seq.nextval,3,0)),
-		password=#{password} where name=#{name} and depart_code =
-		#{depart_code} <!-- and address_2=#{address_2} -->
+		update student set id = concat(#{id}, lpad(id_seq.nextval,3,0)),
+		password = #{password} where name = #{name} and depart_code = #{depart_code} 
+		<!-- and address_2 = #{address_2} -->
 		<!-- #{id} = create_date의 year + depart_code -->
 		<!-- update student set id=#{id}, password=#{password} where name=#{name} -->
 	</update>
 
-	<select id="getLectureInfo"
-		resultType="com.university.model.LectureVO">
+	<select id="getLectureInfo" resultType="com.university.model.LectureVO">
 		select * from lecture where lecture_code = #{lecture_code}
 	</select>
 
-	<select id="getStudent_lectureList"
-		resultType="com.university.model.StudentLectureVO">
-		select * from student_lecture where lecture_code = #{lecture_code} order by
-		id asc
+	<select id="getStudent_lectureList" resultType="com.university.model.StudentLectureVO">
+		select * from student_lecture where lecture_code = #{lecture_code} order by id asc
 	</select>
 
 	<update id="update_mid_score">
-		update student_lecture set midterm_exam = #{midterm_exam} where id = #{id}
-		and lecture_code = #{lecture_code}
+		update student_lecture set midterm_exam = #{midterm_exam} where id = #{id} and lecture_code = #{lecture_code}
 	</update>
 
 	<update id="update_final_score">
-		update student_lecture set final_exam = #{final_exam} where id = #{id} and
-		lecture_code = #{lecture_code}
+		update student_lecture set final_exam = #{final_exam} where id = #{id} and lecture_code = #{lecture_code}
 	</update>
 
 </mapper>
