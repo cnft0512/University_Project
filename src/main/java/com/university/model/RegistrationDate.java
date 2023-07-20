@@ -11,6 +11,6 @@ public class RegistrationDate {
 	private final String STARTDATE = "0719090000";
 
 	// 수강 신청 종료 시간
-	private final String ENDDATE = "0719180900";
+	private final String ENDDATE = "0725180900";
 
 }

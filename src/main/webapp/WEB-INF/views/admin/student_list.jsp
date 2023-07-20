@@ -137,7 +137,7 @@
 											      <div class="student_list-table-head__credit_full">졸업학점</div>
 											      <div class="student_list-table-body__credit_full">${sllist.size() * 3} / 140</div>
 											      <div class="student_list-table-head__total_score_avg">총 평균학점</div>
-											      <div class="student_list-table-body__score_avg"></div>
+											      <div class="student_list-table-body__score_avg" id="total"></div>
 											   </div>
 											</c:if>
 										</c:forEach>
@@ -230,6 +230,17 @@
 			});
 		}
 		*/
+		
+		// 평균 학점 계산하기
+		var avg = document.querySelectorAll(".student_list-table-body__score_avg")
+	      let avg_result =0;
+	      
+	      $(document).ready(function() {
+	         for(let i=0; i<avg.length;i++){
+	            avg_result += parseFloat(avg[i].innerText);            
+	         }
+	         $("#total").text((avg_result/avg.length).toFixed(2));
+	      });
 	</script>
 </body>
 </html>
