@@ -133,14 +133,14 @@
 													${(mylist.midterm_exam + mylist.final_exam) / 2}
 												</div>
 												<br>
-												<div class="corner">
-											      <div class="student_list-table-head__credit_full">졸업학점</div>
-											      <div class="student_list-table-body__credit_full">${sllist.size() * 3} / 140</div>
-											      <div class="student_list-table-head__total_score_avg">총 평균학점</div>
-											      <div class="student_list-table-body__score_avg" id="total"></div>
-											   </div>
 											</c:if>
 										</c:forEach>
+									</div>
+									<div class="corner">
+										<div class="student_list-table-head__credit_full">졸업학점</div>
+										<div class="student_list-table-body__credit_full">${sllist.size() * 3} / 140</div>
+										<div class="student_list-table-head__total_score_avg">총 평균학점</div>
+										<div class="student_list-table-body__total_score_avg" id="total"></div>
 									</div>
 								</div>
 							</li>
