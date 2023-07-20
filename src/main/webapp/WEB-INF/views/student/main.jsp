@@ -23,8 +23,8 @@
 
 </head>
 <body>
-   <div id = "logo" style="width:700px; height: 700px; margin: 0 auto;">
-      메인
+   <div id = "logo">
+      <img src="../resources/includes/images/logo2.png" style="position: absolute; top: 40%; left: 38%; transform:scale(1.5);">
    </div>        
            
       

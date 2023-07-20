@@ -23,7 +23,6 @@ import com.university.model.LectureVO;
 import com.university.model.StudentLectureVO;
 import com.university.model.StudentVO;
 import com.university.service.LectureService;
-import com.university.service.LoginService;
 import com.university.service.StudentService;
 
 @Controller
@@ -38,18 +37,13 @@ public class LectureController {
 	@Autowired
 	private StudentService sService;
 
-	@Autowired
-	private LoginService loginService;
-
 	// Lecture List
 	@GetMapping("/lecture_list")
 	public String listGET(Criteria cri, Model model, HttpSession session) throws Exception {
 		log.info("강의 목록 페이지 진입");
 		StudentVO sVo = (StudentVO) session.getAttribute("mVo"); // 세션 물고 들어오기
 		LocalDateTime serverTime = (LocalDateTime) session.getAttribute("serverTime");
-		List<LectureVO> list = lService.getList(serverTime.getYear(), cri.getKeyword(), cri.getType(),
-				cri.getTypeArr());
-
+		List<LectureVO> list = lService.getList(serverTime.getYear(), cri.getKeyword(), cri.getType(), cri.getTypeArr());
 		model.addAttribute("list", list);
 		model.addAttribute("bList", lService.getLecture(sVo.getId()));
 		return "lecture_list";
@@ -119,9 +113,7 @@ public class LectureController {
 			slVo.setSemester(lecture_yearNsemester[1]);
 			model.addAttribute("semester", slVo.getSemester());
 			model.addAttribute("year", slVo.getLecture_year());
-			model.addAttribute("sVo", loginService.memberLogin(sVo));
 			model.addAttribute("sllist", sService.getStudentLectureList(sVo.getId(), slVo.getLecture_year(), slVo.getSemester()));
-			model.addAttribute("count", sService.getStudentLectureCount(sVo.getId()));
 			return "timeTable";
 		} else {
 			return "timeTable";

@@ -407,77 +407,114 @@
       var semester = document.querySelectorAll("#lecture_list-table-body__semester");
       var stu_full = document.querySelectorAll("#lecture_list-table-body__student_full");
       var credit = document.querySelectorAll("#lecture_list-table-body__credit");
-     
+    
+      function time() {
+         now  = new Date();
+         month = now.getMonth()+1;   //현재시간 중 달. 달은 0부터 시작하기 때문에 +1 
+         if((month+"").length < 2){
+             month="0"+month;   //달의 숫자가 1자리면 앞에 0을 붙임.
+         }
+         date = now.getDate();      //현재 시간 중 날짜.
+         if((date+"").length < 2){
+             date="0"+date;      
+         }
+         hour = now.getHours();   //현재 시간 중 시간.
+         if((hour+"").length < 2){
+         hour="0"+hour;      
+         }
+         min = now.getMinutes();   //현재 시간 중 시간.
+         if((min+"").length < 2){
+         min="0"+min;      
+         }
+         sec = now.getSeconds();   //현재 시간 중 시간.
+         if((sec+"").length < 2){
+         sec="0"+sec;      
+         }
+         today = month + "" + date + "" + hour + "" + min + "" + sec; 
+      }
+      
+
       /* 체크하면 바로 장바구니로 insert 하기!! */
       for (let i = 0; i < select.length; i++) {
-         select[i].addEventListener("click", function() {   
-            let number = parseInt(stu_full[i].value);
-            number++;
-         if (stu_full[i].value >= 20) {
-            alert("전공 최대 수강 인원을 넘었습니다.");
-            style.display = "none";
-         }
-         else if (lec_code[i].value > 2700 && stu_full[i].value >= 10) {
-            alert("교양 최대 수강 인원을 넘었습니다.");
-            style.display = "none";
-         }
-           const data1 = {
-               id : id,
-               lecture_code : lec_code[i].value,
-               lecture_name : lec_name[i].value,
-               professor_name : pro_name[i].value,
-               grade : grade[i].value,
-               classroom : classroom[i].value,
-               lecture_time : lec_time[i].value,
-               lecture_year : lec_year[i].value,
-               semester : semester[i].value,
-               student_full : number,
-               credit : credit[i].value
-            }
+         select[i]
+               .addEventListener(
+                     "click",
+                     function() {
+                        time();                        
+                        if(today<${endDate}){
+                        let number = parseInt(stu_full[i].value);
+                        number++;
+                        if (stu_full[i].value >= 20) {
+                           alert("전공 최대 수강 인원을 넘었습니다.");
+                           style.display = "none";
+                        } else if (lec_code[i].value > 2700
+                              && stu_full[i].value >= 10) {
+                           alert("교양 최대 수강 인원을 넘었습니다.");
+                           style.display = "none";
+                        }
 
-            $.ajax({
-               type : "POST",
-               url : "/lecture/lecture_list",
-               async : true,
-               data : data1,
-               success : function(result) {
-                  console.log("result: " + result);
-                  if (result === "inputSuccess") {
-                     alert('장바구니 들어갔음');
-                     location.href = "/lecture/lecture_list";
-                  } else if (result === "fail_time") {
-                     alert('강의 시간이 겹칩니다.');
-                  } else {
-                     alert('최대 수강 학점을 초과하였습니다. (최대 수강 학점 : 24학점)');
-                  }
-               },
-               error : function(request, status, error) {
-                  alert("code:" + request.status + "\n" + "message:"
-                        + request.responseText + "\n" + "error:"
-                        + error);
-               }
-            });
-         })
+                        const data1 = {
+                           id : id,
+                           lecture_code : lec_code[i].value,
+                           lecture_name : lec_name[i].value,
+                           professor_name : pro_name[i].value,
+                           grade : grade[i].value,
+                           classroom : classroom[i].value,
+                           lecture_time : lec_time[i].value,
+                           lecture_year : lec_year[i].value,
+                           semester : semester[i].value,
+                           student_full : number,
+                           credit : credit[i].value
+                        }
+
+                        $
+                              .ajax({
+                                 type : "POST",
+                                 url : "/lecture/lecture_list",
+                                 async : true,
+                                 data : data1,
+                                 success : function(result) {
+                                    console
+                                          .log("result: "
+                                                + result);
+                                    if (result === "inputSuccess") {
+                                       alert('장바구니 들어갔음');
+                                       location.href = "/lecture/lecture_list";
+                                    } else if (result === "fail_time") {
+                                       alert('강의 시간이 겹칩니다.');
+                                    } else {
+                                       alert('최대 수강 학점을 초과하였습니다. (최대 수강 학점 : 24학점)');
+                                    }
+                                 },
+                                 error : function(request, status,
+                                       error) {
+                                    alert("code:" + request.status
+                                          + "\n" + "message:"
+                                          + request.responseText
+                                          + "\n" + "error:"
+                                          + error);
+                                 }
+                              });
+                        }else{
+                           alert("수강 신청이 종료되었습니다.");
+                           location.href = "/student/main";
+                        }
+                     })
       }
 
-      var check_del = document.querySelectorAll(".check_del");
-      var basket_code = document.querySelectorAll("#lec_select-table-body__lecture_code");
-      var basket_l_name = document.querySelectorAll("#lec_select-table-body__lecture_name");
-      var basket_p_name = document.querySelectorAll("#lec_select-table-body__professor_name");
-      var basket_grade = document.querySelectorAll("#lec_select-table-body__grade");
-      var basket_classroom = document.querySelectorAll("#lec_select-table-body__classroom");
-      var basket_time = document.querySelectorAll("#lec_select-table-body__lecture_time");
-      var basket_year = document.querySelectorAll("#lec_select-table-body__lecture_year");
-      var basket_semester = document.querySelectorAll("#lec_select-table-body__semester");
-      
       /* 장바구니 지우기!! */
+      var check_del = document.querySelectorAll(".check_del");
+      var code_b = document
+            .querySelectorAll("#lec_select-table-body__lecture_code");
       for (let i = 0; i < check_del.length; i++) {
          check_del[i].addEventListener("click", function() {
+            time();            
+            if(today<${endDate}){
             let number = parseInt(stu_full[i].value);
             number--;
             const data2 = {
                id : id,
-               lecture_code : basket_code[i].value,
+               lecture_code : code_b[i].value,
                lecture_year : lec_year[i].value,
                student_full : number
             }
@@ -503,46 +540,11 @@
                         + error);
                }
             });
+            }else{
+               alert("수강 신청이 종료되었습니다.");
+               location.href = "/student/main";
+            }
          })
-         
-         /* 나의 강의로 값 넘기기*/
-         $(".submitMyList").on("click", function () {
-       	  alert("나의 강의로~");
-	       	  const data3 = {
-	       			  id : id,
-	                  lecture_code : basket_code[i].value,
-	                  lecture_name : basket_l_name[i].value,
-	                  professor_name : basket_p_name[i].value,
-	                  grade : basket_grade[i].value,
-	                  classroom : basket_classroom[i].value,
-	                  lecture_time : basket_time[i].value,
-	                  lecture_year : basket_year[i].value,
-	                  semester : basket_semester[i].value
-	          }
-
-                  $.ajax({
-                     type : "POST",
-                     url : "/lecture/myList.do",
-                     async : true,
-                     data : data3,
-                     success : function(result) {
-                        console.log("result: " + result);
-                        if (result === "addMyList") {
-                           alert('나의 강의 들어감');
-                           location.href = "/lecture/lecture_list";
-                           //location.reload();
-                        } else {
-                           alert('나의 강의 안 들어감');
-                        }
-                     },
-                     error : function(request, status, error) {
-                        alert("code:" + request.status + "\n" + "message:"
-                              + request.responseText + "\n" + "error:"
-                              + error);
-                     }
-                  });
-         });
-         
       }
    </script>
    

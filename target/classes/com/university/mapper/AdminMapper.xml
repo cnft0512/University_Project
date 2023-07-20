@@ -3,28 +3,25 @@
 
 <mapper namespace="com.university.mapper.AdminMapper">
 
-	<!-- 개설 교과 목록 -->
+	<!-- 강의 조회 -->
 	<select id="getList" resultType="com.university.model.LectureVO">
       <![CDATA[
-          select * from lecture where lecture_year = #{lecture_year}
+          select * from lecture 
       ]]>
 		<if test="keyword != null">
 			<foreach collection="typeArr" item="type">
 				<choose>
 					<when test="type == 'N'.toString()">
-						and lecture_name like '%'||#{keyword}||'%'
+						where lecture_name like '%'||#{keyword}||'%'
 					</when>
 					<when test="type == 'C'.toString()">
-						and lecture_code like '%'||#{keyword}||'%'
+						where lecture_code like '%'||#{keyword}||'%'
 					</when>
 					<when test="type == 'P'.toString()">
-						and professor_name like '%'||#{keyword}||'%'
+						where professor_name like '%'||#{keyword}||'%'
 					</when>
 					<when test="type == 'S'.toString()">
-						and semester like '%'||#{keyword}||'%'
-					</when>
-					<when test="type == 'T'.toString()">
-						and student_name like '%'||#{keyword}||'%'
+						where semester like '%'||#{keyword}||'%'
 					</when>
 				</choose>
 			</foreach>
@@ -33,15 +30,13 @@
       	 order by lecture_code asc
       ]]>
 	</select>
-
-	<select id="getDepartList"
-		resultType="com.university.model.DepartmentVO">
+	
+	<select id="getDepartList" resultType="com.university.model.DepartmentVO">
 		select * from department
 	</select>
 
-	<select id="getStudentList"
-		resultType="com.university.model.StudentVO">
-		select * from student order by id asc
+	<select id="getStudentList" resultType="com.university.model.StudentVO">
+		select * from student where depart_code not in 10 order by id asc
 	</select>
 
 	<insert id="insert_student">
@@ -64,6 +59,10 @@
 	<select id="getStudent_lectureList" resultType="com.university.model.StudentLectureVO">
 		select * from student_lecture where lecture_code = #{lecture_code} order by id asc
 	</select>
+	
+	<select id="getMyList" resultType="com.university.model.StudentLectureVO">
+		select * from student_lecture order by lecture_code asc, lecture_year desc
+	</select>
 
 	<update id="update_mid_score">
 		update student_lecture set midterm_exam = #{midterm_exam} where id = #{id} and lecture_code = #{lecture_code}
@@ -72,5 +71,14 @@
 	<update id="update_final_score">
 		update student_lecture set final_exam = #{final_exam} where id = #{id} and lecture_code = #{lecture_code}
 	</update>
+	
+	<insert id="copyBasketToStudent_lecture">
+   		insert into student_lecture(id,lecture_code,lecture_name,professor_name,grade,classroom,lecture_time,lecture_year,semester)
+    	select id,lecture_code,lecture_name,professor_name,grade,classroom,lecture_time,lecture_year,semester from basket
+   	</insert>
+   
+   	<delete id = "deleteBasket">
+      	delete from basket
+   	</delete>
 
 </mapper>

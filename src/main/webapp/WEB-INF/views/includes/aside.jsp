@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDateTime"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -18,6 +19,10 @@
    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../resources/includes/modal.css">
 <link rel="stylesheet" href="../resources/includes/css/style.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+   crossorigin="anonymous"></script>
+   
 
 </head>
 <body>
@@ -28,7 +33,7 @@
                <a href="/student/main" class="img logo rounded-circle mb-5"
                   style="background-image: url(../resources/includes/images/admin.png);"></a>
                <ul class="list-unstyled components mb-5">
-                  <li><a href="#">수강 신청 기간 오픈</a></li>
+                  <!--  <li><a href="#" onclick="class_registrationSTART()">수강 신청 기간 오픈</a></li>-->
                   <li><a href="#homeSubmenu" data-toggle="collapse"
                      aria-expanded="false" class="dropdown-toggle">학생 관리</a>
                      <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -62,7 +67,7 @@
                   </c:otherwise>
                </c:choose>
                </div>
-               <div class ="infoZone" style="float: right; margin-right: 30px; margin-top: 20px; color: #643200;">
+               <div class ="infoZone" style="float: right;margin-right: 30px; margin-top: 20px; color:#643200;">
                   ${mVo.id}<br>
                   ${mVo.name}<br>
                   <c:forEach var="depart_list" items="${departlist}">
@@ -78,14 +83,23 @@
                   style="background-image: url(../resources/includes/images/logo.jpg);"></a>-->
                <ul class="list-unstyled components mb-5">
                   <li>
+                  <!-- <a href="/lecture/lecture_list" id="class_registration">수강 신청</a> -->
+                  
                   <c:choose>
-                     <c:when test="${serverTime.getHour()>8}">
-                        <a href="/lecture/lecture_list">수강 신청</a>
+                     <c:when test="${logInTime>startDate && logInTime<endDate}">
+                        <a href="/lecture/lecture_list" class="class_registration">수강 신청</a>
                      </c:when>
                      <c:otherwise>
-                     수강신청 기간이 아닙니다.
+                        <a href="#">수강 신청 기간이 아닙니다.</a>
+                     <script>
+                     var link = document.location.href;
+                     if(link === "http://localhost:8080/lecture/lecture_list"){                        
+                        location.href = "/student/main";
+                     }
+                     </script>
                      </c:otherwise>
                   </c:choose>
+                  
                   </li>
                   <li><a href="#homeSubmenu" data-toggle="collapse"
                      aria-expanded="false" class="dropdown-toggle">자기 정보 관리</a>
@@ -162,6 +176,7 @@
             </c:otherwise>
          </c:choose>
       </div>
+      <form action="/admin/class_registration_end" method="post" id="class_registrationForm"></form>
    </nav>
    
    <script src="../resources/includes/js/jquery.min.js"></script>
@@ -170,8 +185,7 @@
    <script src="../resources/includes/js/main.js"></script>
 
    <script>
-   
-   
+      
    function readURL(input) {
         if (input.files && input.files[0]) {
           var reader = new FileReader();
@@ -222,7 +236,6 @@
       $(".imgForm").submit();
       this.close();
    })
-   
    
    </script>
 </body>

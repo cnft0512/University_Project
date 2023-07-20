@@ -24,7 +24,6 @@
 					<option value="C" <c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>강의코드</option>
 					<option value="P" <c:out value="${pageMaker.cri.type eq 'P'?'selected':'' }"/>>교수명</option>
 					<option value="S" <c:out value="${pageMaker.cri.type eq 'S'?'selected':'' }"/>>수강학기</option>
-					<option value="T" <c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>학생이름</option>
 				</select>
 				<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}" />'>
 				<button class='btn search_btn'>검 색</button>

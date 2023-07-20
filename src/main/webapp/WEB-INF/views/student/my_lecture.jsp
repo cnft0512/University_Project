@@ -22,7 +22,7 @@
 <body>
 
    <h2>나의 강의 페이지</h2>
-   
+
    <br>
    <form id="my_lecture_form" class="my_lecture_form" action="/student/my_lecture" method="get">
    <select name = "lecture_yearNsemester" id = "year">
@@ -44,116 +44,113 @@
 
       </div>
    </div>
-
-
-
-
+   
       <div class="my_lecture-table-body">
-         <c:forEach var="sllist" items="${sllist}" varStatus="vs">
+         <c:forEach var="sllist_year" items="${sllist_year}" varStatus="vs">
             <div id="click">
-               <div class="my_lecture-table-body__depart_code">${sllist.lecture_code}</div>
-               <div class="my_lecture-table-body__depart_name">${sllist.lecture_name}</div>
-               <div class="my_lecture-table-body__professor_name">${sllist.professor_name}</div>
+               <div class="my_lecture-table-body__depart_code">${sllist_year.lecture_code}</div>
+               <div class="my_lecture-table-body__depart_name">${sllist_year.lecture_name}</div>
+               <div class="my_lecture-table-body__professor_name">${sllist_year.professor_name}</div>
                <div class="my_lecture-table-body__lecture_time">
                   <c:choose>
-                     <c:when test="${sllist.lecture_time eq 'A'}">
+                     <c:when test="${sllist_year.lecture_time eq 'A'}">
                         <월> 08:00 ~ 11:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'B'}">
+                     <c:when test="${sllist_year.lecture_time eq 'B'}">
                         <화> 08:00 ~ 11:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'C'}">
+                     <c:when test="${sllist_year.lecture_time eq 'C'}">
                         <수> 08:00 ~ 11:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'D'}">
+                     <c:when test="${sllist_year.lecture_time eq 'D'}">
                         <목> 08:00 ~ 11:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'E'}">
+                     <c:when test="${sllist_year.lecture_time eq 'E'}">
                         <금> 08:00 ~ 11:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'F'}">
+                     <c:when test="${sllist_year.lecture_time eq 'F'}">
                         <월> 11:00 ~ 14:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'G'}">
+                     <c:when test="${sllist_year.lecture_time eq 'G'}">
                         <화> 11:00 ~ 14:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'H'}">
+                     <c:when test="${sllist_year.lecture_time eq 'H'}">
                         <수> 11:00 ~ 14:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'I'}">
+                     <c:when test="${sllist_year.lecture_time eq 'I'}">
                         <목> 11:00 ~ 14:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'J'}">
+                     <c:when test="${sllist_year.lecture_time eq 'J'}">
                         <금> 11:00 ~ 14:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'K'}">
+                     <c:when test="${sllist_year.lecture_time eq 'K'}">
                         <월> 14:00 ~ 17:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'L'}">
+                     <c:when test="${sllist_year.lecture_time eq 'L'}">
                         <화> 14:00 ~ 17:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'M'}">
+                     <c:when test="${sllist_year.lecture_time eq 'M'}">
                         <수> 14:00 ~ 17:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'N'}">
+                     <c:when test="${sllist_year.lecture_time eq 'N'}">
                         <목> 14:00 ~ 17:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'O'}">
+                     <c:when test="${sllist_year.lecture_time eq 'O'}">
                         <금> 14:00 ~ 17:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'P'}">
+                     <c:when test="${sllist_year.lecture_time eq 'P'}">
                         <월> 17:00 ~ 20:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'Q'}">
+                     <c:when test="${sllist_year.lecture_time eq 'Q'}">
                         <화> 17:00 ~ 20:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'R'}">
+                     <c:when test="${sllist_year.lecture_time eq 'R'}">
                         <수> 17:00 ~ 20:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'S'}">
+                     <c:when test="${sllist_year.lecture_time eq 'S'}">
                         <목> 17:00 ~ 20:00 
                      </c:when>
-                     <c:when test="${sllist.lecture_time eq 'T'}">
+                     <c:when test="${sllist_year.lecture_time eq 'T'}">
                         <금> 17:00 ~ 20:00 
                      </c:when>
                   </c:choose>
                </div>
-               <div class="my_lecture-table-body__classroom">${sllist.classroom}</div>
+               <div class="my_lecture-table-body__classroom">${sllist_year.classroom}</div>
                <div class="my_lecture-table-body__midterm_exam">
                   <c:choose>
-                     <c:when test="${sllist.midterm_exam eq '4.5'}">A+</c:when>
-                     <c:when test="${sllist.midterm_exam eq '4.3'}">A</c:when>
-                     <c:when test="${sllist.midterm_exam eq '4.0'}">A-</c:when>
-                     <c:when test="${sllist.midterm_exam eq '3.5'}">B+</c:when>
-                     <c:when test="${sllist.midterm_exam eq '3.3'}">B</c:when>
-                     <c:when test="${sllist.midterm_exam eq '3.0'}">B-</c:when>
-                     <c:when test="${sllist.midterm_exam eq '2.5'}">C+</c:when>
-                     <c:when test="${sllist.midterm_exam eq '2.3'}">C</c:when>
-                     <c:when test="${sllist.midterm_exam eq '2.0'}">C-</c:when>
-                     <c:when test="${sllist.midterm_exam eq '1.5'}">D+</c:when>
-                     <c:when test="${sllist.midterm_exam eq '1.3'}">D</c:when>
-                     <c:when test="${sllist.midterm_exam eq '1.0'}">D-</c:when>
-                     <c:when test="${sllist.midterm_exam eq '0.0'}">F</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '4.5'}">A+</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '4.3'}">A</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '4.0'}">A-</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '3.5'}">B+</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '3.3'}">B</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '3.0'}">B-</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '2.5'}">C+</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '2.3'}">C</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '2.0'}">C-</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '1.5'}">D+</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '1.3'}">D</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '1.0'}">D-</c:when>
+                     <c:when test="${sllist_year.midterm_exam eq '0.0'}">F</c:when>
                   </c:choose>
                </div>
                <div class="my_lecture-table-body__final_exam">
                   <c:choose>
-                     <c:when test="${sllist.final_exam eq '4.5'}">A+</c:when>
-                     <c:when test="${sllist.final_exam eq '4.3'}">A</c:when>
-                     <c:when test="${sllist.final_exam eq '4.0'}">A-</c:when>
-                     <c:when test="${sllist.final_exam eq '3.5'}">B+</c:when>
-                     <c:when test="${sllist.final_exam eq '3.3'}">B</c:when>
-                     <c:when test="${sllist.final_exam eq '3.0'}">B-</c:when>
-                     <c:when test="${sllist.final_exam eq '2.5'}">C+</c:when>
-                     <c:when test="${sllist.final_exam eq '2.3'}">C</c:when>
-                     <c:when test="${sllist.final_exam eq '2.0'}">C-</c:when>
-                     <c:when test="${sllist.final_exam eq '1.5'}">D+</c:when>
-                     <c:when test="${sllist.final_exam eq '1.3'}">D</c:when>
-                     <c:when test="${sllist.final_exam eq '1.0'}">D-</c:when>
-                     <c:when test="${sllist.final_exam eq '0.0'}">F</c:when>
+                     <c:when test="${sllist_year.final_exam eq '4.5'}">A+</c:when>
+                     <c:when test="${sllist_year.final_exam eq '4.3'}">A</c:when>
+                     <c:when test="${sllist_year.final_exam eq '4.0'}">A-</c:when>
+                     <c:when test="${sllist_year.final_exam eq '3.5'}">B+</c:when>
+                     <c:when test="${sllist_year.final_exam eq '3.3'}">B</c:when>
+                     <c:when test="${sllist_year.final_exam eq '3.0'}">B-</c:when>
+                     <c:when test="${sllist_year.final_exam eq '2.5'}">C+</c:when>
+                     <c:when test="${sllist_year.final_exam eq '2.3'}">C</c:when>
+                     <c:when test="${sllist_year.final_exam eq '2.0'}">C-</c:when>
+                     <c:when test="${sllist_year.final_exam eq '1.5'}">D+</c:when>
+                     <c:when test="${sllist_year.final_exam eq '1.3'}">D</c:when>
+                     <c:when test="${sllist_year.final_exam eq '1.0'}">D-</c:when>
+                     <c:when test="${sllist_year.final_exam eq '0.0'}">F</c:when>
                   </c:choose>
                </div>
-               <div id="my_lecture-table-body__score_avg" class="my_lecture-table-body__score_avg">${(sllist.midterm_exam + sllist.final_exam)/2}</div>
+               <div id="my_lecture-table-body__score_avg" class="my_lecture-table-body__score_avg">${(sllist_year.midterm_exam + sllist_year.final_exam)/2}</div>
             </div>
          </c:forEach>
       </div>
@@ -161,7 +158,7 @@
    </form>
    <div class="corner">
       <div class="my_lecture-table-head__credit_full">졸업학점</div>
-      <div class="my_lecture-table-body__credit_full">${sVo.credit_full}
+      <div class="my_lecture-table-body__credit_full">${sllist.size()*3}
          / 140</div>
       <div class="my_lecture-table-head__total_score_avg">총 평균학점</div>
       <div id="total" class="my_lecture-table-body__total_score_avg"></div>

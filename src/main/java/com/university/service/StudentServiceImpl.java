@@ -71,7 +71,7 @@ public class StudentServiceImpl implements StudentService {
    }
 
    @Override
-   public int getStudentLectureCount(int id) throws Exception {
+   public List<StudentLectureVO> getStudentLectureCount(int id) throws Exception {
       return sMapper.getStudentLectureCount(id);
    }
 

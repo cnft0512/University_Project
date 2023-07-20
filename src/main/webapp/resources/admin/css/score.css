@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /* Accordion */
 * {
 	margin: 0;
@@ -19,18 +20,7 @@ ul {
 	display: none;
 }
 
-.corner {
-	display: table;
-	float: right;
-	border-collapse: collapse;
-	margin-top: 1px;
-}
-
-/* student_list */
-.student_list-table {
-	width: 100%;
-}
-
+/* score */
 .float-wrap {
 	width: 100%;
 	display: inline;
@@ -56,60 +46,12 @@ ul {
 	border-bottom: 1px solid #000;
 	padding: 11px 0;
 	width: 100%;
-	height: 75px;
+	height: 50px;
 	background: #a2e4b8;
 }
 
 /* head */
 .student_list-table-head__id {
-	width: 120px;
-	text-align: center;
-	font-size: 16px;
-	color: #000;
-	display: table-cell;
-}
-
-.student_list-table-head__name {
-	width: 120px;
-	text-align: center;
-	font-size: 16px;
-	color: #000;
-	display: table-cell;
-}
-
-.student_list-table-head__depart_name {
-	width: 150px;
-	text-align: center;
-	font-size: 16px;
-	color: #000;
-	display: table-cell;
-}
-
-.student_list-table-head__academic_status {
-	width: 100px;
-	text-align: center;
-	font-size: 16px;
-	color: #000;
-	display: table-cell;
-}
-
-.student_list-table-head__birth {
-	width: 120px;
-	text-align: center;
-	font-size: 16px;
-	color: #000;
-	display: table-cell;
-}
-
-.student_list-table-head__address {
-	width: 350px;
-	text-align: center;
-	font-size: 16px;
-	color: #000;
-	display: table-cell;
-}
-
-.student_list-table-head__email {
 	width: 250px;
 	text-align: center;
 	font-size: 16px;
@@ -117,16 +59,40 @@ ul {
 	display: table-cell;
 }
 
-.student_list-table-head__phone {
-	width: 100px;
+.student_list-table-head__name {
+	width: 250px;
 	text-align: center;
 	font-size: 16px;
 	color: #000;
 	display: table-cell;
 }
 
-.student_list-table-head__button {
-	width: 165px;
+.student_list-table-head__depart_name {
+	width: 250px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell; 
+}
+
+.student_list-table-head__academic_status {
+	width: 250px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+}
+
+.student_list-table-head__score_avg {
+	width: 250px;
+	text-align: center;
+	font-size: 16px;
+	color: #000;
+	display: table-cell;
+}
+
+.student_list-table-head__credit_full {
+	width: 250px;
 	text-align: center;
 	font-size: 16px;
 	color: #000;
@@ -176,7 +142,7 @@ ul {
 
 /* body */
 .student_list-table-body__id {
-	width: 120px;
+	width: 250px;
 	text-align: center;
 	font-size: 16px;
 	display: table-cell;
@@ -184,7 +150,7 @@ ul {
 }
 
 .student_list-table-body__name {
-	width: 120px;
+	width: 250px;
 	text-align: center;
 	font-size: 16px;
 	display: table-cell;
@@ -192,7 +158,7 @@ ul {
 }
 
 .student_list-table-body__depart_name {
-	width: 150px;
+	width: 250px;
 	text-align: center;
 	font-size: 16px;
 	display: table-cell;
@@ -200,48 +166,23 @@ ul {
 }
 
 .student_list-table-body__academic_status {
-	width: 100px;
-	text-align: center;
-	font-size: 16px;
-	border-bottom: 1px solid #c6c6c6;
-	display: table-cell;
-}
-
-.student_list-table-body__birth {
-	width: 120px;
-	text-align: center;
-	font-size: 16px;
-	border-bottom: 1px solid #c6c6c6;
-	display: table-cell;
-}
-
-.student_list-table-body__address {
-	width: 350px;
-	text-align: center;
-	font-size: 16px;
-	border-bottom: 1px solid #c6c6c6;
-	display: table-cell;
-}
-
-.student_list-table-body__email {
 	width: 250px;
 	text-align: center;
 	font-size: 16px;
 	border-bottom: 1px solid #c6c6c6;
 	display: table-cell;
-	word-break: break-all;
 }
 
-.student_list-table-body__phone {
-	width: 100px;
+.student_list-table-body__score_avg {
+	width: 250px;
 	text-align: center;
 	font-size: 16px;
 	border-bottom: 1px solid #c6c6c6;
 	display: table-cell;
 }
 
-.student_list-table-body__button {
-	width: 165px;
+.student_list-table-body__credit_full {
+	width: 250px;
 	text-align: center;
 	font-size: 16px;
 	border-bottom: 1px solid #c6c6c6;
@@ -287,121 +228,4 @@ ul {
 	font-size: 16px;
 	border-bottom: 1px solid #c6c6c6;
 	display: table-cell;
-}
-
-/* 페이지 버튼 인터페이스 */
-.pageMaker_wrap {
-	text-align: center;
-	margin-top: 30px;
-	margin-bottom: 40px;
-}
-
-.pageMaker {
-	list-style: none;
-	display: inline-block;
-}
-
-.pageMaker_btn {
-	float: left;
-	width: 80px;
-	height: 40px;
-	line-height: 40px;
-	margin-left: 20px;
-}
-
-.active {
-	border: 2px solid black;
-	font-weight: 400;
-}
-
-.next, .prev {
-	border: 1px solid #ccc;
-	padding: 0 10px;
-}
-
-.pageMaker_btn a:link {
-	color: black;
-}
-
-.pageMaker_btn a:visited {
-	color: black;
-}
-
-.pageMaker_btn a:active {
-	color: black;
-}
-
-.pageMaker_btn a:hover {
-	color: black;
-}
-
-.next a, .prev a {
-	color: #ccc;
-}
-
-/* 검색결과 없음 */
-.table_empty {
-	height: 50px;
-	text-align: center;
-	margin: 200px 0 215px 0px;
-	font-size: 25px;
-}
-
-#modal.modal-overlay {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	display: none;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background: rgba(255, 255, 255, 0.25);
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(1.5px);
-	-webkit-backdrop-filter: blur(1.5px);
-	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-#modal .modal-window {
-	background: rgba(69, 139, 197, 0.70);
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(13.5px);
-	-webkit-backdrop-filter: blur(13.5px);
-	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
-	width: 400px;
-	height: 250px;
-	position: relative;
-	top: -100px;
-	padding: 10px;
-}
-
-#modal .title {
-	padding-left: 10px;
-	display: inline;
-	text-shadow: 1px 1px 2px gray;
-	color: white;
-}
-
-#modal .title h2 {
-	display: inline;
-}
-
-#modal .close-area {
-	display: inline;
-	float: right;
-	padding-right: 10px;
-	cursor: pointer;
-	text-shadow: 1px 1px 2px gray;
-	color: white;
-}
-
-#modal .content {
-	margin-top: 20px;
-	padding: 0px 10px;
-	text-shadow: 1px 1px 2px gray;
-	color: white;
 }

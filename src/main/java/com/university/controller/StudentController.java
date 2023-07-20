@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.lang.model.element.ModuleElement;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -47,9 +49,8 @@ public class StudentController {
    private LoginService lService;
 
    @GetMapping("/main")
-   public String mainGET(HttpServletRequest request) throws NumberFormatException, Exception {
+   public String mainGET(HttpServletRequest request, Model model, HttpSession session) throws NumberFormatException, Exception {      
       log.info("main 진입");
-      HttpSession session = request.getSession();
       StudentVO sVo = (StudentVO) session.getAttribute("mVo");
       session.setAttribute("img", sService.getStudent_Img(sVo.getId()));
       session.setAttribute("departlist", sService.getDepartList());
@@ -240,9 +241,9 @@ public class StudentController {
          slVo.setSemester(lecture_yearNsemester[1]);
          model.addAttribute("semester",slVo.getSemester());
          model.addAttribute("year", slVo.getLecture_year());
-         model.addAttribute("sVo", lService.memberLogin(sVo));
-         model.addAttribute("sllist", sService.getStudentLectureList(sVo.getId(), slVo.getLecture_year(), slVo.getSemester()));
-         model.addAttribute("count", sService.getStudentLectureCount(sVo.getId()));
+         //model.addAttribute("sVo", lService.memberLogin(sVo));
+         model.addAttribute("sllist_year", sService.getStudentLectureList(sVo.getId(), slVo.getLecture_year(), slVo.getSemester()));
+         model.addAttribute("sllist", sService.getStudentLectureCount(sVo.getId()));
          return "my_lecture";
       }else {
          return "my_lecture";

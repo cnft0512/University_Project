@@ -44,5 +44,5 @@ public interface StudentMapper {
    public List<StudentLectureVO> getStudentLectureList(@Param("id")int id,@Param("lecture_year")int lecture_year, @Param("semester")String semester);
    
    //수강 신청한 내 강의 개수 가져오기
-   public int getStudentLectureCount(int id);
+   public List<StudentLectureVO> getStudentLectureCount(int id);
 }
