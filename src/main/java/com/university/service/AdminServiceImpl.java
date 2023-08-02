@@ -17,7 +17,7 @@ import oracle.security.o3logon.a;
 
 @Service
 public class AdminServiceImpl implements AdminService {
-	
+
 	@Autowired
 	private AdminMapper aMapper;
 
@@ -55,12 +55,12 @@ public class AdminServiceImpl implements AdminService {
 	public List<StudentLectureVO> getStudent_lectureList(int lecture_code) throws Exception {
 		return aMapper.getStudent_lectureList(lecture_code);
 	}
-	
+
 	@Override
 	public List<StudentLectureVO> getMyList() throws Exception {
 		return aMapper.getMyList();
 	}
-	
+
 	@Override
 	public void update_mid_score(StudentLectureVO slVO) throws Exception {
 		aMapper.update_mid_score(slVO);
@@ -81,5 +81,9 @@ public class AdminServiceImpl implements AdminService {
 		aMapper.deleteBasket();
 	}
 
-}
+	@Override
+	public void adminCreate(String encodePW) throws Exception {
+		aMapper.adminCreate(encodePW);
+	}
 
+}

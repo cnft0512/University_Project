@@ -63,8 +63,16 @@ public class LectureServiceImpl implements LectureService {
    }
 
    @Override
-   public void addCount(int lecture_code, int student_full, int lecture_year) {
-      lMapper.addCount(lecture_code, student_full, lecture_year);
+   public void addCount(int lecture_code, int lecture_year) {
+      lMapper.addCount(lecture_code, lecture_year);
+   }
+
+
+
+   @Override
+   public void disCount(int lecture_code, int lecture_year) throws Exception {
+      // TODO Auto-generated method stub
+      lMapper.disCount(lecture_code, lecture_year);
    }
 
 }

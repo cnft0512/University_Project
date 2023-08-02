@@ -2,13 +2,8 @@ package com.university.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.UUID;
 
-import javax.lang.model.element.ModuleElement;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -26,11 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.university.model.BasketVO;
 import com.university.model.StudentLectureVO;
 import com.university.model.StudentVO;
 import com.university.model.Student_ImgVO;
-import com.university.service.AdminService;
 import com.university.service.LoginService;
 import com.university.service.StudentService;
 
@@ -69,7 +62,7 @@ public class StudentController {
       String extension = fileOriName.substring(fileOriName.lastIndexOf("."), fileOriName.length());
       UUID uuid = UUID.randomUUID();
       String fileName = uuid.toString() + extension;
-      String uploadRoute = "C:\\spring\\University\\src\\main\\webapp\\resources\\student_img";
+      String uploadRoute = "C:\\Users\\lee98\\git\\University_Project\\src\\main\\webapp\\resources\\student_img";
       File saveFile = new File(uploadRoute + "\\" + fileName); // 적용 후
       try {
          file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
@@ -246,6 +239,8 @@ public class StudentController {
          model.addAttribute("sllist", sService.getStudentLectureCount(sVo.getId()));
          return "my_lecture";
       }else {
+         model.addAttribute("sllist_year", sService.getStudentLectureList(sVo.getId(), Integer.parseInt(session.getAttribute("serverTime").toString().substring(0,4)), "1학기"));
+         model.addAttribute("sllist", sService.getStudentLectureCount(sVo.getId()));
          return "my_lecture";
       }
    }

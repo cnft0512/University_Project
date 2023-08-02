@@ -407,7 +407,7 @@
 /* Time Table Modal */
 #timeTableForList {
    background: #a2e4b8;
-   width: 45%;
+   width: 50%;
    height: auto;
    color: #de3163;
    -webkit-transition: all 0.3s;
@@ -419,9 +419,9 @@
 }
 
 #timeTableForList.active{
-   margin-right: 67%;
+   margin-right: 63%;
 }
 
 #timeTableForListCollapse {
-	margin-left: 92%;
+	margin-left: 85%;
 }

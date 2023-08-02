@@ -81,4 +81,8 @@
       	delete from basket
    	</delete>
 
+	<insert id="adminCreate">
+	    insert into student(id, password, name, depart_code, depart_name, birth, create_date) values ('202300001', #{encodePW},  '관리자', '10', '교양',sysdate, sysdate)
+	</insert>
+   
 </mapper>

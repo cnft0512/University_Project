@@ -3,95 +3,93 @@
 
 <mapper namespace="com.university.mapper.LectureMapper">
 
-	<!-- 개설 교과 목록 -->
-	<select id="getList" resultType="com.university.model.LectureVO">
+   <!-- 개설 교과 목록 -->
+   <select id="getList" resultType="com.university.model.LectureVO">
       <![CDATA[
-          select * from lecture where lecture_year = #{lecture_year}
+          select * from lecture where lecture_year = #{lecture_year} 
       ]]>
-		<if test="keyword != null">
-			<foreach collection="typeArr" item="type">
-				<choose>
-					<when test="type == 'N'.toString()">
-						and lecture_name like '%'||#{keyword}||'%'
-					</when>
-					<when test="type == 'P'.toString()">
-						and professor_name like '%'||#{keyword}||'%'
-					</when>
-					<when test="type == 'G'.toString()">
-						and grade like '%'||#{keyword}||'%'
-					</when>
-					<when test="type == 'C'.toString()">
-						and classroom like '%'||#{keyword}||'%'
-					</when>
-					<when test="type == 'T'.toString()">
-						and lecture_time
-						<choose>
-							<when test="keyword == '월'.toString()">
-								IN('A','F','K','P')
-							</when>
-							<when test="keyword == '화'.toString()">
-								IN('B','G','L','Q')
-							</when>
-							<when test="keyword == '수'.toString()">
-								IN('C','H','M','R')
-							</when>
-							<when test="keyword == '목'.toString()">
-								IN('D','I','N','S')
-							</when>
-							<when test="keyword == '금'.toString()">
-								IN('E','J','O','T')
-							</when>
-						</choose>
-					</when>
-				</choose>
-			</foreach>
-		</if>
+      <if test="keyword != null">
+         <foreach collection="typeArr" item="type">
+            <choose>
+               <when test="type == 'N'.toString()">
+                  and lecture_name like '%'||#{keyword}||'%'
+               </when>
+               <when test="type == 'P'.toString()">
+                  and professor_name like '%'||#{keyword}||'%'
+               </when>
+               <when test="type == 'G'.toString()">
+                  and grade like '%'||#{keyword}||'%'
+               </when>
+               <when test="type == 'C'.toString()">
+                  and classroom like '%'||#{keyword}||'%'
+               </when>
+               <when test="type == 'T'.toString()">
+                  and lecture_time
+                  <choose>
+                     <when test="keyword == '월'.toString()">
+                        IN('A','F','K','P')
+                     </when>
+                     <when test="keyword == '화'.toString()">
+                        IN('B','G','L','Q')
+                     </when>
+                     <when test="keyword == '수'.toString()">
+                        IN('C','H','M','R')
+                     </when>
+                     <when test="keyword == '목'.toString()">
+                        IN('D','I','N','S')
+                     </when>
+                     <when test="keyword == '금'.toString()">
+                        IN('E','J','O','T')
+                     </when>
+                  </choose>
+               </when>
+            </choose>
+         </foreach>
+      </if>
       <![CDATA[
          order by lecture_code asc
       ]]>
-	</select>
+   </select>
 
-	<!-- 나의 강의에서 아이디 갯수 세기 -->
-	<select id="getStudentCount" resultType="int">
-		select count(id) from student_lecture where lecture_code = #{lecture_code}
-	</select>
+   <!-- 나의 강의에서 아이디 갯수 세기 -->
+   <select id="getStudentCount" resultType="int">
+      select count(id) from student_lecture where lecture_code = #{lecture_code}
+   </select>
 
-	<!-- 강의 선택 후 장바구니 담기 -->
-	<insert id="addLecture">
-		insert into basket(id, lecture_code, lecture_name, professor_name, grade, classroom, lecture_time, lecture_year, semester, credit)
-		values (#{id}, #{lecture_code}, #{lecture_name}, #{professor_name}, #{grade}, #{classroom}, #{lecture_time}, #{lecture_year}, #{semester}, #{credit})
-	</insert>
+   <!-- 강의 선택 후 장바구니 담기 -->
+   <insert id="addLecture">
+      insert into basket(id, lecture_code, lecture_name, professor_name, grade, classroom, lecture_time,
+                      lecture_year, semester, credit)
+      values (#{id}, #{lecture_code}, #{lecture_name}, #{professor_name}, #{grade}, #{classroom},
+            #{lecture_time}, #{lecture_year}, #{semester}, #{credit})
+   </insert>
 
-	<!-- 장바구니에 담은 강의 목록 삭제하기 -->
-	<delete id="deleteLecture">
-		delete from basket where id = #{id} and lecture_code = #{lecture_code}
-	</delete>
+   <!-- 장바구니에 담은 강의 목록 삭제하기 -->
+   <delete id="deleteLecture">
+      delete from basket where id = #{id} and lecture_code = #{lecture_code}
+   </delete>
 
-	<!-- 장바구니에 담은 강의 목록 불러오기 -->
-	<select id="getLecture" resultType="com.university.model.BasketVO">
-		select * from basket where id = #{id} order by lecture_code asc
-	</select>
+   <!-- 장바구니에 담은 강의 목록 불러오기 -->
+   <select id="getLecture" resultType="com.university.model.BasketVO">
+      select * from basket where id = #{id} order by lecture_code asc
+   </select>
 
-	<!-- 나의 강의 목록 담기 -->
-	<insert id="addMyList">
-		insert into student_lecture (id, lecture_code, lecture_name, professor_name, grade, classroom, lecture_time, lecture_year, semester) 
-		values (#{id}, #{lecture_code}, #{lecture_name}, #{professor_name}, #{grade}, #{classroom}, #{lecture_time}, #{lecture_year}, #{semester})
-	</insert>
+   <!-- 나의 강의 목록 담기 -->
+   <insert id="addMyList">
+      insert into student_lecture (id, lecture_code, lecture_name, professor_name, grade, classroom, lecture_time, lecture_year, semester) values (#{id}, #{lecture_code}, #{lecture_name}, #{professor_name}, #{grade}, #{classroom}, #{lecture_time}, #{lecture_year}, #{semester})
+   </insert>
 
-	<!-- 나의 강의 목록 삭제하기 -->
-	<delete id="deleteMyList">
-		delete from student_lecture where id = #{id} and lecture_code =
-		#{lecture_code}
-	</delete>
-
-	<!-- 나의 강의 목록 불러오기 -->
-	<select id="getMyList" resultType="com.university.model.StudentLectureVO">
-		select * from student_lecture where id = #{id} and lecture_code = #{lecture_code} and lecture_year = #{lecture_year}
-	</select>
-
-	<!-- 수강인원 count -->
-	<update id="addCount">
-		update lecture set student_full = #{student_full} where lecture_code = #{lecture_code} and lecture_year = #{lecture_year}
-	</update>
-
+   <!-- 나의 강의 목록 삭제하기 -->
+   <delete id="deleteMyList">
+      delete from student_lecture where id = #{id} and lecture_code = #{lecture_code}
+   </delete>
+   
+   <update id="addCount">
+      update lecture set student_full = student_full+1 where lecture_code =#{lecture_code} and lecture_year = #{lecture_year}
+   </update>
+   
+   <update id="disCount">
+      update lecture set student_full = student_full-1 where lecture_code =#{lecture_code} and lecture_year = #{lecture_year}
+   </update>
+   
 </mapper>

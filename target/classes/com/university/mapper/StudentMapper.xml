@@ -7,16 +7,19 @@
 		select * from student_img where id = #{id}
 	</select>
 
-
 	<insert id="insert_student_img">
-		insert into student_img(id, regDate, created_by, img_name, img_url,
-		ori_img_name) values (#{id}, sysdate, '관리자', #{img_name}, #{img_url},
+		insert into student_img(id, regDate, created_by,
+		img_name, img_url,
+		ori_img_name) values (#{id}, sysdate, '관리자',
+		#{img_name}, #{img_url},
 		#{ori_img_name})
 	</insert>
 
 	<update id="update_student_img">
-		update student_img set updateDate = sysdate, modified_by=#{id},
-		img_name=#{img_name}, img_url=#{img_url}, ori_img_name=#{ori_img_name}
+		update student_img set updateDate = sysdate,
+		modified_by=#{id},
+		img_name=#{img_name}, img_url=#{img_url},
+		ori_img_name=#{ori_img_name}
 	</update>
 
 	<select id="getDepartList"
@@ -25,7 +28,8 @@
 	</select>
 
 	<update id="pwChange">
-		update student set password=#{password} where id=#{id}
+		update student set password=#{password} where
+		id=#{id}
 	</update>
 
 	<select id="getInfo">
@@ -33,13 +37,15 @@
 	</select>
 
 	<update id="modifyInfo">
-		update student set academic_status=#{academic_status}, post=#{post},
+		update student set
+		academic_status=#{academic_status}, post=#{post},
 		address_1=#{address_1}, address_2 = #{address_2}, email = #{email},
 		phone=#{phone} where id = #{id}
 	</update>
 
 	<select id="delete_existing_img" resultType="String">
-		select img_name from student_img where id = #{id}
+		select img_name from
+		student_img where id = #{id}
 	</select>
 
 	<select id="getBasketList"
@@ -50,7 +56,8 @@
 	<select id="getStudentLectureList"
 		resultType="com.university.model.StudentLectureVO">
 		select * from student_lecture where id = #{id} and
-		lecture_year=#{lecture_year} and semester not in #{semester}
+		lecture_year=#{lecture_year} and semester not in #{semester} order by
+		lecture_code asc
 	</select>
 
 	<select id="getStudentLectureCount"

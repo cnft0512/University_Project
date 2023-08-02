@@ -47,4 +47,7 @@ public interface AdminMapper {
 	// 수강신청 기간 종료시 basket 삭제
 	public void deleteBasket();
 	
+	//관리자 계정 생성
+	public void adminCreate(String encodePW);
+	
 }

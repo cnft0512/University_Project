@@ -23,11 +23,6 @@
 
 </head>
 <body>
-   <div id = "logo">
-      <img src="../resources/includes/images/logo2.png" style="position: absolute; top: 40%; left: 38%; transform:scale(1.5);">
-   </div>        
-           
-      
       <div id="pw_modal" class="modal-overlay">
       <div class="modal-window">
          <div class="title">

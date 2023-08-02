@@ -1,7 +1,6 @@
 package com.university.mapper;
 
 import java.util.List;
-import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -25,7 +24,10 @@ public interface LectureMapper {
    public int addLecture(BasketVO bVo);
    
    // 강의 선택 후 학생 정원 값 늘리기
-   public void addCount(@Param("lecture_code")int lecture_code, @Param("student_full")int student_full,@Param("lecture_year")int lecture_year);
+   public void addCount(@Param("lecture_code")int lecture_code,@Param("lecture_year")int lecture_year);
+   
+   // 강의 선택 후 학생 정원 값 늘리기
+   public void disCount(@Param("lecture_code")int lecture_code, @Param("lecture_year")int lecture_year);
    
    // 장바구니에 담은 강의 목록 불러오기
    public List<BasketVO> getLecture(int id);

@@ -34,21 +34,84 @@
          
             
                <div class="lecture_detail-table-head">
-                  <div class="lecture_detail-table-head__id">강의코드</div>
-                  <div class="lecture_detail-table-head__name">강의명</div>
-                  <div class="lecture_detail-table-head__depart_name">담당교수</div>
-                  <div class="lecture_detail-table-head__midterm_score">학년</div>
-                  <div class="lecture_detail-table-head__final_score">강의실</div>
+                  <div class="lecture_detail-table-head__lecture_code">강의코드</div>
+                  <div class="lecture_detail-table-head__lecture_name">강의명</div>
+                  <div class="lecture_detail-table-head__professor_name">담당교수</div>
+                  <div class="lecture_detail-table-head__grade_head">학년</div>
+                  <div class="lecture_detail-table-head__classroom">강의실</div>
                   <div class="lecture_detail-table-head__lecture_time">강의시간</div>         
                </div>
                
                <div class="lecture_detail-table-body">
-                  <div class="lecture_detail-table-body__id">${lecture_info.lecture_code}</div>
-                  <div class="lecture_detail-table-body__name">${lecture_info.lecture_name}</div>
-                  <div class="lecture_detail-table-body__depart_name">${lecture_info.professor_name}</div>
-                  <div class="lecture_detail-table-body__midterm_score">${lecture_info.grade}</div>
-                  <div class="lecture_detail-table-body__final_score">${lecture_info.classroom}</div>
-                  <div class="lecture_detail-table-body__lecture_time"></div>
+                  <div class="lecture_detail-table-body__lecture_code">${lecture_info.lecture_code}</div>
+                  <div class="lecture_detail-table-body__lecture_name">${lecture_info.lecture_name}</div>
+                  <div class="lecture_detail-table-body__professor_name">${lecture_info.professor_name}</div>
+                  <div class="lecture_detail-table-body__grade_head">${lecture_info.grade}</div>
+                  <div class="lecture_detail-table-body__classroom">${lecture_info.classroom}</div>
+                  <div class="lecture_detail-table-body__lecture_time">
+                    <c:choose>
+                           <c:when test="${lecture_info.lecture_time eq 'A'}">
+                              <월> 08:00 ~ 11:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'B'}">
+                              <화> 08:00 ~ 11:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'C'}">
+                              <수> 08:00 ~ 11:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'D'}">
+                              <목> 08:00 ~ 11:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'E'}">
+                              <금> 08:00 ~ 11:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'F'}">
+                              <월> 11:00 ~ 14:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'G'}">
+                              <화> 11:00 ~ 14:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'H'}">
+                              <수> 11:00 ~ 14:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'I'}">
+                              <목> 11:00 ~ 14:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'J'}">
+                              <금> 11:00 ~ 14:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'K'}">
+                              <월> 14:00 ~ 17:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'L'}">
+                              <화> 14:00 ~ 17:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'M'}">
+                              <수> 14:00 ~ 17:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'N'}">
+                              <목> 14:00 ~ 17:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'O'}">
+                              <금> 14:00 ~ 17:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'P'}">
+                              <월> 17:00 ~ 20:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'Q'}">
+                              <화> 17:00 ~ 20:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'R'}">
+                              <수> 17:00 ~ 20:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'S'}">
+                              <목> 17:00 ~ 20:00 
+                           </c:when>
+                           <c:when test="${lecture_info.lecture_time eq 'T'}">
+                              <금> 17:00 ~ 20:00 
+                           </c:when>
+                        </c:choose>
+                  </div>
                   <br>
                
                </div>         

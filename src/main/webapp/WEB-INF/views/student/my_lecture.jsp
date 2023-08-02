@@ -20,10 +20,7 @@
    crossorigin="anonymous"></script>
 </head>
 <body>
-
-   <h2>나의 강의 페이지</h2>
-
-   <br>
+   <h2>나의 강의 페이지</h2><br>
    <form id="my_lecture_form" class="my_lecture_form" action="/student/my_lecture" method="get">
    <select name = "lecture_yearNsemester" id = "year">
       <c:forEach var="i" begin="0" end="5">
@@ -158,8 +155,7 @@
    </form>
    <div class="corner">
       <div class="my_lecture-table-head__credit_full">졸업학점</div>
-      <div class="my_lecture-table-body__credit_full">${sllist.size()*3}
-         / 140</div>
+      <div class="my_lecture-table-body__credit_full">${sllist.size()*3} / 140</div>
       <div class="my_lecture-table-head__total_score_avg">총 평균학점</div>
       <div id="total" class="my_lecture-table-body__total_score_avg"></div>
    </div>
@@ -180,6 +176,7 @@
       select_year.addEventListener("change", function() {   
          $(".my_lecture_form").submit();
       });
+      
       /*
       <input type="text" name = "midterm_exam" id="midterm" maxlength='2' style="width: 50px; height:25px;">
       $('#midterm').on("propertychange change keyup paste input", function() {

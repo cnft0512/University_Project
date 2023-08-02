@@ -1,89 +1,206 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author"
-	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.84.0">
-
-<link rel="canonical"
-	href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-
-<!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-
-<!-- Favicons -->
-<link rel="apple-touch-icon"
-	href="/docs/5.0/assets/img/favicons/apple-touch-icon.png"
-	sizes="180x180">
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png"
-	sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png"
-	sizes="16x16" type="image/png">
-<!-- link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json" -->
-<link rel="mask-icon"
-	href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg"
-	color="#7952b3">
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
-<meta name="theme-color" content="#7952b3">
-
-
-<style>
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-}
-
-@media ( min-width : 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
-}
-</style>
-
-
-<!-- Custom styles for this template -->
-<link rel="stylesheet" href="../resources/includes/css/style.css">
-<link rel="stylesheet" href="../resources/login.css">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png"
+   href="../resources/login/images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+   href="../resources/login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+   href="../resources/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+   href="../resources/login/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+   href="../resources/login/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+   href="../resources/login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+   href="../resources/login/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+   href="../resources/login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+   href="../resources/login/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+   href="../resources/login/css/util.css">
+<link rel="stylesheet" type="text/css"
+   href="../resources/login/css/main.css">
+<!--===============================================================================================-->
 </head>
-<body class="text-center">
+<body onkeyup="enterkey()">
 
-	<main class="form-signin">
-		<form action="/" method="post" id="login_form">
-			<img class="mb-4" src="../resources/student_img/null.png" alt="" width="100" height="75">
-			<h1 class="h3 mb-3 fw-normal">Login</h1>
+   <div class="limiter">
+      <div class="container-login100"
+         style="background-image: url('../resources/login/images/university.jpg');">
+         <div class="wrap-login100">
+            <form class="login100-form validate-form" action="/" method="post"
+               id="login_form">
+               <span class="login100-form-logo"> <img id="mark"
+                  src="../resources/login/images/logo_main.png">
+               </span> <br> <br> <br>
 
-			<div class="form-floating">
-				<label for="floatingInput">ID</label>
-				<input type="text" name="id" class="form-control" id="floatingInput" placeholder="학번 입력">
-			</div>
-			<div class="form-floating">
-				<label for="floatingPassword">Password</label>
-				<input type="password" name="password" class="form-control" id="floatingPassword" placeholder="비밀번호 입력 (ex.110101)">
-			</div>
 
-			<div class="checkbox mb-3">
-				<label> <input type="checkbox" value="remember-me">Remember me</label>
-			</div>
-			<button class="w-100 btn btn-lg btn-primary" type="submit" id="login_btn">Submit</button>
-			<p class="mt-5 mb-3 text-muted">&copy; University Project</p>
-		</form>
-	</main>
-	
-	<script>
-		$("#login_btn").on("click", function() {			
-	        $("#login_form").submit();
-		});
-	</script>
+               <div class="wrap-input100 validate-input"
+                  data-validate="학번을 입력해주세요">
+                  <input class="input100" type="text" id="id" name="id" placeholder="학번 입력" onkeyup="enterkey()">
+                  <span class="focus-input100" data-placeholder="&#xf207;"></span>
+               </div>
+
+               <div class="wrap-input100 validate-input"
+                  data-validate="비밀번호를 입력해주세요">
+                  <input class="input100" type="password" name="password" placeholder="비밀번호 입력 (초기 = 생년월일 6자리)" onkeyup="enterkey()">
+                  <span class="focus-input100" data-placeholder="&#xf191;"></span>
+               </div>
+            </form>
+            <div class="contact100-form-checkbox">
+               <input class="input-checkbox100" id="ckb1" type="checkbox"
+                  name="remember-me"> <label class="label-checkbox100"
+                  for="ckb1"> Remember ID </label>
+            </div>
+
+            <div class="container-login100-form-btn">
+               <button class="login100-form-btn" id="login_btn">Login</button>
+            </div>
+            <br>
+            <div class="container-login100-form-btn" id="adminCreateDiv">
+               <button class="login100-form-btn" id="adminCreate">관리자 계정
+                  생성</button>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+   <div id="dropDownSelect1"></div>
+
+   <!--===============================================================================================-->
+   <script src="../resources/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+   <!--===============================================================================================-->
+   <script src="../resources/login/vendor/animsition/js/animsition.min.js"></script>
+   <!--===============================================================================================-->
+   <script src="../resources/login/vendor/bootstrap/js/popper.js"></script>
+   <script src="../resources/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+   <!--===============================================================================================-->
+   <script src="../resources/login/vendor/select2/select2.min.js"></script>
+   <!--===============================================================================================-->
+   <script src="../resources/login/vendor/daterangepicker/moment.min.js"></script>
+   <script
+      src="../resources/login/vendor/daterangepicker/daterangepicker.js"></script>
+   <!--===============================================================================================-->
+   <script src="../resources/login/vendor/countdowntime/countdowntime.js"></script>
+   <!--===============================================================================================-->
+   <script src="../resources/login/js/main.js"></script>
+   <script>
+      $(document).ready(function() {
+
+         // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 쿠키값 없으면 공백.
+         var userLoginId = getCookie("userLoginId");
+         $("input[name='id']").val(userLoginId);
+
+         // ID가 있는경우 아이디 저장 체크박스 체크
+         if ($("input[name='id']").val() != "") {
+            $("#ckb1").attr("checked", true);
+         }
+
+         // 아이디 저장하기 체크박스 onchange
+         $("#ckb1").change(function() {
+            if ($("#ckb1").is(":checked")) { //checked true
+               var userLoginId = $("input[name='id']").val();
+               setCookie("userLoginId", userLoginId, 30); // 30일 동안 쿠키 보관
+            } else { //checked false
+               deleteCookie("userLoginId");
+            }
+         });
+
+         // 아이디 저장하기가  눌린상태에서, ID를 입력한 경우
+         $("input[name='id']").keyup(function() {
+            if ($("#ckb1").is(":checked")) { //checked true
+               var userLoginId = $("input[name='id']").val();
+               setCookie("userLoginId", userLoginId, 30); // 30일 동안 쿠키 보관
+            }
+         });
+      })
+
+      function enterkey() {
+         if (window.event.keyCode == 13) {
+            // 엔터키가 눌렸을 때
+            $("#login_form").submit();
+         }
+      }
+
+      $("#login_btn").on("click", function() {
+            $("#login_form").submit();
+      });
+      
+      $("#adminCreate").on("click", function() {
+
+         const data = {
+            password : 'admin'
+         }
+
+         $.ajax({
+            type : "POST",
+            url : "/admin/adminCreate",
+            async : true,
+            data : data,
+            success : function(result) {
+               if (result === "CreateSuccess") {
+                  alert('관리자 계정 생성 완료');
+                  $("#adminCreateDiv").hide();
+               }
+            },
+            error : function(request, status, error) {
+               alert('기존의 관리자가 계정이 있습니다.');
+               $("#adminCreateDiv").hide();
+            }
+         });
+
+      })
+
+      function setCookie(cookieName, value, exdays) {
+         var exdate = new Date();
+         exdate.setDate(exdate.getDate() + exdays);
+         var cookieValue = escape(value)
+               + ((exdays == null) ? "" : "; expires="
+                     + exdate.toGMTString());
+         document.cookie = cookieName + "=" + cookieValue;
+      }
+
+      function deleteCookie(cookieName) {
+         var expireDate = new Date();
+         expireDate.setDate(expireDate.getDate() - 1);
+         document.cookie = cookieName + "= " + "; expires="
+               + expireDate.toGMTString();
+      }
+
+      function getCookie(cookieName) {
+         cookieName = cookieName + '=';
+         var cookieData = document.cookie;
+         var start = cookieData.indexOf(cookieName);
+         var cookieValue = '';
+         if (start != -1) {
+            start += cookieName.length;
+            var end = cookieData.indexOf(';', start);
+            if (end == -1)
+               end = cookieData.length;
+            cookieValue = cookieData.substring(start, end);
+         }
+         return unescape(cookieValue);
+      }
+   </script>
+
 
 </body>
 </html>

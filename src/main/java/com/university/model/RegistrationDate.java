@@ -8,9 +8,9 @@ import lombok.ToString;
 public class RegistrationDate {
 
 	// 수강 신청 시작 시간
-	private final String STARTDATE = "0719090000";
+	private final String STARTDATE = "0801131600";
 
 	// 수강 신청 종료 시간
-	private final String ENDDATE = "0725180900";
+	private final String ENDDATE = "0810180000";
 
 }

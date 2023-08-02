@@ -46,5 +46,8 @@ public interface AdminService {
 
 	// 수강신청 기간 종료시 basket 삭제
 	public void deleteBasket() throws Exception;
+	
+	//관리자 계정 생성
+	public void adminCreate(String encodePW) throws Exception;
 
 }

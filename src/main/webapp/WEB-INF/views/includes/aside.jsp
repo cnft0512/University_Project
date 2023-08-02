@@ -29,7 +29,7 @@
    <nav id="sidebar">
       <div class="p-4 pt-5">
          <c:choose>
-            <c:when test="${mVo.id eq '202300001' && mVo.name eq 'admin'}">
+            <c:when test="${mVo.id eq '202300001' && mVo.name eq '관리자'}">
                <a href="/student/main" class="img logo rounded-circle mb-5"
                   style="background-image: url(../resources/includes/images/admin.png);"></a>
                <ul class="list-unstyled components mb-5">
@@ -41,14 +41,7 @@
                         <li><a href="/admin/join">학생 추가(학생처)</a></li>
                      </ul></li>
 
-                  <li><a href="#pageSubmenu" data-toggle="collapse"
-                     aria-expanded="false" class="dropdown-toggle">강의 관리</a>
-                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li><a href="/admin/lecture_list">강의 조회</a></li>
-                        <!-- 모달로 수정을 만들까? -->
-                        <li><a href="/admin/score">성적 조회</a></li>
-                     </ul></li>
-                  <li></li>
+                  <li><a href="/admin/lecture_list">강의 관리</a></li>
                   <li><a href="/notice">공지사항 게시판</a></li>
                </ul>
             </c:when>
@@ -120,7 +113,7 @@
                                        <div class="form-group">
                                        <form action = "/student/student_img" method="post" class="imgForm" enctype="multipart/form-data">
                                           <input type="file" id="student_img" name="student_img"
-                                             accept="image/jpeg" onchange="readURL(this);"/>
+                                             accept=".jpg, .png" onchange="readURL(this);"/>
                                              <input type="hidden" name = "img_value" value = "0">
                                              </form>
          
@@ -146,7 +139,7 @@
                                        <div class="form-group">                                       
                                           <form action = "/student/student_img" method="post" class="imgForm" enctype="multipart/form-data">
                                           <input type="file" id="student_img" name="student_img"
-                                             accept="image/jpeg" onchange="readURL(this);"/>
+                                             accept=".jpg, .png" onchange="readURL(this);"/>
                                                 <input type="hidden" name = "img_value" value = "1">
                                              </form>
                                        </div>

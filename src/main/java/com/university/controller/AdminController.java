@@ -114,11 +114,21 @@ public class AdminController {
 	}
 
 	// 수강 신청 종료 후 나의 강의로 값 넘기기
-	@Scheduled(cron = "00 09 18 19 7 *")
+	@Scheduled(cron = "00 50 19 01 08 *")
 	public void class_registrationEND() throws Exception {
 		log.info("수강신청 종료");
 		aService.copyBasketToStudent_lecture();
 		aService.deleteBasket();
+	}
+
+	// 관리자 자동 생성
+	@PostMapping("/adminCreate")
+	@ResponseBody
+	public String adminCreate(String password) throws Exception {
+		log.info("관리자 계정 생성");
+		String encodePW = pwEncoder.encode(password);
+		aService.adminCreate(encodePW);
+		return "CreateSuccess";
 	}
 
 }

@@ -16,8 +16,7 @@
 </head>
 <body>
 
-	<form action="/admin/student_list" method="post" id="student_form"
-		enctype="multipart/form-data">
+	<form action="/admin/student_list" method="post" id="student_form" enctype="multipart/form-data">
 		<div class="float-wrap">
 			<h4 class="mypage__sub-title">학생 조회</h4>
 		</div>
@@ -51,8 +50,7 @@
 							<c:if test="${student_list.academic_status == 4}">자퇴</c:if>
 						</div>
 						<div class="student_list-table-body__birth">
-							<fmt:formatDate pattern="yyyy/MM/dd"
-								value="${student_list.birth}" />
+							<fmt:formatDate pattern="yyyy/MM/dd" value="${student_list.birth}" />
 						</div>
 						<div class="student_list-table-body__address">${student_list.address_1}<br>
 							${student_list.address_2} (${student_list.post})
@@ -66,14 +64,11 @@
 								<!-- button default 값은 submit 이기때문에 type에 button으로 선언해줘야함 -->
 							</c:if>
 						</div>
-						<input type="hidden" id="hidden_id"
-							value="<fmt:formatDate pattern='yyyy' value='${student_list.create_date}'/>${student_list.depart_code}">
-						<input type="hidden" id="hidden_password"
-							value="<fmt:formatDate pattern="yyMMdd" value="${student_list.birth}" />">
+						<input type="hidden" id="hidden_id" value="<fmt:formatDate pattern='yyyy' value='${student_list.create_date}'/>${student_list.depart_code}">
+						<input type="hidden" id="hidden_password" value="<fmt:formatDate pattern="yyMMdd" value="${student_list.birth}" />">
 						<input type="hidden" id="hidden_name" value="${student_list.name}">
-						<input type="hidden" id="hidden_depart_code"
-							value="${student_list.depart_code}"> <input type="hidden"
-							id="hidden_address_2" value="${student_list.address_2}">
+						<input type="hidden" id="hidden_depart_code" value="${student_list.depart_code}">
+						<input type="hidden" id="hidden_address_2" value="${student_list.address_2}">
 					</div>
 
 					<div class="accordion-box">
@@ -129,18 +124,16 @@
 														<c:when test="${mylist.final_exam eq '0.0'}">F</c:when>
 													</c:choose>
 												</div>
-												<div class="student_list-table-body__score_avg">
-													${(mylist.midterm_exam + mylist.final_exam) / 2}
-												</div>
+												<div class="student_list-table-body__score_avg">${mylist.total}</div>
 												<br>
 											</c:if>
 										</c:forEach>
 									</div>
 									<div class="corner">
 										<div class="student_list-table-head__credit_full">졸업학점</div>
-										<div class="student_list-table-body__credit_full">${sllist.size() * 3} / 140</div>
+										<div class="student_list-table-body__credit_full" id="credit_total">${sllist.size()} / 140</div>
 										<div class="student_list-table-head__total_score_avg">총 평균학점</div>
-										<div class="student_list-table-body__total_score_avg" id="total"></div>
+										<div class="student_list-table-body__total_score_avg" id="avg_total"> / </div>
 									</div>
 								</div>
 							</li>
@@ -176,71 +169,89 @@
 
 		// 학번 생성하기
 		for (let i = 0; i < create_btn.length; i++) {
-			create_btn[i]
-					.addEventListener(
-							"click",
-							function() {
-								/* create_btn의 i번째 value값 = vs.index */
-								sform
-										.append('<input type="hidden" name="id" value="'+hidden_id[create_btn[i].value].value+'">')
-								//sform.append('<input type="hidden" name="id" value="202300001">')
-								sform
-										.append('<input type="hidden" name="name" value="'+hidden_name[create_btn[i].value].value+'">')
-								sform
-										.append('<input type="hidden" name="password" value="'+hidden_password[create_btn[i].value].value+'">')
-								//sform.append('<input type="hidden" name="password" value="admin">')
-								sform
-										.append('<input type="hidden" name="depart_code" value="'+hidden_depart_code[create_btn[i].value].value+'">')
-								sform
-										.append('<input type="hidden" name="address_2" value="'+hidden_address_2[create_btn[i].value].value+'">')
-								sform.submit();
-							});
-
+			create_btn[i].addEventListener("click", function() {
+				/* create_btn의 i번째 value값 = vs.index */
+				sform.append('<input type="hidden" name="id" value="'+hidden_id[create_btn[i].value].value+'">')
+				//sform.append('<input type="hidden" name="id" value="202300001">')
+				sform.append('<input type="hidden" name="name" value="'+hidden_name[create_btn[i].value].value+'">')
+				sform.append('<input type="hidden" name="password" value="'+hidden_password[create_btn[i].value].value+'">')
+				//sform.append('<input type="hidden" name="password" value="admin">')
+				sform.append('<input type="hidden" name="depart_code" value="'+hidden_depart_code[create_btn[i].value].value+'">')
+				sform.append('<input type="hidden" name="address_2" value="'+hidden_address_2[create_btn[i].value].value+'">')
+				sform.submit();
+			});
 		}
 		
-		// Accordion
 		var s_list = document.querySelectorAll(".student_list_body_row");
 		var contents = document.querySelectorAll(".contents");
-		var id = document.querySelectorAll(".student_list-table-body__id");
-		
 		var active = false;
+		var midterm_exam = document.querySelectorAll(".student_list-table-body__midterm_exam");
+		var final_exam = document.querySelectorAll(".student_list-table-body__final_exam");
+		var avg = document.querySelectorAll(".student_list-table-body__score_avg");
+		var s_id = document.querySelectorAll(".student_list-table-body__id");
+		var sl_id = document.querySelectorAll("#hidden_id");
+		let credit_result = 0;
+		let avg_result = 0;
 	      
 	      for (let i=0; i < ${slist.size()}; i++) {
 	         s_list[i].addEventListener("click", function() {
+	        	// Accordion
 	            $(contents[i]).slideToggle();
 	            if(active == false) {
-	                 $(this).css('background-color', '#aaf0d1');
-	                 active = true;
-	               } else {
-	                 var divStyle = $(this).prop("style");
-	                 divStyle.removeProperty("background-color");
+	            	$(this).css('background-color', '#aaf0d1');
+	                active = true;
 	                
-	                 active = false;
-	               }
-	            
-	          });
+	            } else {
+	            	var divStyle = $(this).prop("style");
+	                divStyle.removeProperty("background-color");
+	                active = false;
+	            }
+	         });
 	      }
 		
-		/*
-		for (let i=0; i < ${slist.size()}; i++) {
-			s_list[i].addEventListener("click", function() {
-				$(contents[i]).slideToggle();
-				s_list[i].style.backgroundColor = "#aaf0d1";
-				return s_list[i].style.backgroundColor = " ";
-			});
-		}
+	    /*
+		var midterm_exam = document.querySelectorAll(".student_list-table-body__midterm_exam");
+		var final_exam = document.querySelectorAll(".student_list-table-body__final_exam");
+		var avg = document.querySelectorAll(".student_list-table-body__score_avg");
+		var s_id = document.querySelectorAll(".student_list-table-body__id");
+		var sl_id = document.querySelectorAll("#hidden_id");
+		let credit_result = 0;
+		let avg_result = 0;
+		
+		// 졸업학점 계산하기
+		$(document).ready(function () {
+			for(let i=0; i < midterm_exam.length; i++) {
+				if (s_id[i] == sl_id[i]) {
+					//console.log(midterm_exam[i].innerText);
+					//credit_result += (parseInt(midterm_exam[i].innerText) + parseInt(final_exam[i].innerText));
+				}
+			}
+			$("#credit_total").text((credit_result) / 140);
+		});
+		
+		// 평균학점 계산하기
+		$(document).ready(function () {
+			for(let i=0; i < avg.length; i++) {
+				if (s_id[i] == sl_id[i]) {
+					avg_result += parseFloat(avg[i].innerText);
+					console.log(avg_result);
+				}
+			}
+			$("#avg_total").text((avg_result / avg.length).toFixed(2));
+		});	
 		*/
 		
-		// 평균 학점 계산하기
-		var avg = document.querySelectorAll(".student_list-table-body__score_avg")
-	      let avg_result =0;
-	      
-	      $(document).ready(function() {
-	         for(let i=0; i<avg.length;i++){
-	            avg_result += parseFloat(avg[i].innerText);            
-	         }
-	         $("#total").text((avg_result/avg.length).toFixed(2));
-	      });
+		/*
+	    $(document).ready(function() {
+	    	for(let i=0; i < id.length; i++) {
+	    		for(let j=0; j < avg.length; j++){
+	    			console.log(avg[j].innerText);
+			    	//avg_result += parseFloat(avg[j].innerText);
+	    		}
+	    	}
+		    $("#total").text((avg_result / avg_total).toFixed(2));
+	    });
+		*/
 	</script>
 </body>
 </html>
