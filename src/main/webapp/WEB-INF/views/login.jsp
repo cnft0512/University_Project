@@ -48,7 +48,7 @@
             <form class="login100-form validate-form" action="/" method="post"
                id="login_form">
                <span class="login100-form-logo"> <img id="mark"
-                  src="../resources/login/images/logo_main.png">
+                  src="../resources/login/images/logo.png">
                </span> <br> <br> <br>
 
 
