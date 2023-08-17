@@ -42,26 +42,31 @@
 <body onkeyup="enterkey()">
 
    <div class="limiter">
-      <div class="container-login100"
-         style="background-image: url('../resources/login/images/university.jpg');">
+      <div class="container-login100">
+         <div class="wrap-cover100">
+             <img id="loginImage" src="../resources/login/images/den3.jpg" >
+         </div>
          <div class="wrap-login100">
             <form class="login100-form validate-form" action="/" method="post"
                id="login_form">
-               <span class="login100-form-logo"> <img id="mark"
-                  src="../resources/login/images/logo.png">
+               <span class="login100-form-logo">
+                <img id="mark"
+                  src="../resources/login/images/Logo.png">
                </span> <br> <br> <br>
 
 
                <div class="wrap-input100 validate-input"
                   data-validate="학번을 입력해주세요">
-                  <input class="input100" type="text" id="id" name="id" placeholder="학번 입력" onkeyup="enterkey()">
-                  <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                  <input class="input100" type="text" id="id" name="id"
+                     placeholder="학번 입력" onkeyup="enterkey()" autocomplete="off"> <span class="focus-input100"
+                     data-placeholder="&#xf207;"></span>
                </div>
 
                <div class="wrap-input100 validate-input"
                   data-validate="비밀번호를 입력해주세요">
-                  <input class="input100" type="password" name="password" placeholder="비밀번호 입력 (초기 = 생년월일 6자리)" onkeyup="enterkey()">
-                  <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                  <input class="input100" type="password" name="password"
+                     placeholder="비밀번호 입력 (ex.생년월일 6자리)" onkeyup="enterkey()"> <span
+                     class="focus-input100" data-placeholder="&#xf191;"></span>
                </div>
             </form>
             <div class="contact100-form-checkbox">
@@ -141,9 +146,11 @@
       }
 
       $("#login_btn").on("click", function() {
-            $("#login_form").submit();
-      });
       
+            $("#login_form").submit();
+         
+
+      });
       $("#adminCreate").on("click", function() {
 
          const data = {

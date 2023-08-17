@@ -23,36 +23,38 @@
 
 </head>
 <body>
-      <div id="pw_modal" class="modal-overlay">
-      <div class="modal-window">
-         <div class="title">
-            <h2>비밀번호 변경</h2>
-         </div>
-         <div class="pw_close-area">X</div>
-         <div style="float: left; width: 50%;">
-            <div class="form-group">            
-                  <div class="new_pw_input_box">
-                     새로운 비밀번호 : <input type="password" class="new_pw_input" name="password" style="width:250px;">
+    
+   <div id = "logo">
+      <img id="logo_img" src="../resources/includes/images/Main-removebg.png" style="position: absolute; top: 38%; left:26%; transform:scale(1.2); z-index:0;">
+   </div>      
+      
+      <div id="pw_modal" class="modal-overlay">               
+         <div class="modal-window">
+                  <div class="title">
+                     <h2>비밀번호 변경</h2>
+                     <div class="pw_close-area">X</div>
                   </div>
-                  <div class="new_pwck_input_box">
-                     새로운 비밀번호 확인: <input type="password" class="new_pwck_input" style="width:250px;">
+                  
+                  <div style="width: 50%; padding-left:15px;">
+                     <div class="form-group">            
+                           <div class="new_pw_input_box">
+                              새로운 비밀번호 : <input type="password" class="new_pw_input" name="password" style="width:250px;">
+                           </div>
+                           <div class="new_pwck_input_box">
+                              새로운 비밀번호 확인: <input type="password" class="new_pwck_input" style="width:250px;">
+                           </div>
+                           <span class="new_pwck_input_re_1" style="display: none; width:250px; color:green;">비밀번호가 일치합니다.</span>
+                           <span class="new_pwck_input_re_2" style="display: none; width:250px; color:red;">비밀번호가 일치하지 않습니다.</span>                        
+                           <span class="new_pwck_input_re_3" style="display: none; width:250px; color:red;">공백은 입력할 수 없습니다</span>      
+                           <input type="hidden" id = "id" name = "id" value="${mVo.id}">      
+                     </div>
                   </div>
-                  <span class="new_pwck_input_re_1" style="display: none; width:250px;">비밀번호가 일치합니다.</span>
-                  <span class="new_pwck_input_re_2" style="display: none; width:250px;">비밀번호가 일치하지 않습니다.</span>                        
-                  <span class="new_pwck_input_re_3" style="display: none; width:250px;">공백은 입력할 수 없습니다</span>      
-                  <input type="hidden" id = "id" name = "id" value="${mVo.id}">      
-            </div>
-         </div>
-         
+         <button type="button" id="pwChange_btn">비밀번호 변경</button>
       </div>
-      <button type="button" id="pwChange_btn" class="custom-btn btn-1"
-         style="margin-bottom: 5px;">비밀번호 변경</button>
-   </div>
+      
+      </div>
    
    <script>   
-   
-   let pwchk2 = false;
-   let pwchk3 = false;
    
    $(document).ready(function() {      
       let result = ${answer};
@@ -67,15 +69,22 @@
       }
    });
    
-   const pw_modal = document.getElementById("pw_modal")
    
+   let pwchk2 = false;
+   let pwchk3 = false;
+   
+   
+   const pw_modal = document.getElementById("pw_modal")
+   const logo_img =document.getElementById("logo_img")
    function pw_modalOn() {
+      logo_img.style.visibility="hidden";
       pw_modal.style.display = "flex"
    }
    function ispw_modalOn() {
        return pw_modal.style.display === "flex"
    }
    function pw_modalOff() {
+      logo_img.style.visibility="visible";
       pw_modal.style.display = "none"
    }
    const pw_modal_closeBtn = pw_modal.querySelector(".pw_close-area")

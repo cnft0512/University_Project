@@ -11,8 +11,6 @@
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
 	rel="stylesheet">
 
-
-
 <link rel="stylesheet" href="../resources/includes/css/style.css">
 <link rel="stylesheet" href="../resources/includes/button.css">
 <link rel="stylesheet" href="../resources/includes/validation.css">
@@ -30,12 +28,10 @@
 	<div class="container" style="width: 50%;">
 		<div style="float: left;">
 			<form method="POST" id="signup-form" class="signup-form">
-
-
-
+			
 				<div class="form-group">
-					<label for="name" class="form-label required">이름</label><br> <input
-						type="text" name="name" id="name" required /> <br>
+					<label for="name" class="form-label required">이름</label><br>
+					<input type="text" name="name" id="name" required /> <br>
 					<span class="final_name_ck">이름을 입력해주세요.</span>
 				</div>
 

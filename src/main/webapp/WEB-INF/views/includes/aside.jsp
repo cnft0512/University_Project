@@ -19,6 +19,7 @@
    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../resources/includes/modal.css">
 <link rel="stylesheet" href="../resources/includes/css/style.css">
+<link rel="stylesheet" href="../resources/includes/button.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"
    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
    crossorigin="anonymous"></script>
@@ -41,7 +42,7 @@
                         <li><a href="/admin/join">학생 추가(학생처)</a></li>
                      </ul></li>
 
-                  <li><a href="/admin/lecture_list">강의 관리</a></li>
+                  <li><a href="/admin/lecture_list">강의 관리</a>
                   <li><a href="/notice">공지사항 게시판</a></li>
                </ul>
             </c:when>
@@ -107,24 +108,26 @@
                                  <div class="modal-window">
                                     <div class="title">
                                        <h2>${mVo.name}님 사진 추가</h2>
+                                       <div class="close-area">X</div>
                                     </div>
-                                    <div class="close-area">X</div>
+                                    
                                     <div style="float: left; width: 50%;">
                                        <div class="form-group">
                                        <form action = "/student/student_img" method="post" class="imgForm" enctype="multipart/form-data">
-                                          <input type="file" id="student_img" name="student_img"
-                                             accept=".jpg, .png" onchange="readURL(this);"/>
-                                             <input type="hidden" name = "img_value" value = "0">
-                                             </form>
+                                          <input class="upload-name" value="첨부파일" placeholder="첨부파일" readonly="readonly">
+                                           <label for="file" id="img_label">파일찾기</label> 
+                                           <input type="file" id="file" name="student_img" accept=".jpg, .png" onchange="readURL(this);"/>                                          
+                                          <input type="hidden" name = "img_value" value = "0">
+                                       </form>
          
                                        </div>
                                     </div>
                                     <div style="float: right; width: 50%; height: 80%;">
-                                       <img id="preview" src="" style="width: 80%; height: 100%;" />
+                                       <img id="preview" src=""/>
                                     </div>
+                                    <button type="button" id="create_btn">생성</button>
                                  </div>
-                                 <button type="button" id="create_btn"
-                                 class="custom-btn btn-1" style="margin-bottom: 5px;">생성</button>
+                                 
                               </div>
                               
                            </c:when>
@@ -133,24 +136,26 @@
                                  <div class="modal-window">
                                     <div class="title">
                                        <h2>${mVo.name}님 사진 수정</h2>
+                                       <div class="close-area">X</div>
                                     </div>
-                                    <div class="close-area">X</div>
+                                    
                                     <div style="float: left; width: 50%;">
                                        <div class="form-group">                                       
-                                          <form action = "/student/student_img" method="post" class="imgForm" enctype="multipart/form-data">
-                                          <input type="file" id="student_img" name="student_img"
-                                             accept=".jpg, .png" onchange="readURL(this);"/>
-                                                <input type="hidden" name = "img_value" value = "1">
-                                             </form>
+                                          <form action = "/student/student_img" method="post" class="imgForm" enctype="multipart/form-data">                                          
+                                          <input class="upload-name" value="첨부파일" placeholder="첨부파일" readonly="readonly" style="margin-left: 10px; margin-top: 10px;">
+                                           <label for="file">파일찾기</label>
+                                           <input type="file" id="file" name="student_img" accept=".jpg, .png" onchange="readURL(this);"/>      
+                                          <input type="hidden" name = "img_value" value = "1">
+                                          </form>
                                        </div>
                                     </div>
-                                    <div style="float: right; width: 50%; height: 80%;">
-                                       <img id="preview" src=""
-                                          style="width: 80%; height: 100%;" />
+                                    <div class="img_div" style="float: right; width: 50%; height: 80%; margin-top: 10px;">
+                                       <img id="preview" src="" />
+                                       
                                     </div>
+                                    <button type="button" id="create_btn">생성</button>
                                  </div>
-                                    <button type="button" id="create_btn"
-                                 class="custom-btn btn-1" style="margin-bottom: 5px;">생성</button>
+                                    
                               </div>
                            
                            </c:otherwise>                           
@@ -159,7 +164,7 @@
                      </ul></li>
                   
                   <li><a href="#pageSubmenu" data-toggle="collapse"
-                     aria-expanded="false" class="dropdown-toggle">강의 관리</a>
+                     aria-expanded="false" class="dropdown-toggle" id="lesson">강의 관리</a>
                      <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li><a href="/student/my_lecture">나의 강의</a></li>
                         <li><a href="/lecture/timeTable">개인 시간표</a></li>
@@ -194,14 +199,23 @@
    
    
    const modal = document.getElementById("modal")
+   const lesson = document.getElementById("lesson")
    
    function modalOn() {
+      if(window.location.href==='http://localhost:8080/student/main' || window.location.href==='http://localhost:8080/student/main#'){
+       logo_img.style.visibility="hidden";      
+      }
+      lesson.style.filter ="blur(1.5px)";
        modal.style.display = "flex"
    }
    function isModalOn() {
        return modal.style.display === "flex"
    }
    function modalOff() {
+      if(window.location.href==='http://localhost:8080/student/main' || window.location.href==='http://localhost:8080/student/main#'){
+         logo_img.style.visibility="visible";         
+         }
+      lesson.style.filter ="none";
        modal.style.display = "none"
    }
    const btnModal = document.getElementById("img_btn")   
@@ -229,6 +243,11 @@
       $(".imgForm").submit();
       this.close();
    })
+   
+   $("#file").on('change',function(){
+     var fileName = $("#file").val();
+     $(".upload-name").val(fileName);
+   });
    
    </script>
 </body>

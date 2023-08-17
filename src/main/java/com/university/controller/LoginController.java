@@ -106,5 +106,9 @@ public class LoginController {
       return "notice";
    }
    
+   @GetMapping("/interceptor")
+   public void interceptorGET() {
+      log.info("admin 접근 차단");
+   }   
    
 }

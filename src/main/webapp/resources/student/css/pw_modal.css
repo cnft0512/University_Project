@@ -18,24 +18,27 @@
 }
 
 #pw_modal .modal-window {
-	background: rgba(69, 139, 197, 0.70);
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(13.5px);
-	-webkit-backdrop-filter: blur(13.5px);
-	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
-	width: 300px;
-	height: 200px;
-	position: relative;
-	top: -100px;
-	padding: 10px;
+ z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    min-width: 300px;
+    max-width: 600px;
+    height:250px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 2px 55px -25px rgb(0 0 0 / 100%);
 }
 
 #pw_modal .title {
-	padding-left: 10px;
-	display: inline;
-	text-shadow: 1px 1px 2px gray;
-	color: white;
+   border-radius: 15px 15px 0 0;
+    min-height: 40px;
+    color: #fff;
+    background-color: #a2e4b8;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    font-weight: bold;
 }
 
 #pw_modal .title h2 {
@@ -56,4 +59,12 @@
 	padding: 0px 10px;
 	text-shadow: 1px 1px 2px gray;
 	color: white;
+}
+#pw_modal #pwChange_btn{
+	position: absolute;
+	bottom:1%;
+	left:37%;
+    border-radius: 8px;
+    padding: 5px 10px;
+    border: 1px solid #aaa;
 }
